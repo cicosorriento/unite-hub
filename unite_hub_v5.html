@@ -1,0 +1,2293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unite Students — Event Planning Hub v5.0</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Instrument+Serif:ital@0;1&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1a1a2e;--coral:#C4553A;--coral-lt:#FBF0ED;--teal:#2D7A6F;--teal-lt:#EDF6F4;--amber:#B8860B;--amber-lt:#FDF6E3;--purple:#6B3FA0;--purple-lt:#F3EBF9;--ops:#3B6FA0;--ops-lt:#EBF1F7;--page:#F4F1EC;--surface:#FFFFFF;--border:#E0DAD0;--muted:#8a8680;--ink-rgb:26,26,46;--serif:'Instrument Serif',Georgia,serif;--sans:'Sora','DM Sans',system-ui,sans-serif}
+[data-theme="dark"]{--ink:#e0d4c8;--page:#1a1a2e;--surface:#22223a;--border:#2e2e45;--muted:#8a8680;--coral-lt:#2a2030;--teal-lt:#1a2a28;--amber-lt:#2a2518;--purple-lt:#251a30;--ops-lt:#1a2535;--ink-rgb:224,212,200}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--page);color:var(--ink);font-size:1rem;line-height:1.65}
+a{color:inherit;text-decoration:none}
+.site-header{position:sticky;top:0;z-index:100;background:var(--surface);border-bottom:1px solid var(--border);padding:0 2rem}
+.header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:52px;gap:1rem}
+.logo{display:flex;align-items:center;gap:.6rem;flex-shrink:0}
+.logo-mark{width:26px;height:26px;background:var(--coral);border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:.85rem;color:white}
+.logo-text{font-family:var(--serif);font-size:.95rem;font-weight:400;color:var(--ink);line-height:1.2;letter-spacing:-.01em}
+.logo-sub{font-family:var(--sans);font-size:.6rem;font-weight:500;opacity:.35;display:block;letter-spacing:.02em}
+.main-nav{display:flex;gap:.1rem;flex-wrap:wrap;align-items:center}
+.nav-link{color:var(--muted);font-size:.72rem;font-weight:500;padding:.25rem .5rem;border-radius:5px;transition:all .15s;white-space:nowrap;cursor:pointer;border:none;background:none;font-family:var(--sans);letter-spacing:.01em}
+.nav-link:hover{color:var(--ink);background:rgba(0,0,0,.04)}
+.nav-link.active{color:var(--ink);background:var(--coral-lt);font-weight:600}
+.mgr-nav-btn{background:var(--page);border:1px solid var(--border);border-radius:6px;color:var(--muted);font-size:.72rem;font-weight:500;padding:.25rem .55rem;cursor:pointer;font-family:var(--sans);transition:all .15s;white-space:nowrap}
+.mgr-nav-btn:hover{border-color:var(--ink);color:var(--ink)}
+.dark-toggle{background:none;border:1px solid var(--border);border-radius:5px;padding:.18rem .4rem;font-size:.75rem;cursor:pointer;color:var(--muted);transition:all .15s}
+.dark-toggle:hover{color:var(--ink);border-color:var(--ink)}
+.main{max-width:1200px;margin:0 auto;padding:2.5rem 2rem 4rem}
+.section{margin-bottom:3.5rem}
+.section-hd{margin-bottom:1.5rem;border-bottom:1px solid var(--border);padding-bottom:.85rem}
+.section-lbl{font-size:.6rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--coral);margin-bottom:.2rem;font-family:var(--sans)}
+.section-title{font-family:var(--serif);font-size:1.45rem;font-weight:400;letter-spacing:-.02em}
+.section-desc{font-size:.82rem;color:var(--muted);margin-top:.3rem}
+.section-hd-row{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.section-hd-btns{display:flex;gap:.4rem;align-items:center;flex-shrink:0;margin-top:.1rem;flex-wrap:wrap}
+/* HERO / DASHBOARD */
+.hero{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:2.25rem 2.5rem;color:var(--ink);margin-bottom:1.5rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50px;right:-50px;width:180px;height:180px;border:1.5px solid var(--border);border-radius:50%;opacity:.4}
+.hero::after{content:'';position:absolute;bottom:-30px;right:60px;width:100px;height:100px;border:1.5px solid var(--border);border-radius:50%;opacity:.25}
+.hero-title{font-family:var(--serif);font-size:2rem;font-weight:400;line-height:1.1;letter-spacing:-.03em;margin-bottom:.5rem}
+.hero-title span{font-style:italic;color:var(--coral)}
+.hero-desc{font-size:.82rem;color:var(--muted);line-height:1.7;margin-bottom:1rem;max-width:580px}
+.hero-chips{display:flex;gap:.4rem;flex-wrap:wrap}
+.chip{background:var(--page);border:1px solid var(--border);border-radius:100px;padding:.2rem .65rem;font-size:.68rem;color:var(--muted)}
+.stats-bar{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:.6rem;margin-bottom:1.5rem}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:9px;padding:.75rem .9rem;text-align:center;position:relative;overflow:hidden}
+.stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--teal)}
+.stat-card:nth-child(2)::before{background:var(--coral)}
+.stat-card:nth-child(3)::before{background:var(--amber)}
+.stat-card:nth-child(4)::before{background:var(--teal)}
+.stat-card:nth-child(5)::before{background:var(--coral)}
+.stat-val{font-family:var(--serif);font-size:1.4rem;font-weight:400;color:var(--ink);letter-spacing:-.02em}
+.stat-val.coral{color:var(--coral)}
+.stat-lbl{font-size:.62rem;color:var(--muted);margin-top:.15rem;text-transform:uppercase;letter-spacing:.05em}
+
+/* DASHBOARD WIDGETS v4.2 / v4.3 */
+.dash-grid{display:grid;grid-template-columns:2fr 1fr;gap:1rem;margin-bottom:1.5rem}
+.dash-widget{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.3rem;display:flex;flex-direction:column}
+.dw-title{font-family:var(--serif);font-weight:400;font-size:.95rem;margin-bottom:.8rem;display:flex;justify-content:space-between;align-items:center;letter-spacing:-.01em}
+.upcoming-item{display:flex;align-items:flex-start;gap:.6rem;padding:.5rem 0;border-bottom:1px solid var(--border)}
+.upcoming-item:last-child{border-bottom:none}
+.ui-date{background:var(--teal-lt);color:var(--teal);border-radius:6px;padding:.2rem .4rem;font-size:.65rem;font-weight:600;text-align:center;min-width:45px;flex-shrink:0;line-height:1.2}
+.ui-details{flex:1;min-width:0}
+.ui-name{font-weight:600;font-size:.82rem;margin-bottom:.1rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ui-meta{font-size:.7rem;color:var(--muted);display:flex;gap:.4rem;flex-wrap:wrap}
+.lb-item{display:flex;justify-content:space-between;align-items:center;padding:.4rem 0;border-bottom:1px solid var(--page)}
+.lb-item:last-child{border-bottom:none}
+.lb-name{font-size:.82rem;font-weight:500;display:flex;align-items:center;gap:.4rem}
+.lb-score{background:var(--page);border:1px solid var(--border);border-radius:100px;padding:.1rem .5rem;font-size:.7rem;font-weight:600;color:var(--teal)}
+
+/* MANAGEMENT RAG CARDS v4.3 */
+.rag-card{background:var(--page);border:1px solid var(--border);border-radius:9px;padding:.8rem;text-align:center;display:flex;flex-direction:column;justify-content:center}
+.rag-lbl{font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:.3rem}
+.rag-val{font-size:1.1rem;font-weight:700;margin-bottom:.3rem}
+.rag-status{font-size:.7rem;font-weight:600;padding:.15rem .5rem;border-radius:100px;display:inline-block}
+.rag-green{background:#E0F2F1;color:#00796B;border:1px solid #B2DFDB}
+.rag-amber{background:#FFF8E1;color:#F57F17;border:1px solid #FFECB3}
+.rag-red{background:#FFEBEE;color:#C62828;border:1px solid #FFCDD2}
+[data-theme="dark"] .rag-green{background:#004D40;color:#80CBC4;border-color:#00695C}
+[data-theme="dark"] .rag-amber{background:#FF8F00;color:#FFF8E1;border-color:#FFA000}
+[data-theme="dark"] .rag-red{background:#B71C1C;color:#FFCDD2;border-color:#C62828}
+
+.rec-item{background:var(--page);border:1px solid var(--border);border-radius:8px;padding:.6rem .8rem;font-size:.8rem;display:flex;align-items:center;gap:.6rem;margin-bottom:.4rem;cursor:pointer;transition:all .15s}
+.rec-item:hover{border-color:var(--teal)}
+.rec-item:last-child{margin-bottom:0}
+
+/* CARDS */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.4rem}
+.card-title{font-family:var(--serif);font-weight:400;font-size:.95rem;margin-bottom:.8rem;letter-spacing:-.01em}
+/* BUDGET */
+.budget-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem;flex-wrap:wrap;gap:.5rem}
+.budget-total{font-size:1.2rem;font-weight:600;color:var(--teal)}
+.budget-bar-wrap{background:var(--page);border-radius:100px;height:8px;overflow:hidden;margin-bottom:.5rem}
+.budget-fill{height:100%;border-radius:100px;background:var(--teal);transition:width .4s}
+.budget-fill.over{background:var(--coral)}
+.budget-meta{display:flex;justify-content:space-between;font-size:.76rem;color:var(--muted);margin-bottom:.75rem}
+.budget-events{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:.4rem;margin-bottom:.75rem}
+.bev{display:flex;align-items:center;justify-content:space-between;background:var(--page);border-radius:7px;padding:.35rem .6rem;font-size:.77rem;cursor:pointer;transition:all .15s;border:1.5px solid transparent;user-select:none}
+.bev:hover{opacity:.85}.bev.on{border-color:var(--teal);background:var(--teal-lt)}
+.bev-name{flex:1}.bev-cost{font-weight:600;color:var(--muted);margin-left:.3rem}
+.bev.on .bev-cost{color:var(--teal)}
+.budget-summary{display:flex;gap:1.2rem;padding-top:.75rem;border-top:1px solid var(--border);flex-wrap:wrap;margin-top:.8rem}
+.bs-item{display:flex;flex-direction:column}.bs-val{font-weight:600;font-size:1rem}.bs-val.red{color:var(--coral)}.bs-lbl{font-size:.68rem;color:var(--muted)}
+.btn-sm{background:none;border:1px solid var(--border);border-radius:6px;padding:.18rem .5rem;font-size:.7rem;cursor:pointer;font-family:inherit;color:var(--muted);transition:all .15s}
+.btn-sm:hover{background:var(--ink);color:white;border-color:var(--ink)}
+[data-theme="dark"] .btn-sm:hover{background:var(--coral);border-color:var(--coral)}
+.edit-row{display:none;align-items:center;gap:.4rem;margin-bottom:.6rem;flex-wrap:wrap}
+.edit-row.open{display:flex}
+.edit-row input{height:32px;width:90px;border:1px solid var(--border);border-radius:6px;padding:0 .5rem;font-size:.82rem;font-family:inherit;color:var(--ink);background:var(--surface)}
+.edit-row label{font-size:.76rem;color:var(--muted)}
+.edit-row button{height:32px;background:var(--teal);color:white;border:none;border-radius:6px;padding:0 .7rem;font-size:.78rem;cursor:pointer;font-family:inherit}
+/* NOTE BOX */
+.note-box{border-radius:11px;padding:1rem 1.2rem;margin-bottom:1.25rem;font-size:.84rem}
+.note-box.amber{background:#FFFBEB;border:1px solid #FDEAB0}
+[data-theme="dark"] .note-box.amber{background:#2A2210;border-color:#5D4A10}
+.note-title{font-weight:600;margin-bottom:.5rem;display:flex;align-items:center;gap:.4rem;color:#7A5200}
+[data-theme="dark"] .note-title{color:#FAC845}
+.note-list{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:.3rem}
+.note-list li{display:flex;align-items:flex-start;gap:.35rem;color:#5D3F00;line-height:1.4;font-size:.8rem}
+[data-theme="dark"] .note-list li{color:#D4B870}
+.note-list li::before{content:'→';flex-shrink:0;opacity:.5}
+/* FILTER BAR */
+.filter-bar{display:flex;gap:.35rem;margin-bottom:1rem;flex-wrap:wrap;align-items:center}
+.filter-chip{background:var(--page);border:1.5px solid var(--border);border-radius:100px;padding:.22rem .65rem;font-size:.74rem;cursor:pointer;font-family:inherit;color:var(--muted);transition:all .15s}
+.filter-chip:hover{border-color:var(--ink)}
+.filter-chip.active{background:var(--ink);color:white;border-color:var(--ink)}
+[data-theme="dark"] .filter-chip.active{background:var(--coral);border-color:var(--coral)}
+.filter-sep{width:1px;height:18px;background:var(--border);margin:0 .25rem}
+/* EVENT CARDS */
+.events-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1rem}
+.event-card{background:var(--surface);border:1px solid var(--border);border-radius:13px;padding:1.2rem;cursor:pointer;transition:all .18s;position:relative;overflow:hidden}
+.event-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(var(--ink-rgb),.07)}
+.event-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:13px 13px 0 0}
+.event-card.social::before{background:var(--teal)}.event-card.creative::before{background:var(--coral)}.event-card.competitive::before{background:var(--amber)}.event-card.cultural::before{background:var(--purple)}.event-card.operational::before{background:var(--ops)}
+.ec-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:.6rem;gap:.4rem}
+.ec-icon{width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.social .ec-icon{background:var(--teal-lt)}.creative .ec-icon{background:var(--coral-lt)}.competitive .ec-icon{background:var(--amber-lt)}.cultural .ec-icon{background:var(--purple-lt)}.operational .ec-icon{background:var(--ops-lt)}
+.ec-top-right{display:flex;flex-direction:column;align-items:flex-end;gap:.3rem}
+.ec-badges{display:flex;gap:.25rem;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.ec-badge{font-size:.6rem;font-weight:600;text-transform:uppercase;letter-spacing:.04em;padding:.15rem .5rem;border-radius:100px}
+.social .ec-badge{background:var(--teal-lt);color:var(--teal)}.creative .ec-badge{background:var(--coral-lt);color:var(--coral)}.competitive .ec-badge{background:var(--amber-lt);color:var(--amber)}.cultural .ec-badge{background:var(--purple-lt);color:var(--purple)}.operational .ec-badge{background:var(--ops-lt);color:var(--ops)}
+.type-pill{font-size:.58rem;font-weight:600;padding:.12rem .4rem;border-radius:4px;text-transform:uppercase;letter-spacing:.04em}
+.type-pill.recurring{background:var(--teal-lt);color:var(--teal)}.type-pill.tournament{background:var(--amber-lt);color:var(--amber)}.type-pill.operational{background:var(--ops-lt);color:var(--ops)}
+.status-badge{border:none;border-radius:100px;font-size:.6rem;font-weight:600;padding:.15rem .5rem;font-family:var(--sans);white-space:nowrap;user-select:none;cursor:pointer}
+.status-badge.none{background:var(--border);color:var(--muted)}.status-badge.scheduled{background:var(--amber-lt);color:var(--amber)}.status-badge.done{background:var(--teal-lt);color:var(--teal)}
+.ec-name{font-weight:600;font-size:.92rem;margin-bottom:.25rem;line-height:1.2;display:flex;align-items:center;gap:.3rem;flex-wrap:wrap;letter-spacing:-.01em}
+.ec-desc{font-size:.8rem;color:var(--muted);line-height:1.45;margin-bottom:.65rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.ec-meta{display:flex;gap:.8rem;font-size:.73rem;color:var(--muted);flex-wrap:wrap}
+.ec-meta-item{display:flex;align-items:center;gap:.2rem}
+.ec-footer{display:flex;align-items:center;justify-content:space-between;margin-top:.65rem;padding-top:.55rem;border-top:1px solid var(--border)}
+.ec-venue{font-size:.7rem;color:var(--muted);display:flex;align-items:center;gap:.25rem}
+.btn-detail{background:none;border:1px solid var(--border);border-radius:6px;padding:.22rem .6rem;font-size:.73rem;cursor:pointer;font-family:inherit;color:var(--ink);transition:all .15s}
+.btn-detail:hover{background:var(--ink);color:white;border-color:var(--ink)}
+.fav-btn{background:none;border:none;font-size:.9rem;cursor:pointer;padding:.1rem;opacity:.35;transition:opacity .15s}
+.fav-btn.active{opacity:1}
+.custom-tag{font-size:.57rem;font-weight:600;background:var(--purple-lt);color:var(--purple);border-radius:4px;padding:.08rem .35rem;text-transform:uppercase;letter-spacing:.04em}
+/* MODAL */
+.overlay{display:none;position:fixed;inset:0;background:rgba(13,27,53,.5);z-index:200;align-items:center;justify-content:center;padding:1rem}
+.overlay.open{display:flex}
+.modal{background:var(--surface);border-radius:16px;width:100%;max-width:680px;max-height:88vh;overflow-y:auto;position:relative}
+.modal-hd{padding:1.25rem 1.4rem .85rem;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:.8rem;position:sticky;top:0;background:var(--surface);border-radius:16px 16px 0 0;z-index:1}
+.modal-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
+.modal-close{position:absolute;top:1rem;right:1rem;width:28px;height:28px;border:1px solid var(--border);border-radius:6px;background:none;cursor:pointer;font-size:.9rem;display:flex;align-items:center;justify-content:center;font-family:inherit;color:var(--ink);transition:all .15s}
+.modal-close:hover{background:var(--ink);color:white;border-color:var(--ink)}
+.modal-body{padding:1.4rem 1.5rem}
+.ms{margin-bottom:1.5rem}
+.ms-title{font-size:.62rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:.6rem;display:flex;align-items:center;gap:.5rem;font-family:var(--sans)}
+.ms-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.desc-text{font-size:.85rem;line-height:1.65}
+.info-row{display:flex;gap:.6rem;flex-wrap:wrap}
+.info-pill{background:var(--page);border-radius:7px;padding:.35rem .7rem;font-size:.78rem}
+.info-pill strong{display:block;font-size:.62rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin-bottom:.05rem}
+.mat-list{list-style:none;display:flex;flex-direction:column;gap:.35rem}
+.mat-item{display:flex;align-items:center;gap:.4rem;padding:.4rem .6rem;background:var(--page);border-radius:7px;font-size:.8rem;flex-wrap:wrap}
+.mat-name{flex:1;min-width:110px}.mat-cost{color:var(--muted);font-size:.74rem}
+.mat-cost.owned{text-decoration:line-through;opacity:.5}
+.mat-link{color:var(--coral);font-size:.7rem;font-weight:500;padding:.15rem .4rem;background:var(--coral-lt);border-radius:4px;white-space:nowrap;text-decoration:none}
+.mat-reuse{font-size:.62rem;background:var(--teal-lt);color:var(--teal);padding:.1rem .35rem;border-radius:4px;font-weight:500}
+.mat-owned-toggle{font-size:.62rem;cursor:pointer;padding:.1rem .35rem;border-radius:4px;font-weight:500;border:1px solid var(--border);background:var(--page);font-family:inherit;color:var(--muted);transition:all .15s}
+.mat-owned-toggle.on{background:var(--teal-lt);color:var(--teal);border-color:var(--teal)}
+.cost-block{background:var(--ink);color:white;border-radius:10px;padding:1rem 1.2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.6rem;margin-top:.5rem}
+.cost-num{font-family:var(--serif);font-size:1.8rem;font-weight:400;letter-spacing:-.02em}
+.cost-note{font-size:.76rem;opacity:.5;max-width:220px;line-height:1.45}
+.tip-box{background:var(--page);border-radius:8px;padding:.75rem 1rem;font-size:.82rem;line-height:1.55;color:var(--muted);border-left:3px solid var(--teal)}
+.tip-box strong{color:var(--ink)}
+.notes-section{margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--border)}
+.notes-textarea{width:100%;min-height:80px;border:1px solid var(--border);border-radius:7px;padding:.55rem .75rem;font-size:.82rem;font-family:var(--sans);line-height:1.55;color:var(--ink);background:var(--page);resize:vertical;margin-bottom:.5rem}
+.btn-save{background:var(--teal);color:white;border:none;border-radius:6px;padding:.32rem .8rem;font-size:.78rem;font-weight:500;cursor:pointer;font-family:inherit;transition:opacity .15s}
+.btn-save:hover{opacity:.85}
+
+/* ACTION BUTTONS */
+.action-box{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--border)}
+.btn-action{padding:.6rem 1rem;border-radius:9px;font-size:.85rem;font-weight:600;cursor:pointer;font-family:inherit;text-align:center;transition:all .15s;border:none}
+.btn-action.sched{background:var(--amber-lt);color:var(--amber);border:1px solid #FDEAB0}
+[data-theme="dark"] .btn-action.sched{background:#2A2210;border-color:#5D4A10}
+.btn-action.sched:hover{opacity:.8}
+.btn-action.comp{background:var(--teal);color:white}
+.btn-action.comp:hover{opacity:.85}
+
+.prize-editor{background:var(--page);border:1px solid var(--border);border-radius:8px;padding:.8rem;margin-top:.5rem}
+.prize-editor select,.prize-editor input,.prize-editor textarea{width:100%;border:1px solid var(--border);border-radius:6px;padding:.35rem .55rem;font-size:.82rem;font-family:inherit;color:var(--ink);background:var(--surface);margin-top:.25rem}
+.prize-editor label{font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);display:block;margin-top:.5rem}
+.prize-ideas{font-size:.74rem;color:var(--muted);margin-top:.5rem;padding:.5rem;background:var(--surface);border-radius:6px;border-left:2px solid var(--amber)}
+
+/* ROI BADGE */
+.roi-badge{font-size:.65rem;font-weight:700;padding:.15rem .45rem;border-radius:4px;display:inline-block;margin-left:.4rem}
+.roi-A{background:#E8F5E9;color:#00695C;border:1px solid #B2DFDB}
+.roi-B{background:#E3F2FD;color:#F57F17;border:1px solid #FFECB3}
+.roi-C{background:#FFF3E0;color:#E65100;border:1px solid #FFE082}
+.roi-D{background:#FFEBEE;color:#C62828;border:1px solid #FFCDD2}
+.roi--{background:var(--page);color:var(--muted);border:1px solid var(--border)}
+
+/* PREP */
+.prep-form{background:var(--surface);border:1px solid var(--border);border-radius:13px;padding:1.2rem;margin-bottom:1rem}
+.prep-row{display:flex;gap:.75rem;align-items:flex-end;flex-wrap:wrap}
+.prep-field{display:flex;flex-direction:column;gap:.3rem;flex:1;min-width:160px}
+.prep-field label{font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.prep-field select,.prep-field input[type="date"]{height:38px;border:1px solid var(--border);border-radius:7px;padding:0 .65rem;font-size:.85rem;font-family:inherit;color:var(--ink);background:var(--surface)}
+.prep-field select:focus,.prep-field input:focus{outline:none;border-color:var(--ink)}
+.btn-gen{height:38px;background:var(--ink);color:white;border:none;border-radius:7px;padding:0 1.2rem;font-size:.85rem;font-weight:500;cursor:pointer;font-family:inherit;white-space:nowrap;transition:opacity .15s}
+[data-theme="dark"] .btn-gen{background:var(--coral)}
+.btn-gen:hover{opacity:.85}
+.sched-container{display:none;margin-top:1rem}.sched-container.vis{display:block}
+.sched-steps{display:flex;flex-direction:column;gap:.4rem}
+.sched-step{display:flex;align-items:flex-start;gap:.75rem;background:var(--surface);border:1px solid var(--border);border-radius:9px;padding:.7rem .8rem;transition:all .15s}
+.sched-step.done{background:var(--teal-lt);border-color:#B8DDB8;opacity:.72}
+.sched-step.is-event{border-color:var(--coral);background:var(--coral-lt)}
+.sched-step.is-past{opacity:.5}
+.sched-check{width:17px;height:17px;cursor:pointer;flex-shrink:0;margin-top:.15rem;accent-color:var(--teal)}
+.sched-date{width:90px;flex-shrink:0;font-size:.76rem;font-weight:600;color:var(--muted);line-height:1.3}.sched-date.event-day{color:var(--coral)}
+.sched-content{flex:1}.sched-label{font-weight:600;font-size:.85rem;margin-bottom:.05rem}.sched-desc{font-size:.77rem;color:var(--muted);line-height:1.45}
+.sched-tag{font-size:.6rem;font-weight:600;text-transform:uppercase;letter-spacing:.04em;padding:.1rem .4rem;border-radius:4px;flex-shrink:0;align-self:flex-start;margin-top:.15rem;white-space:nowrap}
+.tag-plan{background:var(--purple-lt);color:var(--purple)}.tag-approval{background:var(--amber-lt);color:var(--amber)}.tag-order{background:var(--coral-lt);color:var(--coral)}.tag-comms{background:var(--teal-lt);color:var(--teal)}.tag-event{background:var(--ink);color:var(--page)}.tag-followup{background:var(--page);color:var(--muted);border:1px solid var(--border)}
+/* EMAIL */
+.tpl-grid{display:flex;flex-direction:column;gap:.9rem}
+.tpl-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.tpl-hd{background:var(--page);padding:.7rem 1rem;display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;cursor:pointer;user-select:none}
+.tpl-hd-left{display:flex;align-items:center;gap:.6rem;flex:1;min-width:0}
+.tpl-icon{width:32px;height:32px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.tpl-evt-name{font-weight:600;font-size:.85rem}
+.tpl-subj{font-size:.74rem;color:var(--muted);overflow:hidden;white-space:nowrap;text-overflow:ellipsis;max-width:320px}
+.tpl-actions{display:flex;gap:.4rem;align-items:center;flex-shrink:0}
+.tpl-toggle{font-size:.74rem;color:var(--muted);font-weight:500}
+.btn-copy{background:var(--ink);color:white;border:none;border-radius:6px;padding:.25rem .7rem;font-size:.73rem;font-weight:500;cursor:pointer;font-family:inherit;transition:all .15s}
+[data-theme="dark"] .btn-copy{background:var(--coral)}
+.btn-copy:hover{opacity:.85}.btn-copy.copied{background:var(--teal)}
+.tpl-body{display:none;padding:1.1rem;font-size:.83rem;line-height:1.8;white-space:pre-wrap;font-family:var(--sans);border-top:1px solid var(--border)}
+.tpl-body.open{display:block}
+/* POSTER */
+.poster-gen{background:var(--surface);border:1px solid var(--border);border-radius:13px;padding:1.2rem;margin-bottom:1.25rem}
+.poster-output{display:none}.poster-output.vis{display:grid;grid-template-columns:1fr 1fr;gap:1rem;align-items:start}
+.poster{border-radius:13px;padding:1.5rem 1.3rem 1.2rem;display:flex;flex-direction:column;justify-content:space-between;min-height:300px;position:relative;overflow:hidden}
+.p-dark{background:#1a1a2e;color:white}.p-coral{background:var(--coral);color:white}.p-forest{background:#0D3528;color:white}.p-purple{background:#1F0B40;color:white}
+.p-blob{position:absolute;border-radius:50%;pointer-events:none}
+.p-eyebrow{font-size:.55rem;font-weight:600;text-transform:uppercase;letter-spacing:.14em;opacity:.4;margin-bottom:.5rem}
+.p-title{font-size:1.7rem;font-weight:600;line-height:1.05;letter-spacing:-.03em;margin-bottom:.4rem}
+.p-line{width:25px;height:3px;border-radius:3px;background:rgba(255,255,255,.35);margin-bottom:.6rem}
+.p-detail{font-size:.74rem;opacity:.55;line-height:1.55}
+.p-cta{display:inline-block;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.16);border-radius:6px;padding:.32rem .8rem;font-size:.74rem;font-weight:600;margin-bottom:.75rem}
+.p-footer{border-top:1px solid rgba(255,255,255,.12);padding-top:.65rem;display:flex;justify-content:space-between;align-items:flex-end;font-size:.62rem;opacity:.4}
+.p-qr{width:40px;height:40px;border:1.5px dashed rgba(255,255,255,.3);border-radius:5px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:.42rem;font-weight:600;opacity:.5;line-height:1.2}
+.p-badge{position:absolute;top:1.1rem;right:1.1rem;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.16);border-radius:100px;padding:.15rem .55rem;font-size:.62rem;font-weight:600}
+.copy-textarea{width:100%;min-height:180px;border:1px solid var(--border);border-radius:7px;padding:.7rem .8rem;font-size:.78rem;font-family:var(--sans);line-height:1.7;color:var(--ink);background:var(--page);resize:vertical}
+.canva-prompt-box{background:var(--page);border:1px solid var(--border);border-radius:7px;padding:.7rem;font-size:.76rem;line-height:1.65;color:var(--muted);white-space:pre-wrap;max-height:180px;overflow-y:auto}
+.poster-all-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem;margin-top:1.25rem}
+.poster-thumb-label{font-size:.68rem;color:var(--muted);text-align:center;margin-top:.4rem}
+/* RECURRING */
+.rec-card{background:var(--surface);border:1px solid var(--border);border-radius:13px;padding:1.2rem;margin-bottom:.8rem}
+.rec-toggle{display:flex;align-items:center;justify-content:space-between;margin-bottom:.6rem}
+.rec-config{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;margin-bottom:.5rem}
+.rec-config select,.rec-config input[type="time"]{height:32px;border:1px solid var(--border);border-radius:6px;padding:0 .5rem;font-size:.82rem;font-family:inherit;color:var(--ink);background:var(--surface)}
+.lineup-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.4rem;margin-top:.5rem}
+.lineup-slot{background:var(--page);border:1px solid var(--border);border-radius:7px;padding:.4rem .6rem;font-size:.8rem}
+.lineup-slot input{width:100%;border:none;background:transparent;font-size:.8rem;font-family:inherit;color:var(--ink);outline:none}
+.mini-cal{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-top:.6rem}
+.mini-cal-hd{font-size:.6rem;font-weight:600;color:var(--muted);text-align:center;padding:.2rem}
+.mini-cal-day{font-size:.65rem;text-align:center;padding:.25rem;border-radius:4px;background:var(--page)}
+.mini-cal-day.has-event{background:var(--teal-lt);color:var(--teal);font-weight:600}
+.mini-cal-day.today{border:1.5px solid var(--coral)}
+/* TOURNAMENT */
+.tourn-card{background:var(--surface);border:1px solid var(--border);border-radius:13px;padding:1.2rem;margin-bottom:.8rem}
+.bracket-match{display:flex;align-items:center;gap:.4rem;background:var(--page);border:1px solid var(--border);border-radius:7px;padding:.4rem .6rem;margin-bottom:.35rem;font-size:.82rem}
+.bracket-match .player{flex:1;font-weight:500}
+.bracket-match .vs{font-size:.7rem;color:var(--muted);font-weight:600}
+.bracket-match button{font-size:.65rem;padding:.15rem .4rem;border:1px solid var(--border);border-radius:4px;cursor:pointer;background:var(--surface);font-family:inherit;color:var(--ink);transition:all .15s}
+.bracket-match button:hover{background:var(--teal-lt);border-color:var(--teal)}
+.bracket-match button.winner{background:var(--teal);color:white;border-color:var(--teal)}
+.leaderboard-table{width:100%;border-collapse:collapse;font-size:.8rem}
+.leaderboard-table th{text-align:left;font-size:.66rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);padding:.4rem .5rem;border-bottom:1.5px solid var(--border)}
+.leaderboard-table td{padding:.4rem .5rem;border-bottom:1px solid var(--border)}
+.leaderboard-table tr:last-child td{border-bottom:none}
+.champion-wall{background:linear-gradient(135deg,var(--ink) 0%,#2a2a45 100%);border-radius:12px;padding:1.2rem;color:white;margin-top:.8rem}
+.champion-entry{display:flex;align-items:center;gap:.6rem;padding:.5rem 0;border-bottom:1px solid rgba(255,255,255,.1)}
+.champion-entry:last-child{border-bottom:none}
+.champion-trophy{font-size:1.3rem}
+.cw-del{background:none; border:none; color:rgba(255,255,255,.3); font-size:.8rem; cursor:pointer; padding:.2rem; transition:color .15s}
+.cw-del:hover{color:var(--coral-lt)}
+/* INVENTORY */
+.inv-table{width:100%;border-collapse:collapse;font-size:.8rem}
+.inv-table th{text-align:left;font-size:.66rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);padding:.4rem .5rem;border-bottom:1.5px solid var(--border)}
+.inv-table td{padding:.4rem .5rem;border-bottom:1px solid var(--border);vertical-align:top}
+.inv-table tr:last-child td{border-bottom:none}
+.inv-add-row{display:flex;gap:.35rem;margin-top:.6rem;flex-wrap:wrap}
+.inv-add-row input,.inv-add-row select{flex:1;min-width:100px;height:32px;border:1px solid var(--border);border-radius:6px;padding:0 .5rem;font-size:.8rem;font-family:inherit;color:var(--ink);background:var(--surface)}
+.inv-add-row button{height:32px;background:var(--teal);color:white;border:none;border-radius:6px;padding:0 .7rem;font-size:.78rem;cursor:pointer;font-family:inherit}
+.inv-rm{background:none;border:none;color:var(--muted);cursor:pointer;font-size:.76rem;padding:.05rem .2rem;transition:color .15s;flex-shrink:0}
+.inv-rm:hover{color:var(--coral)}
+/* LOG */
+.evt-log{background:var(--page);border:1px solid var(--border);border-radius:9px;padding:.75rem;font-size:.8rem}
+.evt-log-entry{padding:.4rem 0;border-bottom:1px solid var(--border)}
+.evt-log-entry:last-child{border-bottom:none}
+.evt-log-date{font-weight:600;font-size:.73rem;color:var(--teal)}
+.evt-log-text{color:var(--muted);line-height:1.45;margin-top:.1rem}
+/* ENGAGEMENT */
+.engage-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+.engage-card{background:var(--surface);border:1px solid var(--border);border-radius:13px;padding:1.2rem}
+.engage-title{font-family:var(--serif);font-weight:400;margin-bottom:.8rem;font-size:.95rem;letter-spacing:-.01em}
+.tip-list{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.tip-item{display:flex;gap:.6rem;font-size:.82rem;color:var(--muted);align-items:flex-start}
+.tip-num{width:18px;height:18px;background:var(--ink);color:white;border-radius:50%;font-size:.62rem;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.15rem}
+[data-theme="dark"] .tip-num{background:var(--coral)}
+.tip-item strong{color:var(--ink)}
+.suggestion-box{background:var(--page);border:1px solid var(--border);border-radius:9px;padding:.8rem;margin-top:.6rem}
+.suggestion-box textarea{width:100%;border:1px solid var(--border);border-radius:6px;padding:.5rem;font-size:.82rem;font-family:inherit;color:var(--ink);background:var(--surface);min-height:60px;resize:vertical}
+/* SETTINGS */
+.settings-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.settings-card{background:var(--surface);border:1px solid var(--border);border-radius:13px;padding:1.2rem}
+.settings-card h3{font-family:var(--serif);font-size:.95rem;font-weight:400;margin-bottom:.5rem}
+.settings-card p{font-size:.8rem;color:var(--muted);margin-bottom:.6rem;line-height:1.5}
+.btn-primary{background:var(--coral);color:white;border:none;border-radius:7px;padding:.4rem 1rem;font-size:.82rem;font-weight:500;cursor:pointer;font-family:var(--sans);transition:opacity .15s}
+.btn-primary:hover{opacity:.85}
+.btn-outline{background:none;border:1px solid var(--border);border-radius:7px;padding:.4rem 1rem;font-size:.82rem;cursor:pointer;font-family:var(--sans);color:var(--ink);transition:all .15s}
+.btn-outline:hover{background:var(--page)}
+.btn-danger{background:none;border:1px solid var(--coral);border-radius:7px;padding:.4rem 1rem;font-size:.82rem;cursor:pointer;font-family:var(--sans);color:var(--coral);transition:all .15s}
+.btn-danger:hover{background:var(--coral-lt)}
+/* COMPLETION / FEEDBACK MODALS */
+.small-modal-overlay{display:none;position:fixed;inset:0;background:rgba(13,27,53,.55);z-index:250;align-items:center;justify-content:center;padding:1rem}
+.small-modal-overlay.open{display:flex}
+.small-modal{background:var(--surface);border-radius:15px;padding:1.5rem;width:100%;max-width:440px;max-height:90vh;overflow-y:auto}
+.small-modal h3{font-family:var(--serif);font-size:1.15rem;font-weight:400;margin-bottom:.2rem;letter-spacing:-.01em}
+.small-modal p{font-size:.8rem;color:var(--muted);margin-bottom:.8rem}
+.sm-field{margin-bottom:.7rem}
+.sm-field label{font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);display:block;margin-bottom:.25rem}
+.sm-field input,.sm-field textarea,.sm-field select{width:100%;border:1px solid var(--border);border-radius:7px;padding:.4rem .6rem;font-size:.82rem;font-family:inherit;color:var(--ink);background:var(--surface)}
+.sm-field textarea{min-height:70px;resize:vertical;line-height:1.5}
+.stars{display:flex;gap:.2rem}.star{font-size:1.3rem;cursor:pointer;color:var(--border);transition:color .1s}.star.active{color:#F4B400}
+.sm-btns{display:flex;gap:.4rem;margin-top:.8rem}
+.comp-row{display:flex;gap:.5rem}
+.sm-btns button{padding:.45rem .9rem;border-radius:6px;font-size:.85rem;cursor:pointer;font-family:inherit;border:none;font-weight:500}
+/* WELCOME */
+.welcome-overlay{display:none;position:fixed;inset:0;background:rgba(13,27,53,.7);z-index:400;align-items:center;justify-content:center;padding:1rem}
+.welcome-overlay.open{display:flex}
+.welcome-modal{background:var(--surface);border-radius:16px;padding:1.75rem;width:100%;max-width:540px;max-height:90vh;overflow-y:auto}
+.welcome-modal h2{font-family:var(--serif);font-size:1.4rem;font-weight:400;margin-bottom:.2rem;letter-spacing:-.02em}
+.wm-sub{font-size:.82rem;color:var(--muted);margin-bottom:1.25rem;line-height:1.55}
+.wm-field{margin-bottom:.9rem}
+.wm-field label{font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);display:block;margin-bottom:.3rem}
+.wm-field input{width:100%;height:38px;border:1px solid var(--border);border-radius:7px;padding:0 .65rem;font-size:.85rem;font-family:inherit;color:var(--ink);background:var(--surface)}
+.wm-chips{display:flex;flex-wrap:wrap;gap:.35rem}
+.wm-chip{background:var(--page);border:1.5px solid var(--border);border-radius:100px;padding:.25rem .65rem;font-size:.76rem;cursor:pointer;transition:all .15s;font-family:inherit;color:var(--muted)}
+.wm-chip.active{background:var(--teal-lt);border-color:var(--teal);color:var(--teal);font-weight:500}
+.wm-save{background:var(--coral);color:white;border:none;border-radius:7px;padding:.45rem 1.3rem;font-size:.88rem;font-weight:600;cursor:pointer;font-family:inherit;margin-top:.4rem;width:100%;transition:opacity .15s}
+.wm-save:hover{opacity:.85}
+/* MANAGER MODAL */
+.mgr-overlay{display:none;position:fixed;inset:0;background:rgba(13,27,53,.55);z-index:300;align-items:flex-start;justify-content:center;padding:1.25rem;overflow-y:auto}
+.mgr-overlay.open{display:flex}
+.mgr-modal{background:var(--surface);border-radius:16px;width:100%;max-width:900px;margin:auto}
+.mgr-hd{padding:1.25rem 1.5rem .85rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:var(--surface);border-radius:16px 16px 0 0;z-index:1}
+.mgr-body{padding:1.25rem 1.5rem}
+.mgr-tabs{display:flex;gap:.4rem;margin-bottom:1.25rem;border-bottom:1px solid var(--border);padding-bottom:.8rem}
+.mgr-tab{background:none;border:1px solid var(--border);border-radius:7px;padding:.3rem .8rem;font-size:.78rem;cursor:pointer;font-family:inherit;color:var(--muted);transition:all .15s}
+.mgr-tab.active{background:var(--ink);color:white;border-color:var(--ink)}
+[data-theme="dark"] .mgr-tab.active{background:var(--coral);border-color:var(--coral)}
+.mgr-pane{display:none}.mgr-pane.active{display:block}
+.mgr-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.mgr-field{display:flex;flex-direction:column;gap:.3rem;margin-bottom:.8rem}
+.mgr-field.full{grid-column:1/-1}
+.mgr-field label{font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.mgr-input,.mgr-select{height:38px;border:1px solid var(--border);border-radius:7px;padding:0 .65rem;font-size:.85rem;font-family:inherit;color:var(--ink);background:var(--surface);width:100%}
+.mgr-textarea{border:1px solid var(--border);border-radius:7px;padding:.55rem .65rem;font-size:.85rem;font-family:inherit;color:var(--ink);background:var(--surface);width:100%;resize:vertical;min-height:70px;line-height:1.55}
+.mgr-textarea.tall{min-height:120px}
+.mgr-input:focus,.mgr-select:focus,.mgr-textarea:focus{outline:none;border-color:var(--ink)}
+.icon-picker{display:flex;gap:.3rem;flex-wrap:wrap;margin-top:.2rem}
+.icon-opt{width:34px;height:34px;border:1.5px solid var(--border);border-radius:7px;cursor:pointer;font-size:1.05rem;display:flex;align-items:center;justify-content:center;transition:all .15s;background:var(--page)}
+.icon-opt:hover{border-color:var(--ink)}.icon-opt.selected{border-color:var(--coral);background:var(--coral-lt)}
+.mat-rows{display:flex;flex-direction:column;gap:.4rem;margin-bottom:.5rem}
+.mat-row{display:grid;grid-template-columns:1fr 70px 1fr auto auto;gap:.35rem;align-items:center}
+.mat-row input{height:34px;border:1px solid var(--border);border-radius:6px;padding:0 .5rem;font-size:.8rem;font-family:inherit;color:var(--ink);background:var(--surface)}
+.mat-row input:focus{outline:none;border-color:var(--ink)}
+.btn-add-mat{background:none;border:1px dashed var(--border);border-radius:6px;padding:.35rem .75rem;font-size:.78rem;color:var(--muted);cursor:pointer;font-family:inherit;transition:all .15s;width:100%}
+.btn-add-mat:hover{border-color:var(--ink);color:var(--ink)}
+.btn-rm{width:26px;height:26px;border:1px solid var(--border);border-radius:5px;background:none;cursor:pointer;font-size:.85rem;color:var(--muted);display:flex;align-items:center;justify-content:center;transition:all .15s;flex-shrink:0}
+.btn-rm:hover{background:var(--coral-lt);border-color:var(--coral);color:var(--coral)}
+.email-side{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-top:.6rem}
+.email-panel-label{font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:.35rem;display:flex;align-items:center;justify-content:space-between}
+.email-panel-label span{color:var(--teal);font-size:.66rem;cursor:pointer;text-transform:none;letter-spacing:0;font-weight:500}
+.email-preview-box{background:var(--page);border:1px solid var(--border);border-radius:7px;padding:.75rem;font-size:.78rem;line-height:1.7;white-space:pre-wrap;color:var(--muted);min-height:240px;max-height:340px;overflow-y:auto}
+.email-edit-box{border:1px solid var(--border);border-radius:7px;padding:.65rem;font-size:.78rem;line-height:1.7;font-family:inherit;color:var(--ink);min-height:240px;width:100%;resize:vertical;background:var(--surface)}
+.mgr-actions{display:flex;align-items:center;justify-content:space-between;gap:.8rem;margin-top:1.25rem;padding-top:.85rem;border-top:1px solid var(--border);flex-wrap:wrap}
+.mgr-warn{background:var(--amber-lt);border:1px solid #FDEAB0;border-radius:7px;padding:.55rem .8rem;font-size:.78rem;color:#7A5200;margin-bottom:.8rem;display:flex;align-items:flex-start;gap:.4rem;line-height:1.45}
+[data-theme="dark"] .mgr-warn{background:#2A2210;border-color:#5D4A10;color:#FAC845}
+.restore-list{display:flex;flex-direction:column;gap:.4rem}
+.restore-item{display:flex;align-items:center;justify-content:space-between;background:var(--page);border-radius:8px;padding:.55rem .85rem;border:1px solid var(--border)}
+.empty-msg{font-size:.85rem;color:var(--muted);text-align:center;padding:1.5rem;background:var(--page);border-radius:9px}
+.site-footer{text-align:center;padding:1.5rem;border-top:1px solid var(--border);font-size:.76rem;color:var(--muted)}
+.data-banner{background:var(--amber-lt);border:1px solid #FDEAB0;border-radius:10px;padding:.7rem 1rem;margin-bottom:1.25rem;display:flex;align-items:center;gap:.6rem;font-size:.78rem;color:#7A5200;line-height:1.5}
+[data-theme="dark"] .data-banner{background:#2A2210;border-color:#5D4A10;color:#FAC845}
+.data-banner button{background:none;border:1px solid currentColor;border-radius:5px;padding:.15rem .5rem;font-size:.68rem;cursor:pointer;font-family:inherit;color:inherit;white-space:nowrap;flex-shrink:0;transition:opacity .15s}
+.data-banner button:hover{opacity:.7}
+.backup-banner{background:#EAF4F2;border:1px solid #BADBD3;border-radius:10px;padding:.7rem 1rem;margin-bottom:1.25rem;display:flex;align-items:center;gap:.6rem;font-size:.78rem;color:#1E4A42;line-height:1.5}
+[data-theme="dark"] .backup-banner{background:#152822;border-color:#1F4B42;color:#8FD1C3}
+.backup-banner button{background:none;border:1px solid currentColor;border-radius:5px;padding:.15rem .5rem;font-size:.68rem;cursor:pointer;font-family:inherit;color:inherit;white-space:nowrap;flex-shrink:0;transition:opacity .15s}
+.backup-banner button:hover{opacity:.7}
+.backup-banner .bb-primary{background:var(--teal);color:white;border-color:var(--teal)}
+.update-banner{background:#FCEDE8;border:1px solid #F2C2B4;border-radius:10px;padding:.7rem 1rem;margin-bottom:1.25rem;display:flex;align-items:center;gap:.6rem;font-size:.78rem;color:#7A2C16;line-height:1.5}
+[data-theme="dark"] .update-banner{background:#2B1410;border-color:#5A2214;color:#F2A48A}
+.update-banner button{background:none;border:1px solid currentColor;border-radius:5px;padding:.15rem .5rem;font-size:.68rem;cursor:pointer;font-family:inherit;color:inherit;white-space:nowrap;flex-shrink:0;transition:opacity .15s}
+.update-banner button:hover{opacity:.7}
+.update-banner .ub-primary{background:var(--coral);color:white;border-color:var(--coral);text-decoration:none;display:inline-block}
+.update-banner .ub-notes{font-style:italic;opacity:.85}
+.undo-toast{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%) translateY(150%);background:#1a1a2e;color:#fff;padding:.7rem 1rem .7rem 1.1rem;border-radius:10px;box-shadow:0 6px 24px rgba(0,0,0,.22);display:flex;align-items:center;gap:.9rem;font-size:.82rem;z-index:2000;transition:transform .25s ease;max-width:calc(100vw - 2rem);pointer-events:none;opacity:0}
+.undo-toast.open{transform:translateX(-50%) translateY(0);pointer-events:auto;opacity:1}
+.undo-toast button{background:transparent;border:1px solid rgba(255,255,255,.55);color:inherit;padding:.3rem .7rem;border-radius:6px;font-family:inherit;font-size:.75rem;cursor:pointer;white-space:nowrap;transition:background .15s}
+.undo-toast button:hover{background:rgba(255,255,255,.12)}
+[data-theme="dark"] .undo-toast{background:#3a3a50}
+.wm-notice{background:var(--page);border:1px solid var(--border);border-radius:8px;padding:.75rem;margin-top:.6rem;margin-bottom:.3rem;font-size:.76rem;color:var(--muted);line-height:1.55}
+.wm-notice strong{color:var(--ink)}
+.wm-confirm{display:flex;align-items:flex-start;gap:.4rem;margin-top:.6rem;font-size:.78rem;color:var(--ink);cursor:pointer}
+.wm-confirm input{margin-top:.15rem;width:17px;height:17px;accent-color:var(--teal);flex-shrink:0;cursor:pointer}
+.wm-save:disabled{opacity:.4;cursor:not-allowed}
+@media(max-width:900px){.dash-grid,.phase-cards,.engage-grid,.settings-grid,.poster-output.vis{grid-template-columns:1fr}.poster-all-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:660px){.events-grid{grid-template-columns:1fr}.hero{padding:1.3rem}.main{padding:1.3rem .8rem 2.5rem}.site-header{padding:.4rem .8rem}.header-inner{height:auto;padding:.5rem 0;flex-direction:column;align-items:flex-start;gap:.3rem}.main-nav{gap:.05rem}.budget-events{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}.poster-all-grid{grid-template-columns:repeat(2,1fr)}.mgr-form-grid,.email-side{grid-template-columns:1fr}.mat-row{grid-template-columns:1fr 60px auto}.stats-bar{grid-template-columns:repeat(2,1fr)}.phase-cards{grid-template-columns:1fr}}
+@media(max-width:480px){.main{padding:1rem .6rem 2rem}.hero{padding:1.1rem}.modal-hd{padding:1rem 1rem .7rem}.modal-body{padding:1rem 1rem}.small-modal{padding:1.1rem}.welcome-modal{padding:1.2rem}.mgr-hd{padding:1rem}.mgr-body{padding:1rem}.comp-row{flex-direction:column;gap:.3rem}.stats-bar{grid-template-columns:1fr}.budget-events{grid-template-columns:1fr}.poster-all-grid{grid-template-columns:1fr}.mgr-actions{flex-direction:column;align-items:stretch}.mgr-actions>div{width:100%}.mgr-actions button{width:100%}.sm-btns{flex-direction:column}.sm-btns button{width:100%}.mat-row{grid-template-columns:1fr 60px auto;font-size:.76rem}.inv-add-row input,.inv-add-row select{min-width:0;flex-basis:calc(50% - .2rem)}}
+@media print{.site-header,.site-footer,.btn-sm,.dark-toggle,.mgr-nav-btn,.filter-bar,.btn-gen,.btn-primary,.btn-outline,.btn-create-evt,.btn-show-hidden{display:none!important}.sched-container{display:block!important}body{background:white;color:#1a1a2e}}
+/* SEASON CARDS - REFINED */
+.phase-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:.8rem}
+.phase-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.1rem;position:relative;overflow:hidden}
+.phase-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:12px 12px 0 0}
+.pc1::before{background:var(--teal)}.pc2::before{background:var(--amber)}.pc3::before{background:var(--coral)}.pc4::before{background:var(--purple)}
+.pc-badge{font-size:.6rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.15rem;font-family:var(--sans)}
+.pc1 .pc-badge{color:var(--teal)}.pc2 .pc-badge{color:var(--amber)}.pc3 .pc-badge{color:var(--coral)}.pc4 .pc-badge{color:var(--purple)}
+.pc-title{font-family:var(--serif);font-weight:400;font-size:.95rem;margin-bottom:.1rem;letter-spacing:-.01em}
+.pc-dates{font-size:.72rem;color:var(--muted);margin-bottom:.55rem}
+.pc-dates input[type="date"]{font-size:.68rem;border:1px solid var(--border);border-radius:4px;padding:.1rem .25rem;font-family:inherit;background:var(--surface);color:var(--ink)}
+.pc-events{list-style:none;display:flex;flex-direction:column;gap:.2rem;margin-bottom:.5rem}
+.pc-ev{font-size:.78rem;display:flex;align-items:center;gap:.3rem}
+.pc-freq{font-size:.72rem;background:var(--page);border-radius:5px;padding:.2rem .5rem;color:var(--muted);display:inline-flex;align-items:center;gap:.25rem;margin-top:.15rem}
+.pc-note{font-size:.74rem;color:var(--muted);line-height:1.4;margin-top:.35rem;padding-top:.35rem;border-top:1px solid var(--border)}
+/* ROOMS CARD */
+.rooms-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1rem 1.2rem;margin-bottom:1.5rem}
+.rooms-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:.6rem}
+.rooms-hd-title{font-family:var(--serif);font-size:.92rem;font-weight:400;letter-spacing:-.01em}
+.rooms-list{display:flex;flex-wrap:wrap;gap:.35rem}
+.room-tag{background:var(--page);border:1px solid var(--border);border-radius:6px;padding:.25rem .6rem;font-size:.76rem;display:flex;align-items:center;gap:.3rem}
+.room-tag .r-icon{font-size:.85rem}
+.room-tag .r-del{font-size:.65rem;color:var(--muted);cursor:pointer;margin-left:.2rem;opacity:.4;transition:all .15s;background:none;border:none;font-family:inherit;padding:0 .15rem}
+.room-tag .r-del:hover{opacity:1;color:var(--coral)}
+.room-chip{background:var(--page);border:2px solid var(--border);border-radius:100px;padding:.25rem .65rem;font-size:.76rem;cursor:pointer;transition:all .15s;font-family:inherit;color:var(--muted)}
+.room-chip.active{background:var(--teal-lt);border-color:var(--teal);color:var(--teal);font-weight:600;box-shadow:0 0 0 2px rgba(45,122,111,.15)}
+/* COMPACT RECURRING */
+.rec-grid{display:grid;grid-template-columns:1fr 240px;gap:1rem;align-items:start}
+.rec-list{display:flex;flex-direction:column;gap:.4rem}
+.rec-row{background:var(--surface);border:1px solid var(--border);border-radius:9px;padding:.55rem .8rem;display:flex;align-items:center;gap:.6rem}
+.rec-row-name{font-weight:600;font-size:.82rem;flex:1;display:flex;align-items:center;gap:.35rem}
+.rec-row-detail{font-size:.72rem;color:var(--muted);display:flex;gap:.4rem;align-items:center}
+.rec-row-detail select,.rec-row-detail input[type="time"]{height:26px;border:1px solid var(--border);border-radius:4px;padding:0 .3rem;font-size:.72rem;font-family:inherit;color:var(--ink);background:var(--surface)}
+.rec-row input[type="checkbox"]{width:18px;height:18px;cursor:pointer;accent-color:var(--teal);flex-shrink:0}
+.rec-equip-note{font-size:.68rem;color:var(--amber);font-weight:500}
+/* MOVIE PLANNER */
+.movie-planner{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1rem 1.2rem;margin-top:.8rem}
+.movie-planner-title{font-family:var(--serif);font-size:.92rem;font-weight:400;margin-bottom:.6rem;display:flex;align-items:center;gap:.4rem}
+.movie-row{display:grid;grid-template-columns:70px 1fr 90px 70px;gap:.35rem;align-items:center;margin-bottom:.3rem}
+.movie-row input,.movie-row select{height:30px;border:1px solid var(--border);border-radius:5px;padding:0 .4rem;font-size:.74rem;font-family:inherit;color:var(--ink);background:var(--surface);width:100%}
+.movie-row-hd{font-size:.6rem;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+/* CREATE BUTTONS */
+.btn-create{background:var(--surface);border:1.5px solid var(--ink);border-radius:7px;padding:.35rem .9rem;font-size:.78rem;font-weight:500;cursor:pointer;font-family:var(--sans);color:var(--ink);transition:all .15s;white-space:nowrap;letter-spacing:.01em}
+.btn-create:hover{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+[data-theme="dark"] .btn-create{border-color:var(--coral);color:var(--coral)}
+[data-theme="dark"] .btn-create:hover{background:var(--coral);color:white}
+/* EMAIL SELECTOR */
+.email-sel-wrap{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.2rem;margin-bottom:1rem}
+.email-sel-label{font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.3rem}
+/* EVENTS PREVIEW */
+.evlib-expand{display:flex;align-items:center;justify-content:center;padding:.8rem;margin-top:.8rem}
+.evlib-expand button{background:var(--surface);border:1.5px solid var(--border);border-radius:8px;padding:.45rem 1.2rem;font-size:.82rem;font-weight:500;cursor:pointer;font-family:var(--sans);color:var(--ink);transition:all .15s;letter-spacing:.01em}
+.evlib-expand button:hover{border-color:var(--ink)}
+@media(max-width:900px){.rec-grid{grid-template-columns:1fr}.movie-row{grid-template-columns:60px 1fr 80px}}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+<div class="header-inner">
+<div class="logo"><div class="logo-mark">U</div><div class="logo-text"><span id="hdr-building">Unite Students</span><span class="logo-sub">Event Planning Hub v5.0</span></div></div>
+<nav class="main-nav">
+<button class="nav-link" onclick="goTo('dashboard')">Dashboard</button>
+<button class="nav-link" onclick="goTo('management')" style="color:var(--coral);font-weight:600">Management</button>
+<button class="nav-link" onclick="goTo('budget')">Budget</button>
+<button class="nav-link" onclick="goTo('roadmap')">Roadmap</button>
+<button class="nav-link" onclick="goTo('events')">Events</button>
+<button class="nav-link" onclick="goTo('recurring')">Recurring</button>
+<button class="nav-link" onclick="goTo('tournaments')">Tournaments</button>
+<button class="nav-link" onclick="goTo('planner')">Prep</button>
+<button class="nav-link" onclick="goTo('emails')">Emails</button>
+<button class="nav-link" onclick="goTo('posters')">Posters</button>
+<button class="nav-link" onclick="goTo('inventory')">Inventory</button>
+<button class="nav-link" onclick="goTo('log')">Log</button>
+<button class="nav-link" onclick="goTo('engagement')">Tips</button>
+<button class="nav-link" onclick="goTo('settings')">⚙ Settings</button>
+<button class="dark-toggle" id="dark-btn" onclick="toggleDark()">🌙</button>
+</nav>
+</div>
+</header>
+
+<main class="main">
+
+<div id="dashboard">
+<div class="hero">
+<div class="hero-title"><span id="hero-building">Unite Students</span><br><span>Event Planning Hub</span></div>
+<div class="hero-desc">Plan, schedule, and track building events in one place. Budget planning, prep schedules, email templates, poster generation, inventory tracking, tournament brackets, and operational KPIs — everything your team needs.</div>
+<div class="hero-chips"><span class="chip">Created by Francesco Sorriento</span><span class="chip">No alcohol policy</span><span class="chip">Allergy-aware</span><span class="chip">Auto-saves locally</span><span class="chip" style="background:var(--teal);border-color:var(--teal);color:white">v5.0</span></div>
+</div>
+<div class="stats-bar" id="stats-bar"></div>
+<div class="data-banner" id="data-banner" style="display:none">
+<span style="font-size:1.1rem;flex-shrink:0">💾</span>
+<span><strong>Your data saves in this browser only.</strong> If you clear your browsing data or switch computers, your work will be lost. Use Settings → Export to back up regularly.</span>
+<button onclick="dismissBanner()">Got it</button>
+</div>
+<div class="backup-banner" id="backup-banner" style="display:none">
+<span style="font-size:1.1rem;flex-shrink:0">📤</span>
+<span><strong>Back up your data?</strong> You've made 20+ changes since your last export. Save a copy now so nothing is lost if your browser data is cleared.</span>
+<button class="bb-primary" onclick="exportData()">Back up now</button>
+<button onclick="dismissBackupPrompt()">Later</button>
+</div>
+<div class="update-banner" id="update-banner" style="display:none">
+<span style="font-size:1.1rem;flex-shrink:0">✨</span>
+<span><strong>Version <span id="ub-version">—</span> is available.</strong> <span class="ub-notes" id="ub-notes"></span> Your data is preserved — download the new file, then use Settings → Import to restore it.</span>
+<a class="ub-primary" id="ub-download-link" href="#" target="_blank" rel="noopener">Download</a>
+<button onclick="dismissUpdatePrompt()">Later</button>
+</div>
+
+<div class="dash-grid">
+    <div class="dash-widget">
+        <div class="dw-title">Upcoming Schedule <button class="btn-sm" onclick="copyUpcoming()">📋 Copy for Teams</button></div>
+        <div id="dw-upcoming"></div>
+    </div>
+    <div class="dash-widget">
+        <div class="dw-title">Team Leaderboard</div>
+        <div id="dw-leaderboard"></div>
+        <div style="font-size:.7rem; color:var(--muted); margin-top:.5rem; text-align:center">Events successfully completed</div>
+    </div>
+</div>
+
+<div class="rooms-card">
+<div class="rooms-hd"><span class="rooms-hd-title">Your Rooms</span><button class="btn-sm" onclick="const re=document.getElementById('room-ed');re.style.display=re.style.display==='none'?'block':'none'">✏ Edit</button></div>
+<div class="rooms-list" id="venue-cards"></div>
+<div id="room-ed" style="display:none;margin-top:.6rem;padding-top:.6rem;border-top:1px solid var(--border)">
+<div class="room-chips" id="room-chips" style="margin-bottom:.4rem"></div>
+<div style="display:flex;gap:.3rem"><input type="text" id="custom-room" placeholder="Add custom room..." maxlength="35" style="flex:1;height:30px;border:1px solid var(--border);border-radius:5px;padding:0 .5rem;font-size:.76rem;font-family:inherit;color:var(--ink);background:var(--surface)"><button onclick="addCustomRoom()" style="height:30px;background:var(--teal);color:white;border:none;border-radius:5px;padding:0 .6rem;font-size:.74rem;cursor:pointer;font-family:inherit">+</button></div>
+</div>
+</div>
+</div>
+
+
+
+<div class="section" id="budget">
+<div class="section-hd"><div class="section-lbl">Interactive Tool</div><div class="section-title">Budget Planner</div><div class="section-desc">Click events to plan your spend. Add manual spends for snacks/drinks. Adjust your budget in settings.</div></div>
+<div class="card">
+<div class="budget-top">
+<div class="card-title" style="margin-bottom:0">Monthly: £<span id="budget-monthly">350</span>/mo · Available: <strong>£<span id="budget-total">700</span></strong> <button class="btn-sm" onclick="toggleEdit('budget-edit')">✏</button></div>
+<div class="budget-total">£<span id="spent-display">0</span> planned</div>
+</div>
+<div class="edit-row" id="budget-edit">
+<label>Monthly £</label><input type="number" id="be-monthly" min="0" step="50"><label>Months</label><input type="number" id="be-months" min="1" max="12"><button onclick="saveBudget()">Apply</button>
+</div>
+<div class="budget-bar-wrap"><div class="budget-fill" id="budget-bar" style="width:0%"></div></div>
+<div class="budget-meta"><span id="budget-pct">0%</span><span>£<span id="remaining-display">700</span> remaining</span></div>
+
+<div class="budget-events" id="budget-events"></div>
+
+<div style="margin-top: 1rem; border-top: 1px dashed var(--border); padding-top: 1rem;">
+    <div style="font-size: .8rem; font-weight: 600; margin-bottom: .6rem">Snacks, Drinks & Manual Spend</div>
+    <div id="manual-spend-list" style="display: flex; flex-direction: column; gap: .4rem; margin-bottom: .6rem"></div>
+    <div class="inv-add-row" style="margin-top:0">
+        <input type="text" id="ms-name" placeholder="Item (e.g. Biscuits)" style="flex:1">
+        <input type="number" id="ms-cost" placeholder="£ Amount" style="width:85px; flex:none" min="0">
+        <input type="text" id="ms-notes" placeholder="Optional notes" style="flex:1">
+        <button onclick="addManualSpend()">+ Add</button>
+    </div>
+</div>
+
+<div class="budget-summary">
+<div class="bs-item"><div class="bs-val" id="bs-count">0</div><div class="bs-lbl">Selected</div></div>
+<div class="bs-item"><div class="bs-val" id="bs-spent">£0</div><div class="bs-lbl">Planned</div></div>
+<div class="bs-item"><div class="bs-val" id="bs-remain">£700</div><div class="bs-lbl">Remaining</div></div>
+<div class="bs-item"><div class="bs-val" id="bs-reuse">£0</div><div class="bs-lbl">Reusable</div></div>
+<div class="bs-item"><div class="bs-val" id="bs-capacity">~0</div><div class="bs-lbl">More events possible</div></div>
+</div>
+
+<div style="margin-top: 1.5rem; border-top: 1.5px solid var(--border); padding-top: 1rem;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:.6rem">
+        <div style="font-size: .85rem; font-weight: 600;">Monthly Spend Ledger</div>
+        <select id="ledger-month-sel" onchange="renderMonthlyLedger()" style="height:28px; border-radius:5px; border:1px solid var(--border); font-size:.75rem; padding:0 .4rem; background:var(--surface); color:var(--ink)"></select>
+    </div>
+    <div id="monthly-ledger-list"></div>
+</div>
+
+</div>
+<div class="note-box amber" style="margin-top:.8rem">
+<div class="note-title">⚠ Event Restrictions</div>
+<ul class="note-list" id="restrictions-list"><li>No alcohol at any event</li><li>No on-site cooking by staff</li><li>Allergy-friendly alternatives required</li><li>Mindful of dietary restrictions</li><li>Label all food with allergen info</li><li>Check storage before ordering</li></ul>
+</div>
+</div>
+
+<div class="section" id="roadmap">
+<div class="section-hd"><div class="section-lbl">Seasonal Planning</div><div class="section-title">Event Roadmap</div><div class="section-desc">Plan your event calendar across seasons. Dates are editable per building.</div></div>
+<div class="phase-cards" id="season-cards"></div>
+</div>
+
+<div class="section" id="events">
+<div class="section-hd"><div class="section-hd-row"><div><div class="section-lbl" id="events-lbl">Events</div><div class="section-title">Event Library</div><div class="section-desc">Click any card to schedule or log it. ⭐ = favourite.</div></div><div class="section-hd-btns"><button class="btn-show-hidden" id="btn-hidden" onclick="openMgr('restore')" style="display:none">Restore <span class="hidden-count" id="hidden-count">0</span></button><button class="btn-create" onclick="openMgr('create')">+ Create Event</button></div></div></div>
+<div class="filter-bar" id="filter-bar"></div>
+<div class="events-grid" id="events-grid"></div>
+<div class="evlib-expand" id="evlib-expand" style="display:none"><button onclick="expandLibrary()">View all events</button></div>
+</div>
+
+<div class="section" id="recurring">
+<div class="section-hd"><div class="section-lbl">Scheduling</div><div class="section-title">Recurring Events</div><div class="section-desc">Toggle weekly events on or off. Calendar updates automatically.</div></div>
+<div class="rec-grid">
+<div><div class="rec-list" id="recurring-list"></div></div>
+<div><div style="font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.4rem">This Month</div><div class="mini-cal" id="mini-cal"></div></div>
+</div>
+<div id="movie-planner-wrap"></div>
+</div>
+
+<div class="section" id="tournaments">
+<div class="section-hd"><div class="section-hd-row"><div><div class="section-lbl">Competition</div><div class="section-title">Tournament Centre</div><div class="section-desc">Run brackets, track scores, build leaderboards.</div></div><div class="section-hd-btns"><button class="btn-create" onclick="openTournModal()">+ New Tournament</button></div></div></div>
+<div id="tournaments-list"></div>
+<div id="champion-wall"></div>
+</div>
+
+<div class="section" id="planner">
+<div class="section-hd"><div class="section-lbl">Interactive Tool</div><div class="section-title">Prep Schedule Planner</div><div class="section-desc">Pick an event and date — get an auto-generated prep schedule.</div></div>
+<div class="prep-form"><div class="prep-row"><div class="prep-field"><label>Event</label><select id="prep-event"><option value="">— choose —</option></select></div><div class="prep-field"><label>Date</label><input type="date" id="prep-date"></div><button class="btn-gen" onclick="genSchedule()">Generate →</button></div></div>
+<div class="sched-container" id="sched-container">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.8rem;flex-wrap:wrap;gap:.5rem">
+        <div><div style="font-weight:600;font-size:.92rem" id="sched-title"></div><div style="font-size:.76rem;color:var(--muted)" id="sched-sub"></div></div>
+        <div style="display:flex; gap:.4rem">
+            <button class="btn-outline" onclick="clearSchedule()" style="font-size:.74rem;padding:.3rem .7rem">✕ Clear</button>
+            <button class="btn-outline" onclick="window.print()" style="font-size:.74rem;padding:.3rem .7rem">🖨 Print</button>
+        </div>
+    </div>
+    <div class="sched-steps" id="sched-steps"></div>
+</div>
+</div>
+
+<div class="section" id="emails">
+<div class="section-hd"><div class="section-lbl">Marketing</div><div class="section-title">Email Templates</div><div class="section-desc">Select an event to view its ready-to-send email template.</div></div>
+<div class="email-sel-wrap">
+<div class="email-sel-label">Select event</div>
+<select id="email-event-sel" onchange="renderEmailForEvent()" style="width:100%;height:38px;border:1px solid var(--border);border-radius:7px;padding:0 .65rem;font-size:.85rem;font-family:inherit;color:var(--ink);background:var(--surface)"><option value="">— choose an event —</option></select>
+</div>
+<div class="tpl-grid" id="tpl-grid"></div>
+</div>
+
+<div class="section" id="posters">
+<div class="section-hd"><div class="section-lbl">Marketing</div><div class="section-title">Poster Templates & Canva AI</div><div class="section-desc">Generate poster copy and Canva AI prompts per event.</div></div>
+<div class="poster-gen">
+<div style="margin-bottom:.8rem"><label style="font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em">Select event</label><select id="poster-sel" onchange="genPoster()" style="height:38px;width:100%;border:1px solid var(--border);border-radius:7px;padding:0 .65rem;font-size:.85rem;font-family:inherit;color:var(--ink);background:var(--surface);margin-top:.3rem"><option value="">— choose —</option></select></div>
+<div class="poster-output" id="poster-output">
+<div><div style="font-size:.7rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.5rem">Preview</div><div id="poster-preview"></div></div>
+<div style="display:flex;flex-direction:column;gap:.6rem">
+<div><div style="font-size:.7rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.3rem">Poster copy</div><textarea class="copy-textarea" id="poster-copy" readonly></textarea><button class="btn-copy" onclick="copyText('poster-copy')" style="margin-top:.3rem">Copy text</button></div>
+<div><div style="font-size:.7rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.3rem">Canva AI prompt <button class="btn-copy" onclick="copyText('canva-prompt')" style="margin-left:.4rem;font-size:.68rem;padding:.15rem .5rem">Copy</button></div><div class="canva-prompt-box" id="canva-prompt"></div></div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="section" id="inventory">
+<div class="section-hd"><div class="section-lbl">Operations</div><div class="section-title">Inventory & Materials</div><div class="section-desc">Track what your building owns. Owned items reduce event costs automatically.</div></div>
+<div class="card" style="margin-bottom:.8rem"><div class="card-title">Building Inventory</div><div id="inv-wrap"></div>
+<div class="inv-add-row"><input type="text" id="inv-name" placeholder="Item name"><input type="number" id="inv-qty" placeholder="Qty" style="max-width:60px" min="0"><select id="inv-cat"><option value="materials">Materials</option><option value="equipment">Equipment</option><option value="games">Board Games</option><option value="other">Other</option></select><input type="text" id="inv-notes" placeholder="Notes"><button onclick="addInvItem()">+ Add</button></div></div>
+</div>
+
+<div class="section" id="log">
+<div class="section-hd"><div class="section-lbl">Records</div><div class="section-title">Event Log</div><div class="section-desc">History of all completed events, ROI scores, and qualitative feedback.</div></div>
+<div class="card"><div id="log-wrap"></div></div>
+</div>
+
+<div class="section" id="operational">
+<div class="section-hd"><div class="section-hd-row"><div><div class="section-lbl">Staff Tools</div><div class="section-title">Operational Engagement</div><div class="section-desc">Events that help achieve staff KPIs — retention, rebooking, information capture.</div></div><div class="section-hd-btns"><button class="btn-create" onclick="openMgr('create', 'operational')">+ New Staff Event</button></div></div></div>
+<div class="events-grid" id="ops-grid"></div>
+</div>
+
+<div class="section" id="engagement">
+<div class="section-hd"><div class="section-lbl">Strategy</div><div class="section-title">Engagement Tips</div><div class="section-desc">Practical tactics for turnout + anonymous feedback collection.</div></div>
+<div class="engage-grid">
+<div class="engage-card"><div class="engage-title">How to Get People to Show Up</div><ul class="tip-list">
+<li><div class="tip-num">1</div><div><strong>Lead with what's free.</strong> Put it in the subject line.</div></li>
+<li><div class="tip-num">2</div><div><strong>Scarcity framing.</strong> "Only 12 spots" beats open-ended invites.</div></li>
+<li><div class="tip-num">3</div><div><strong>Knock on doors.</strong> Personal invite beats any email.</div></li>
+<li><div class="tip-num">4</div><div><strong>Post photos after events.</strong> Builds FOMO for the next one.</div></li>
+<li><div class="tip-num">5</div><div><strong>Wednesday evenings / Sunday afternoons.</strong> Highest turnout windows.</div></li>
+<li><div class="tip-num">6</div><div><strong>Display winning work.</strong> Named credit on walls creates buzz.</div></li>
+</ul></div>
+<div class="engage-card">
+<div class="engage-title">Anonymous Suggestion Box</div>
+<p style="font-size:.82rem;color:var(--muted);margin-bottom:.5rem">What events would students like to see? No personal data collected.</p>
+<div class="suggestion-box"><textarea id="suggestion-text" placeholder="Type a suggestion..."></textarea><button class="btn-save" onclick="saveSuggestion()" style="margin-top:.3rem">Submit</button></div>
+<div id="suggestions-list" style="margin-top:.5rem"></div>
+<div style="margin-top:.8rem;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:.9rem">
+<div style="font-weight:600;font-size:.88rem;margin-bottom:.2rem;color:var(--ink)">Post-Event Feedback Tools</div>
+<div style="font-size:.74rem;color:var(--muted);margin-bottom:.6rem">Create QR-linked feedback forms — GDPR-safe, anonymous</div>
+<div style="display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.8rem"><a href="https://forms.google.com" target="_blank" style="background:var(--page);border:1px solid var(--border);border-radius:100px;padding:.2rem .65rem;font-size:.68rem;color:var(--ink);text-decoration:none">Google Forms</a><a href="https://typeform.com" target="_blank" style="background:var(--page);border:1px solid var(--border);border-radius:100px;padding:.2rem .65rem;font-size:.68rem;color:var(--ink);text-decoration:none">Typeform</a><a href="https://www.mentimeter.com" target="_blank" style="background:var(--page);border:1px solid var(--border);border-radius:100px;padding:.2rem .65rem;font-size:.68rem;color:var(--ink);text-decoration:none">Mentimeter</a></div>
+<div style="font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.35rem">Suggested questions — copy into your form</div>
+<div id="feedback-qs" style="background:var(--page);border:1px solid var(--border);border-radius:7px;padding:.65rem;font-size:.78rem;line-height:1.8;color:var(--ink);white-space:pre-wrap">1. How would you rate this event overall? (1-5 stars)
+2. What did you enjoy most about the event?
+3. Was there anything that could be improved?
+4. Would you attend a similar event again? (Yes / Maybe / No)
+5. How did you hear about this event? (Poster / Email / Door knock / Friend / Other)
+6. Were you happy with the venue and setup? (Yes / No — if no, why?)
+7. Any dietary or accessibility feedback for next time?
+8. What event would you like to see us run next?</div>
+<button class="btn-sm" style="margin-top:.4rem" onclick="navigator.clipboard.writeText(document.getElementById('feedback-qs').textContent).then(()=>alert('Questions copied!'))">📋 Copy questions</button>
+</div>
+</div>
+</div>
+</div>
+
+<div class="section" id="management">
+    <div class="section-hd"><div class="section-lbl">Leadership</div><div class="section-title">Management Overview</div><div class="section-desc">Monthly performance, KPIs, reporting, and recommendations.</div></div>
+    <div class="dash-grid">
+        <div class="dash-widget">
+            <div class="dw-title">Current Month Performance</div>
+            <div id="mgr-rag-cards" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(130px, 1fr));gap:.6rem"></div>
+            <button class="btn-primary" style="margin-top:1.25rem;width:100%" onclick="generateEOMReport()">📄 Generate End-of-Month Report</button>
+            <div id="eom-report-output" style="display:none;margin-top:.8rem">
+                <textarea id="eom-textarea" style="width:100%;height:180px;font-size:.75rem;font-family:monospace;padding:.6rem;border:1px solid var(--border);border-radius:6px;background:var(--page);color:var(--ink);resize:vertical" readonly></textarea>
+                <button class="btn-sm" style="margin-top:.4rem;background:var(--teal);color:white;border:none" onclick="copyText('eom-textarea')">Copy to Clipboard</button>
+            </div>
+        </div>
+        <div class="dash-widget">
+            <div class="dw-title">Smart Recommendations</div>
+            <div style="font-size:.75rem;color:var(--muted);margin-bottom:.5rem">Based on your remaining budget and KPI targets:</div>
+            <div id="mgr-recommendations" style="display:flex;flex-direction:column;gap:.4rem"></div>
+        </div>
+    </div>
+</div>
+
+<div class="section" id="settings">
+<div class="section-hd"><div class="section-lbl">Administration</div><div class="section-title">Settings & Data</div><div class="section-desc">Building profile, data management, and usage guidance.</div></div>
+<div class="settings-grid">
+<div class="settings-card"><h3>Building Profile</h3><p>Edit your building name and details.</p><div class="wm-field"><label>Building Name</label><input type="text" id="set-building" onchange="updateBuilding(this.value)"></div>
+<div class="wm-field" style="margin-top:.5rem"><label>Equipment</label><div class="wm-chips" id="equip-chips"></div>
+<div style="margin-top:.5rem; display:flex; gap:.4rem">
+    <input type="text" id="new-equip" placeholder="Add custom equipment..." style="flex:1;height:32px;border:1px solid var(--border);border-radius:5px;padding:0 .5rem;font-size:.78rem;font-family:inherit;color:var(--ink);background:var(--surface)">
+    <button onclick="addCustomEquip()" style="height:32px;background:var(--teal);color:white;border:none;border-radius:5px;padding:0 .7rem;font-size:.78rem;cursor:pointer;font-family:inherit">+</button>
+</div>
+</div>
+</div>
+<div class="settings-card"><h3>Save & Backup</h3><p>Your data saves automatically in this browser. To move it or share with a colleague, export as JSON.</p><div style="display:flex;flex-direction:column;gap:.4rem"><button class="btn-primary" onclick="exportData()">📦 Export building data</button><button class="btn-outline" onclick="document.getElementById('import-file').click()">📂 Import building data</button><input type="file" id="import-file" accept=".json" style="display:none" onchange="importData(event)"><button class="btn-danger" onclick="resetAll()">🗑 Reset to template</button></div><div style="font-size:.72rem;color:var(--muted);margin-top:.6rem">v5.0 · Last modified: <span id="set-modified">—</span></div></div>
+</div>
+
+<div class="settings-grid" style="margin-top:1rem">
+<div class="settings-card">
+<h3>📖 How This Planner Works</h3>
+<div style="font-size:.8rem;color:var(--muted);line-height:1.65">
+<p style="margin-bottom:.5rem"><strong style="color:var(--ink)">Your data saves locally</strong> — all changes you make are stored in this browser automatically. If you clear browser data or switch computers, you'll start fresh.</p>
+<p style="margin-bottom:.5rem"><strong style="color:var(--ink)">To get your own copy</strong> — download this HTML file and open it on your computer. Your version will save independently from anyone else's.</p>
+<p style="margin-bottom:.5rem"><strong style="color:var(--ink)">To share with your team</strong> — use Export (above) to save your building's data as a JSON file. Send the JSON + this HTML file to your colleague. They can Import it on their machine.</p>
+<p><strong style="color:var(--ink)">To back up</strong> — export your data regularly, especially before clearing browser history or switching devices.</p>
+</div>
+</div>
+<div class="settings-card">
+<h3>💬 Teams & SharePoint Usage</h3>
+<div style="font-size:.8rem;color:var(--muted);line-height:1.65">
+<p style="margin-bottom:.5rem">This is a standalone HTML tool, not a live shared app. <strong style="color:var(--ink)">Uploading it to Teams or SharePoint does not sync edits between users.</strong></p>
+<p style="margin-bottom:.5rem"><strong style="color:var(--ink)">Recommended workflow:</strong></p>
+<p style="margin-bottom:.3rem">1. Download the planner to your computer</p>
+<p style="margin-bottom:.3rem">2. Open it locally in Chrome — this is where your edits save</p>
+<p style="margin-bottom:.3rem">3. When you need to share updates, export your data and send the JSON file via Teams</p>
+<p style="margin-bottom:.5rem">4. Your colleague imports the JSON into their own local copy</p>
+<p style="padding:.5rem;background:var(--page);border-radius:6px;border-left:3px solid var(--teal);font-size:.76rem"><strong style="color:var(--ink)">Future roadmap:</strong> This planner is designed as a foundation that could be developed into a full web app with shared access, real-time sync, and multi-building dashboards. The current version proves the concept and workflow.</p>
+</div>
+</div>
+</div>
+</div>
+
+</main>
+<footer class="site-footer">Unite Students Event Planning Hub v5.0 · Created by Francesco Sorriento · <span style="color:var(--teal)">francesco.sorriento@unitestudents.com</span> · Data saves locally · <span style="opacity:.5">Operational prototype — designed for scale</span></footer>
+
+<div class="welcome-overlay" id="welcome-overlay">
+<div class="welcome-modal">
+<h2>Welcome to the Event Planning Hub 👋</h2>
+<div class="wm-sub">Set up your building profile to get started. Everything here is editable later in Settings.</div>
+<div class="wm-field"><label>Building name</label><input type="text" id="wm-building" placeholder="e.g. Unite Students Bristol"></div>
+<div class="wm-field"><label>Monthly event budget (£)</label><input type="number" id="wm-budget" value="200" min="0" step="25"><div style="font-size:.68rem;color:var(--muted);margin-top:.2rem">This varies by building — check with your manager if unsure. You can change it anytime.</div></div>
+<div class="wm-field"><label>Months to plan</label><input type="number" id="wm-months" value="3" min="1" max="12"></div>
+<div class="wm-field"><label>Available rooms (click to select)</label><div class="wm-chips" id="wm-rooms"></div></div>
+<div class="wm-field"><label>Equipment your building has (click to select)</label><div class="wm-chips" id="wm-equip"></div></div>
+<div class="wm-field"><label>Board games you own</label><input type="text" id="wm-games" placeholder="e.g. Catan, Uno, Codenames (comma-separated)"></div>
+<div class="wm-notice">
+<strong>Before you start — please read:</strong><br>
+• Your data saves <strong>in this browser only</strong> — not to a server or shared drive<br>
+• If you clear your browser data or switch computers, your setup will be lost<br>
+• To keep a backup, use <strong>Settings → Export</strong> regularly<br>
+• To share your planner with a colleague, send them this file + your exported data
+</div>
+<label class="wm-confirm"><input type="checkbox" id="wm-understood" onchange="document.getElementById('wm-go').disabled=!this.checked"> I understand that my data saves locally and I should export backups</label>
+<button class="wm-save" id="wm-go" onclick="saveWelcome()" disabled>Get Started →</button>
+</div>
+</div>
+
+<div class="overlay" id="modal-overlay" onclick="if(event.target===this)closeModal()">
+<div class="modal" id="modal"><div class="modal-hd"><div class="modal-icon" id="m-icon"></div><div><div style="font-weight:600;font-size:1.1rem;margin-bottom:.15rem" id="m-title"></div><div style="font-size:.78rem;color:var(--muted)" id="m-sub"></div></div><button class="modal-close" onclick="closeModal()">✕</button></div><div class="modal-body" id="m-body"></div></div>
+</div>
+
+<div class="small-modal-overlay" id="sched-overlay" onclick="if(event.target===this)closeSchedule()">
+<div class="small-modal"><h3>📅 Schedule Event</h3><p>Add this event to the upcoming calendar.</p><input type="hidden" id="sched-id">
+<div class="sm-field"><label>Date</label><input type="date" id="sched-date-input"></div>
+<div class="sm-field"><label>Time</label><input type="time" id="sched-time-input"></div>
+<div class="sm-field"><label>Staff Member / Host</label><input type="text" id="sched-host-input" placeholder="Who is running this?"></div>
+
+<div style="font-size:.7rem;font-weight:600;margin-top:1.2rem;margin-bottom:.5rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em">Readiness Checklist (Required)</div>
+<div class="sm-field" style="display:flex;align-items:center;gap:.4rem;margin-bottom:.4rem"><input type="checkbox" id="sched-chk-room" style="width:16px;height:16px"><label for="sched-chk-room" style="margin:0;cursor:pointer;font-size:.8rem;text-transform:none;letter-spacing:0">Room / Venue confirmed</label></div>
+<div class="sm-field" style="display:flex;align-items:center;gap:.4rem;margin-bottom:.4rem"><input type="checkbox" id="sched-chk-risk" style="width:16px;height:16px"><label for="sched-chk-risk" style="margin:0;cursor:pointer;font-size:.8rem;text-transform:none;letter-spacing:0">Risk & Allergen notes reviewed</label></div>
+<div class="sm-field" style="display:flex;align-items:center;gap:.4rem;margin-bottom:.4rem"><input type="checkbox" id="sched-chk-budget" style="width:16px;height:16px"><label for="sched-chk-budget" style="margin:0;cursor:pointer;font-size:.8rem;text-transform:none;letter-spacing:0">Budget & Materials approved</label></div>
+
+<div class="sm-field" style="display:flex;align-items:center;gap:.4rem;margin-top:1.2rem;padding-top:.8rem;border-top:1px solid var(--border)">
+    <input type="checkbox" id="sched-auto-prep" checked style="width:18px;height:18px;accent-color:var(--teal)">
+    <label style="margin:0;cursor:pointer;font-size:.75rem;text-transform:none;letter-spacing:0" for="sched-auto-prep">Auto-generate Prep Schedule</label>
+</div>
+<div class="sm-btns" style="margin-top:1rem"><button style="background:var(--teal);color:white;width:100%" onclick="saveSchedule()">Save to Calendar</button></div>
+</div></div>
+
+<div class="small-modal-overlay" id="comp-overlay" onclick="if(event.target===this)closeComp()">
+<div class="small-modal"><h3>🎉 Event Complete!</h3><p>Log details to your monthly ledger.</p><input type="hidden" id="comp-id">
+<div class="sm-field"><label>Event</label><input id="comp-name" readonly></div>
+<div class="comp-row">
+    <div class="sm-field" style="flex:1"><label>Date</label><input type="date" id="comp-date"></div>
+    <div class="sm-field" style="flex:1"><label>Host</label><input type="text" id="comp-host" placeholder="Name"></div>
+</div>
+<div class="comp-row">
+    <div class="sm-field" style="flex:1"><label>Attendance</label><input type="number" id="comp-att" placeholder="0" min="0"></div>
+    <div class="sm-field" style="flex:1"><label>Actual Cost (£)</label><input type="number" id="comp-cost" placeholder="0" min="0"></div>
+</div>
+
+<div style="background:var(--page);border:1px solid var(--border);border-radius:8px;padding:.8rem;margin-bottom:.8rem">
+    <div style="font-size:.7rem;font-weight:600;margin-bottom:.6rem;color:var(--ink);text-transform:uppercase;letter-spacing:.05em">KPI Capture (Optional)</div>
+    <div class="comp-row">
+        <div class="sm-field" style="flex:1;margin-bottom:0"><label style="font-size:.65rem">Re-booking Leads</label><input type="number" id="comp-kpi-rebook" placeholder="0" min="0"></div>
+        <div class="sm-field" style="flex:1;margin-bottom:0"><label style="font-size:.65rem">Summer Stays</label><input type="number" id="comp-kpi-summer" placeholder="0" min="0"></div>
+        <div class="sm-field" style="flex:1;margin-bottom:0"><label style="font-size:.65rem">Welfare Checks</label><input type="number" id="comp-kpi-welfare" placeholder="0" min="0"></div>
+    </div>
+</div>
+
+<div class="sm-field"><label>Rating</label><div class="stars" id="comp-stars"></div></div>
+<div class="sm-field"><label>Notes</label><textarea id="comp-notes" placeholder="What worked, what didn't, materials used..."></textarea></div>
+<div class="sm-btns"><button style="background:var(--teal);color:white" onclick="saveComp()">Save to Ledger</button><button style="background:var(--page);color:var(--ink);border:1px solid var(--border)" onclick="closeComp()">Cancel</button></div>
+</div></div>
+
+<div class="mgr-overlay" id="mgr-overlay" onclick="if(event.target===this)closeMgr()">
+<div class="mgr-modal">
+<div class="mgr-hd"><div><div style="font-weight:600;font-size:1.05rem" id="mgr-title">Create New Event</div><div style="font-size:.76rem;color:var(--muted)">Fills into Events, Prep Planner, Emails, Posters automatically</div></div><button class="modal-close" onclick="closeMgr()">✕</button></div>
+<div class="mgr-body">
+<div class="mgr-tabs"><button class="mgr-tab active" id="tab-create" onclick="switchTab('create')">Create / Edit</button><button class="mgr-tab" id="tab-restore" onclick="switchTab('restore')">Restore Hidden</button></div>
+<div class="mgr-pane active" id="pane-create"><input type="hidden" id="mgr-edit-id" value="">
+<div class="mgr-form-grid">
+<div class="mgr-field"><label>Event name</label><input class="mgr-input" id="mgr-name" placeholder="e.g. Origami Evening" oninput="mgrAutoEmail()"></div>
+<div class="mgr-field"><label>Category</label><select class="mgr-select" id="mgr-cat" onchange="mgrAutoEmail()"><option value="competitive">Competitive</option><option value="creative">Creative</option><option value="social">Social</option><option value="cultural">Cultural</option><option value="operational">Operational</option></select></div>
+<div class="mgr-field"><label>Venue</label><select class="mgr-select" id="mgr-venue"></select></div>
+<div class="mgr-field"><label>Type</label><select class="mgr-select" id="mgr-type"><option value="oneoff">One-off</option><option value="recurring">Recurring</option><option value="tournament">Tournament</option><option value="operational">Operational</option></select></div>
+<div class="mgr-field"><label>Duration</label><input class="mgr-input" id="mgr-dur" placeholder="e.g. 90 min"></div>
+<div class="mgr-field"><label>Headcount</label><input class="mgr-input" id="mgr-people" placeholder="e.g. 10–20"></div>
+<div class="mgr-field"><label>Cost (£)</label><input class="mgr-input" id="mgr-cost" type="number" min="0" placeholder="0" oninput="mgrAutoEmail()"></div>
+<div class="mgr-field"><label>Reusable value (£)</label><input class="mgr-input" id="mgr-reuse" type="number" min="0" placeholder="0"></div>
+<div class="mgr-field"><label>Icon</label><div class="icon-picker" id="icon-picker"></div></div>
+<div class="mgr-field"><label>Prize model</label><select class="mgr-select" id="mgr-prize-model"><option value="none">None</option><option value="recognition">Recognition (display winner's work)</option><option value="voucher">Voucher / Gift card</option><option value="pot">Prize pot (attendee contributions)</option><option value="other">Other</option></select></div>
+<div class="mgr-field full"><label>Short description</label><input class="mgr-input" id="mgr-short" placeholder="One-sentence hook" oninput="mgrAutoEmail()"></div>
+<div class="mgr-field full"><label>Full description</label><textarea class="mgr-textarea tall" id="mgr-full" placeholder="Full event description..." oninput="mgrAutoEmail()"></textarea></div>
+<div class="mgr-field full"><label>Prize description</label><input class="mgr-input" id="mgr-prize" placeholder="e.g. Winner's art displayed in lobby" oninput="mgrAutoEmail()"></div>
+<div class="mgr-field full"><label>Allergen & inclusion notes</label><textarea class="mgr-textarea" id="mgr-allergy" placeholder="Dietary/accessibility notes..."></textarea></div>
+<div class="mgr-field full"><label>Tips</label><textarea class="mgr-textarea" id="mgr-tips" placeholder="Practical running advice..."></textarea></div>
+<div class="mgr-field full"><label>Materials</label><div class="mat-rows" id="mgr-mats"></div><button class="btn-add-mat" onclick="addMatRow()">+ Add material</button></div>
+</div>
+<div style="margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--border)">
+<div style="font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:.6rem">Email template</div>
+<div class="mgr-warn">⚠ Always verify event name, date, time, venue, and RSVP link before sending.</div>
+<div class="sm-field"><label>Subject</label><input class="mgr-input" id="mgr-email-subj"></div>
+<div class="email-side"><div><div class="email-panel-label">Auto-generated <span onclick="useGen()">→ Use →</span></div><div class="email-preview-box" id="mgr-email-preview">Fill in details above...</div></div><div><div class="email-panel-label">Your version</div><textarea class="email-edit-box" id="mgr-email-body" placeholder="Edit email here..."></textarea></div></div>
+</div>
+<div class="mgr-actions"><div style="display:flex;gap:.5rem"><button class="btn-primary" onclick="saveEvt()">Save Event</button><button class="btn-outline" onclick="closeMgr()">Cancel</button></div><button class="btn-danger" id="mgr-del-btn" style="display:none" onclick="deleteEvt()">Hide event</button></div>
+</div>
+<div class="mgr-pane" id="pane-restore"><div id="restore-wrap"></div></div>
+</div>
+</div>
+</div>
+
+<div class="mgr-overlay" id="tourn-overlay" onclick="if(event.target===this)closeTournModal()">
+<div class="mgr-modal" style="max-width: 540px;">
+<div class="mgr-hd"><div><div style="font-weight:600;font-size:1.05rem" id="tm-title">Create Tournament</div><div style="font-size:.76rem;color:var(--muted)">Set up your competition brackets</div></div><button class="modal-close" onclick="closeTournModal()">✕</button></div>
+<div class="mgr-body">
+<input type="hidden" id="tm-id">
+<div class="mgr-field"><label>Tournament Name</label><input class="mgr-input" id="tm-name" placeholder="e.g. Spring Pool Championship"></div>
+<div class="mgr-field"><label>Game / Activity</label><input class="mgr-input" id="tm-game" placeholder="e.g. Pool, Table Tennis, FIFA"></div>
+<div class="mgr-field"><label>Format</label><select class="mgr-select" id="tm-format"><option value="knockout">Knockout (Single Elimination)</option><option value="league">League (Round Robin)</option></select></div>
+<div class="mgr-field"><label style="margin-bottom:.3rem">Players</label>
+    <div id="tm-players-list"></div>
+    <button class="btn-outline" style="align-self:flex-start; padding:.25rem .7rem; font-size:.75rem; margin-top:.3rem" onclick="addTournPlayer()">+ Add Player</button>
+</div>
+<div class="mgr-actions" style="margin-top:1rem; border-top:1px solid var(--border); padding-top:1rem">
+<div style="display:flex;gap:.5rem"><button class="btn-primary" onclick="saveTournament()">Save Tournament</button><button class="btn-outline" onclick="closeTournModal()">Cancel</button></div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="undo-toast" id="undo-toast" role="status" aria-live="polite">
+<span id="undo-toast-label">Action done.</span>
+<button type="button" id="undo-toast-btn">Undo</button>
+</div>
+
+<script>
+/* ══════════════════════════════════════════════
+   UNITE STUDENTS EVENT PLANNING HUB v5.0
+   Single-file app — all state in localStorage
+   Built by Francesco Sorriento
+   ══════════════════════════════════════════════ */
+
+/* ── UPDATE CHECK ──
+   To enable remote update notifications:
+   1. Host a JSON file at a raw URL (GitHub raw, Gist raw, SharePoint direct link):
+      { "version": "5.1", "notes": "What's new", "downloadUrl": "https://..." }
+   2. Paste the URL into UPDATE_CHECK_URL below.
+   3. Buildings will see a one-time banner when a newer version is published.
+   Leave empty to disable checks. Failures (offline, bad URL) fail silently. */
+const UPDATE_CHECK_URL = "";
+
+/* ── DEFAULT ROOMS ── */
+const DEFAULT_ROOMS=[
+  {id:"cinema",name:"Cinema Room",icon:"🎬",desc:"~10 capacity",active:true},
+  {id:"common",name:"Common Room",icon:"🛋",desc:"Main social space",active:true},
+  {id:"games",name:"Games Room",icon:"🎮",desc:"Gaming & social",active:false},
+  {id:"study",name:"Study Room",icon:"📚",desc:"Quiet space",active:false},
+  {id:"kitchen",name:"Kitchen",icon:"🍳",desc:"Communal kitchen",active:false},
+  {id:"courtyard",name:"Courtyard",icon:"🌿",desc:"Outdoor space",active:false},
+  {id:"rooftop",name:"Rooftop",icon:"🏙",desc:"Rooftop terrace",active:false},
+  {id:"gym",name:"Gym",icon:"💪",desc:"Fitness room",active:false},
+  {id:"lobby",name:"Lobby",icon:"🏢",desc:"Reception area",active:false}
+];
+
+const DEFAULT_EQUIPMENT=[
+  {id:"switch",name:"Nintendo Switch",owned:false},
+  {id:"speaker",name:"Bluetooth Speaker",owned:false},
+  {id:"projector",name:"Projector",owned:false},
+  {id:"mic",name:"Karaoke Mic",owned:false},
+  {id:"buzzers",name:"Quiz Buzzers",owned:false},
+  {id:"whiteboard",name:"Whiteboard",owned:false}
+];
+
+const ICONS="🎯🎨🎤🎲🧩🌍📷🔍🎭🍕🎵⚡🌱✏️🏆💡🧠🫧🌊🎒🎬📚🏓🎮🍕☕".split("");
+
+/* ── BUILT-IN EVENTS ── */
+const BUILT_IN_EVENTS=[
+  {id:1,name:"Blind Taste Test",icon:"🫧",cat:"competitive",type:"oneoff",venue:"Common Room",short:"Teams blindfolded to identify unusual soft drinks. Points, prizes, reactions.",full:"Set up stations. Teams of 2–3 blindfolded, given tasting cups of unusual soft drinks. Mix obvious and tricky drinks. 8–10 rounds. Final tiebreaker speed round.",duration:"90 min",people:"10–20",cost:55,reusable:8,materials:[{n:"Variety soft drinks",c:"~£30",url:"https://www.amazon.co.uk/s?k=fentimans+fever-tree+variety",reuse:false},{n:"Blindfolds (10-pack)",c:"~£8",url:"https://www.amazon.co.uk/s?k=sleep+eye+mask+10+pack",reuse:true},{n:"Tasting cups (100-pack)",c:"~£5",url:"https://www.amazon.co.uk/s?k=small+plastic+cups+100",reuse:false},{n:"Score sheets + clipboards",c:"~£5",url:"https://www.amazon.co.uk/s?k=clipboard+bulk",reuse:true}],prize:{model:"recognition",desc:"Winners announced on noticeboard + bragging rights"},allergy:"Check every drink for allergens. Water station available.",tip:"Keep drinks chilled. 1–2 practice rounds first. Whiteboard for scores.",posterCat:"competitive",posterCopy:{headline:"BLIND TASTE TEST",sub:"Can you tell what you're drinking?",body:"Teams. Blindfolds. Unusual soft drinks.\nPoints for every correct guess.",free:"Free drinks all evening",prize:"Winners on the noticeboard",cta:"Sign up at reception"}},
+  {id:2,name:"Art Dupe Challenge",icon:"🎨",cat:"creative",type:"oneoff",venue:"Common Room",short:"Copy famous paintings at 3 difficulty levels. Cross-bracket voting. All materials provided.",full:"Print/project three famous paintings at easy, medium, hard. Participants choose difficulty, spend 60–75 min copying. Cross-bracket voting: easy voters judge medium, etc.",duration:"2 hours",people:"8–16",cost:90,reusable:55,materials:[{n:"Canvas + easel set (10)",c:"~£30",url:"https://www.amazon.co.uk/s?k=canvas+easel+10+pack",reuse:true},{n:"Acrylic paint set (30 colours)",c:"~£18",url:"https://www.amazon.co.uk/s?k=acrylic+paint+30+colours",reuse:true},{n:"Paint brushes (20-pack)",c:"~£10",url:"https://www.amazon.co.uk/s?k=paint+brushes+20+pack",reuse:true},{n:"Disposable aprons (20)",c:"~£8",url:"https://www.amazon.co.uk/s?k=disposable+aprons+20",reuse:false},{n:"Paint palettes (10)",c:"~£8",url:"https://www.amazon.co.uk/s?k=paint+palette+10",reuse:true},{n:"Reference prints (A3)",c:"~£4",url:null,reuse:false}],prize:{model:"recognition",desc:"Winning artwork displayed in common room with named credit for 1 month"},allergy:"Non-toxic paint. Provide aprons.",tip:"Background music. 5-min study window before starting. Display works during voting.",posterCat:"creative",posterCopy:{headline:"ART DUPE CHALLENGE",sub:"Can you copy a masterpiece?",body:"Three paintings. Three difficulty levels.\nAll materials provided.",free:"Free entry — all materials included",prize:"Winner's art displayed in common room",cta:"Sign up at reception"}},
+  {id:3,name:"Big Quiz Night",icon:"🧠",cat:"competitive",type:"oneoff",venue:"Common Room",short:"5-round team quiz with buzzers, scoreboard, tiebreakers.",full:"Teams of 3–4 across 5 rounds of 10 questions: local knowledge, pop culture, science, name that tune, wildcard picture round. Speed-bonus buzzers between rounds. Sudden-death tiebreaker.",duration:"2 hours",people:"12–30",cost:40,reusable:30,materials:[{n:"Quiz buzzers (4-pack)",c:"~£15",url:"https://www.amazon.co.uk/s?k=quiz+buzzer+set",reuse:true},{n:"Notepads (bulk)",c:"~£5",url:"https://www.amazon.co.uk/s?k=small+notepad+bulk",reuse:false},{n:"Pens (20-pack)",c:"~£5",url:"https://www.amazon.co.uk/s?k=pens+20+pack",reuse:true},{n:"Whiteboard",c:"~£10",url:"https://www.amazon.co.uk/s?k=whiteboard+A2",reuse:true}],prize:{model:"recognition",desc:"Winners on leaderboard + photo on noticeboard"},allergy:"N/A",tip:"Bluetooth speaker for music round. Pre-test questions. Print tiebreaker sheet.",posterCat:"competitive",posterCopy:{headline:"BIG QUIZ NIGHT",sub:"5 rounds. 1 winner.",body:"Form a team of 3–4.\nBristol knowledge · Pop culture · Science · Music · Wildcard.",free:"Free soft drinks",prize:"Winners on the leaderboard",cta:"Register your team"}},
+  {id:4,name:"Resin Art Workshop",icon:"🌊",cat:"creative",type:"oneoff",venue:"Common Room",short:"Make your own resin coaster. Guided step-by-step. Moulds reusable.",full:"Crafting station per person: silicone mould, gloves, mixing sticks. Demo 1:1 resin mixing. Students add mica pigments, glitter, dried flowers. 15–20 min to pour, 24h cure.",duration:"90 min + 24h cure",people:"8–14",cost:85,reusable:40,materials:[{n:"Epoxy resin kit (1L)",c:"~£25",url:"https://www.amazon.co.uk/s?k=epoxy+resin+1L",reuse:false},{n:"Silicone coaster moulds (6)",c:"~£12",url:"https://www.amazon.co.uk/s?k=silicone+coaster+mould",reuse:true},{n:"Mica powder set (12)",c:"~£10",url:"https://www.amazon.co.uk/s?k=mica+powder+resin",reuse:true},{n:"Nitrile gloves (50)",c:"~£7",url:"https://www.amazon.co.uk/s?k=nitrile+gloves+50",reuse:false},{n:"Mixing sticks (100)",c:"~£5",url:"https://www.amazon.co.uk/s?k=lolly+sticks+100",reuse:false},{n:"Dried flowers/glitter",c:"~£8",url:"https://www.amazon.co.uk/s?k=dried+flowers+resin",reuse:true},{n:"Measuring cups",c:"~£5",url:"https://www.amazon.co.uk/s?k=measuring+cups+craft",reuse:true}],prize:{model:"none",desc:"Everyone keeps their coaster"},allergy:"Resin irritates sensitive skin. Gloves mandatory. Ventilate room.",tip:"Demo pour first. Kitchen roll ready. Photographs brilliantly for social posts.",posterCat:"creative",posterCopy:{headline:"RESIN ART NIGHT",sub:"Make something. Keep something.",body:"Pour, mix, customise your own resin coaster.\nAdd pigments, glitter, dried flowers.",free:"All materials provided",prize:"You keep what you make",cta:"Sign up at reception"}},
+  {id:5,name:"Board Game Gauntlet",icon:"🎲",cat:"social",type:"oneoff",venue:"Common Room",short:"Bracket tournament across multiple board games. One overall champion.",full:"3–4 tables running different games: rotating bracket, points per round. Championship round for top scorers. Games adapt to what the building owns.",duration:"2.5–3 hours",people:"12–24",cost:0,reusable:0,materials:[],prize:{model:"recognition",desc:"Champion on leaderboard + bragging rights"},allergy:"N/A",tip:"One games master per table. Printed rules. 10-min practice round.",posterCat:"competitive",posterCopy:{headline:"BOARD GAME GAUNTLET",sub:"Multiple games. One champion.",body:"Bracket tournament — rotate tables, collect points.\nThe best overall player wins.",free:"Free entry",prize:"Champion on the leaderboard",cta:"Sign up at reception"}},
+  {id:6,name:"Throwback Karaoke",icon:"🎤",cat:"social",type:"oneoff",venue:"Common Room",short:"Team karaoke. 3 prize categories. Audience votes.",full:"Teams of 2–3 pick from curated list. Audience votes: Best Performance, Most Enthusiastic, Wildcard. YouTube karaoke catalogue. Bluetooth mic + speaker.",duration:"2 hours",people:"12–30",cost:40,reusable:35,materials:[{n:"Bluetooth karaoke mic",c:"~£35",url:"https://www.amazon.co.uk/s?k=bluetooth+karaoke+mic",reuse:true},{n:"LED party lights",c:"~£10",url:"https://www.amazon.co.uk/s?k=LED+party+light+USB",reuse:true},{n:"Song list (laminated)",c:"~£4",url:"https://www.amazon.co.uk/s?k=laminator+pouches",reuse:true}],prize:{model:"recognition",desc:"Winners announced + photos on noticeboard"},allergy:"N/A",tip:"Curate 25–30 songs. Host performs warm-up track first.",posterCat:"social",posterCopy:{headline:"KARAOKE NIGHT",sub:"The mic is open.",body:"Teams of 2–3 pick a song.\nAudience votes. Three winners.",free:"Free soft drinks",prize:"Winners on the noticeboard",cta:"Sign up your team"}},
+  {id:7,name:"International Snacks Night",icon:"🌍",cat:"cultural",type:"oneoff",venue:"Common Room",short:"Students bring food from home countries. Soft drinks provided. Flats reimbursed up to £8.",full:"Cultural exchange — invite flats to bring one food/snack from home country. Display with flags and ingredient cards. Reimburse up to £8 on receipt.",duration:"2 hours",people:"15–30",cost:70,reusable:15,materials:[{n:"World flags bunting",c:"~£8",url:"https://www.amazon.co.uk/s?k=world+flags+bunting",reuse:true},{n:"Flag cocktail picks (100)",c:"~£6",url:"https://www.amazon.co.uk/s?k=flag+cocktail+picks",reuse:false},{n:"Blank tent cards",c:"~£5",url:"https://www.amazon.co.uk/s?k=tent+cards+blank",reuse:true},{n:"Soft drinks",c:"~£25",url:"https://www.amazon.co.uk/s?k=soft+drinks+variety",reuse:false},{n:"Flat reimbursements",c:"~£24 max",url:null,reuse:false}],prize:{model:"recognition",desc:"Community vote for most popular dish"},allergy:"CRITICAL: Ingredient cards mandatory. Check-labels announcement at start.",tip:"Invite 2 weeks early. Reach out to international flats individually.",posterCat:"social",posterCopy:{headline:"INTERNATIONAL SNACKS",sub:"What does home taste like?",body:"Bring food from your home country.\nTry dishes from around the world.",free:"Free drinks · Flats reimbursed up to £8",prize:"Community vote for best dish",cta:"RSVP and tell us what you're bringing"}},
+  {id:8,name:"Murder Mystery Evening",icon:"🔍",cat:"competitive",type:"oneoff",venue:"Cinema Room",short:"Assigned suspect roles. Solve a murder. Intimate cinema room event.",full:"Cinema room for intimate setting (~10 capacity). Murder mystery party pack. Roles assigned via email 24h before. 3 acts: introductions, questioning, accusations & reveal.",duration:"2.5 hours",people:"8–14",cost:30,reusable:20,materials:[{n:"Murder mystery kit",c:"~£15",url:"https://www.amazon.co.uk/s?k=murder+mystery+game+kit",reuse:true},{n:"Name badges + lanyards",c:"~£6",url:"https://www.amazon.co.uk/s?k=name+badge+lanyard",reuse:true},{n:"Costume accessories",c:"~£8",url:"https://www.amazon.co.uk/s?k=mystery+costume+props",reuse:true}],prize:{model:"recognition",desc:"Correct solver(s) announced"},allergy:"N/A",tip:"Email character sheets 24h before. Themed pack encourages dressing up.",posterCat:"competitive",posterCopy:{headline:"MURDER MYSTERY",sub:"Someone has been murdered.",body:"Receive your character before the event.\nQuestion suspects. Build your case.",free:"Free entry · Cinema Room only",prize:"Solve it correctly to win",cta:"Limited to 14 — RSVP now"}},
+  {id:9,name:"Bristol Photo Walk",icon:"📷",cat:"social",type:"oneoff",venue:"Outdoors",short:"Group walk with a photography theme. Community votes for winner.",full:"Group walk with mission and theme. Submit 2–3 best photos after. Print and display, community votes over 1 week.",duration:"3 hours",people:"8–20",cost:25,reusable:0,materials:[{n:"Photo printing",c:"~£12",url:null,reuse:false},{n:"Display string + pegs",c:"~£8",url:"https://www.amazon.co.uk/s?k=photo+string+pegs",reuse:true},{n:"Prize voucher",c:"~£5",url:null,reuse:false}],prize:{model:"recognition",desc:"Winning photo displayed in lobby with credit"},allergy:"Consent rules for people photography.",tip:"Send 1-page brief with theme. Best April–May.",posterCat:"social",posterCopy:{headline:"PHOTO WALK",sub:"Walk. Shoot. Win.",body:"Group walk around the city with a mission.\nSubmit your best photos — community votes.",free:"Free — just bring your phone",prize:"Winning photo displayed in lobby",cta:"RSVP at reception"}},
+  {id:10,name:"Tote Bag Workshop",icon:"🎒",cat:"creative",type:"oneoff",venue:"Common Room",short:"Design your own canvas tote bag. Take it home. Perfect first event.",full:"Blank canvas bags, fabric markers, foam stamps, stencils. 45–60 min designing. Markers/stamps reusable. Great first event.",duration:"90 min",people:"10–20",cost:65,reusable:45,materials:[{n:"Canvas tote bags (15)",c:"~£14",url:"https://www.amazon.co.uk/s?k=canvas+tote+bag+bulk",reuse:false},{n:"Fabric markers (20)",c:"~£14",url:"https://www.amazon.co.uk/s?k=fabric+markers+20",reuse:true},{n:"Foam stamps",c:"~£12",url:"https://www.amazon.co.uk/s?k=foam+stamp+craft",reuse:true},{n:"Stencil set",c:"~£8",url:"https://www.amazon.co.uk/s?k=craft+stencil+set",reuse:true},{n:"Newspaper",c:"Free",url:null,reuse:false}],prize:{model:"recognition",desc:"Community vote for favourite design"},allergy:"Check latex sensitivities. Non-toxic markers.",tip:"Print design inspiration sheets. Play music.",posterCat:"creative",posterCopy:{headline:"TOTE BAG WORKSHOP",sub:"Design your own bag — keep it.",body:"Fabric markers, stencils, stamps.\n90 minutes to create your design.",free:"All materials provided",prize:"You keep your bag",cta:"Sign up at reception"}},
+  // RECURRING
+  {id:101,name:"Movie Night",icon:"🎬",cat:"social",type:"recurring",venue:"Cinema Room",short:"Weekly film screening. Student suggestions welcome. International films included.",full:"Weekly communal viewing. Curate monthly lineup with mix of genres. Include international films. Free — just use projector/TV and common room.",duration:"2–3 hours",people:"5–20",cost:0,reusable:0,materials:[],prize:{model:"none",desc:""},allergy:"N/A",tip:"Let students vote on next week's film. Popcorn optional (very cheap).",recurring:{frequency:"weekly",day:"Wednesday",time:"19:00"},posterCat:"social",posterCopy:{headline:"MOVIE NIGHT",sub:"Every Wednesday at 7pm",body:"Grab a seat, grab some snacks.\nThis week: [FILM TITLE]",free:"Free",prize:"",cta:"Just show up"}},
+  {id:102,name:"Study Night",icon:"📚",cat:"social",type:"recurring",venue:"Common Room",short:"Quiet group study with free tea/coffee and snacks. Low cost, high value.",full:"Set up common room as quiet study space. Provide tea, coffee, biscuits. Background lo-fi music optional. Great during exam periods.",duration:"3–4 hours",people:"5–15",cost:5,reusable:0,materials:[{n:"Tea/coffee/biscuits",c:"~£5",url:null,reuse:false}],prize:{model:"none",desc:""},allergy:"Check biscuit allergens.",tip:"Keep it quiet. Good WiFi essential. During exam season especially.",recurring:{frequency:"weekly",day:"Sunday",time:"14:00"},posterCat:"social",posterCopy:{headline:"STUDY NIGHT",sub:"Every Sunday at 2pm",body:"Free tea, coffee, and snacks.\nQuiet communal study space.",free:"Free refreshments",prize:"",cta:"Just show up"}},
+  // TOURNAMENTS
+  {id:201,name:"Pool Tournament",icon:"🎱",cat:"competitive",type:"tournament",venue:"Games Room",short:"Weekly pool competition. Knockout or league format. Leaderboard tracked.",full:"Regular pool tournament. Support knockout or league format. Track leaderboard across sessions. Physical leaderboard in common area recommended.",duration:"2 hours",people:"4–16",cost:0,reusable:0,materials:[],prize:{model:"recognition",desc:"Season champion on leaderboard"},allergy:"N/A",tip:"Post physical leaderboard by the table.",tournament:{format:"knockout"},posterCat:"competitive",posterCopy:{headline:"POOL TOURNAMENT",sub:"Rack 'em up.",body:"Knockout format. Weekly sessions.\nClimb the leaderboard.",free:"Free entry",prize:"Season champion crowned",cta:"Sign up at the table"}},
+  {id:202,name:"Table Tennis Tournament",icon:"🏓",cat:"competitive",type:"tournament",venue:"Common Room",short:"Regular table tennis competition. League or knockout.",full:"Table tennis tournament. Supports league round-robin or single elimination. Track stats across season.",duration:"2 hours",people:"4–16",cost:0,reusable:0,materials:[],prize:{model:"recognition",desc:"Season champion on leaderboard"},allergy:"N/A",tip:"Ensure spare balls and bats available.",tournament:{format:"league"},posterCat:"competitive",posterCopy:{headline:"TABLE TENNIS",sub:"Serve. Smash. Win.",body:"League format. Weekly matches.\nClimb the standings.",free:"Free entry",prize:"Season champion",cta:"Add your name to the board"}},
+  {id:203,name:"Mario Kart Tournament",icon:"🎮",cat:"competitive",type:"tournament",venue:"Common Room",short:"Console gaming tournament. Requires Nintendo Switch.",full:"Mario Kart tournament on Nintendo Switch. Grand Prix format — 4 races per round. Points tallied across rounds. Requires console.",duration:"2–3 hours",people:"4–12",cost:0,reusable:0,materials:[],prize:{model:"recognition",desc:"Champion gets Mario trophy emoji on leaderboard"},allergy:"N/A",tip:"Check console availability. Extra controllers helpful.",tournament:{format:"knockout"},requiresEquipment:"switch",posterCat:"competitive",posterCopy:{headline:"MARIO KART",sub:"Blue shells incoming.",body:"Grand Prix format.\n4 races per round. Points tallied.",free:"Free entry",prize:"Mario Kart Champion crowned",cta:"Sign up at reception"}},
+  // COST-SENSITIVE
+  {id:301,name:"Pizza Night",icon:"🍕",cat:"social",type:"oneoff",venue:"Common Room",short:"Social pizza evening. Budget-friendly with optional £1 contribution for extras.",full:"Order pizza for communal eating. Budget tip: source local deals. Consider £1 entry to stretch budget for sides/desserts. Great for casual socialising.",duration:"2 hours",people:"15–30",cost:50,reusable:0,materials:[{n:"Pizza order (local deal)",c:"~£40–50",url:null,reuse:false},{n:"Plates/napkins",c:"~£5",url:"https://www.amazon.co.uk/s?k=paper+plates+bulk",reuse:false}],prize:{model:"none",desc:""},allergy:"Order vegetarian, vegan, gluten-free options. Label all pizzas.",tip:"Source local deals — many do bulk discounts for students. £1 entry stretches budget for sides/desserts.",posterCat:"social",posterCopy:{headline:"PIZZA NIGHT",sub:"Free pizza. Good company.",body:"Communal pizza evening.\nVegetarian, vegan, GF options available.",free:"Free (or £1 for extras)",prize:"",cta:"Just show up"}},
+  // OPERATIONAL
+  {id:401,name:"Breakfast Drop-in",icon:"☕",cat:"operational",type:"operational",venue:"Lobby",short:"Pastries at reception to drive footfall for staff conversations.",full:"Set up pastries/fruit at reception desk. Staff available for casual chats about accommodation, concerns, feedback. Drives retention conversations naturally.",duration:"2 hours",people:"Varies",cost:20,reusable:0,materials:[{n:"Pastries/fruit platter",c:"~£15–20",url:null,reuse:false}],prize:{model:"none",desc:""},allergy:"Include dietary options. Label ingredients.",tip:"Brief staff on conversation prompts beforehand. Have clipboards ready for notes.",goal:"Drive reception footfall for retention conversations",kpiNotes:"Log number of conversations. Note any maintenance/welfare issues raised.",talkingPoints:["How are you finding your accommodation?","Anything we can help with?","Have you thought about next year yet?"],posterCat:"social",posterCopy:{headline:"BREAKFAST DROP-IN",sub:"Free pastries. Quick chat.",body:"Pop down to reception for free pastries.\nStaff available for a chat.",free:"Free pastries & coffee",prize:"",cta:"Just come down"}},
+  {id:402,name:"Re-booking Info Session",icon:"🏠",cat:"operational",type:"operational",venue:"Common Room",short:"Casual info table with snacks to encourage next-year conversations.",full:"Set up info table in common room. Snacks/coffee provided. Staff available to answer questions about re-booking, pricing, room options.",duration:"3 hours",people:"Varies",cost:15,reusable:0,materials:[{n:"Coffee/snacks",c:"~£10–15",url:null,reuse:false},{n:"Info leaflets",c:"~£5",url:null,reuse:true}],prize:{model:"none",desc:""},allergy:"Dietary options available.",tip:"Have laptops ready for on-the-spot bookings. Offer early-bird pricing info.",goal:"Next-year accommodation conversations + bookings",kpiNotes:"Log re-booking conversations. Track any on-the-spot bookings or expressions of interest.",talkingPoints:["Have you thought about where you'll live next year?","Did you know you can lock in this year's price?","Want to see the room options available?"],posterCat:"social",posterCopy:{headline:"RE-BOOKING INFO",sub:"Plan your next year.",body:"Pop by for snacks + info about next year.\nStaff available to answer questions.",free:"Free coffee & snacks",prize:"",cta:"Drop by anytime"}},
+  {id:403,name:"Summer Plans Check-in",icon:"📋",cat:"operational",type:"operational",venue:"Lobby",short:"Door-knocking campaign for summer stay intentions. Zero cost.",full:"Staff door-knock campaign with conversation prompts. Capture summer stay intentions for reporting. No materials needed.",duration:"Ongoing",people:"All residents",cost:0,reusable:0,materials:[],prize:{model:"none",desc:""},allergy:"N/A",tip:"Use a simple spreadsheet or clipboard to track responses. Be friendly, not pushy.",goal:"Capture summer stay intentions",kpiNotes:"Track: staying / leaving / undecided per flat.",talkingPoints:["Just checking in — what are your plans for summer?","Are you staying over summer or heading home?","Do you know anyone who might want a summer let?"]}
+];
+
+const BUILT_IN_TEMPLATES=BUILT_IN_EVENTS.filter(e=>e.posterCopy).map(e=>({
+  id:e.id,icon:e.icon,cat:e.cat,
+  subj:e.posterCopy.headline+" — Unite Students",
+  body:`Hi everyone,\n\nWe're running ${e.name}! ${e.short}\n\n📅 Date: [DATE]\n🕖 Time: [TIME]\n📍 ${e.venue}\n\n${e.posterCopy.free}${e.posterCopy.prize?"\n"+e.posterCopy.prize:""}\n\nSign up at [RSVP LINK] or at reception.\n\nSee you there,\n[YOUR NAME]\nEvents Team`
+}));
+
+const PREP_STEPS=[
+  {days:21,label:"Start planning",desc:"Brief the committee. Confirm event, format, budget.",tag:"plan"},
+  {days:14,label:"Approval + check storage",desc:"Get manager approval. Check storage for reusable items.",tag:"approval"},
+  {days:12,label:"Order materials",desc:"Place orders. Use materials list. Prioritise reusable.",tag:"order"},
+  {days:9,label:"Confirm deliveries",desc:"Chase orders. Verify quality.",tag:"order"},
+  {days:7,label:"Send invite email",desc:"Send event email to all residents.",tag:"comms"},
+  {days:5,label:"Put up posters",desc:"Lifts, common room, entrance. Add QR code.",tag:"comms"},
+  {days:3,label:"Send reminder",desc:"Short reminder. Mention scarcity if applicable.",tag:"comms"},
+  {days:1,label:"Final setup",desc:"Set up room. Test tech. Brief helpers.",tag:"approval"},
+  {days:0,label:"🎉 Event day",desc:"Take photos throughout. Have fun.",tag:"event"},
+  {days:-1,label:"Follow-up",desc:"Pin photos. Send thank-you. Log notes.",tag:"followup"}
+];
+
+const POSTER_TEMPLATES={competitive:{bg:"p-dark",badge:"Competitive"},creative:{bg:"p-coral",badge:"Creative"},social:{bg:"p-forest",badge:"Social"},cultural:{bg:"p-forest",badge:"Cultural"},operational:{bg:"p-dark",badge:"Staff"}};
+const STATUS_LABELS={none:"Not planned",scheduled:"Scheduled",done:"Done ✓"};
+
+/* ── DEFAULT STATE ── */
+const DEFAULT_STATE={
+  meta:{buildingName:"Unite Students",setupDone:false,version:"5.0",lastModified:""},
+  budget:{monthly:200,months:3,manualSpend:[]},
+  rooms:DEFAULT_ROOMS.map(r=>({...r})),
+  equipment:DEFAULT_EQUIPMENT.map(e=>({...e})),
+  boardGames:[],
+  events:{overrides:{},hidden:[],favourites:[],custom:[],customTemplates:[]},
+  statuses:{},
+  schedules:{}, 
+  budgetSelections:[],
+  customLinks:{},
+  notes:{}, prepSchedules:{},
+  recurring:{movieNight:{enabled:false,day:"Wednesday",time:"19:00",lineups:{}},studyNight:{enabled:false,day:"Sunday",time:"14:00",snacks:"Tea, coffee, biscuits"},pool:{enabled:false,day:"Tuesday",time:"18:00"},tableTennis:{enabled:false,day:"Thursday",time:"18:00"},marioKart:{enabled:false,day:"Friday",time:"18:00"}},
+  tournaments:{active:[],history:[]},
+  inventory:[],eventLog:[],suggestions:[],
+  seasons:[
+    {id:"spring",name:"Spring",color:"teal",title:"Fresh Start",start:"2026-03-27",end:"2026-05-15",events:["🌍 International Snacks","🎒 Tote Bag Workshop"],target:"1–2 events",note:"Low-barrier social events."},
+    {id:"summer_early",name:"Early Summer",color:"amber",title:"Exam Wind-down",start:"2026-05-15",end:"2026-06-20",events:["📷 Photo Walk","🎲 Board Games"],target:"1–2 optional",note:"Keep it light during exams."},
+    {id:"summer_late",name:"Late Summer",color:"coral",title:"Golden Window 🌟",start:"2026-06-20",end:"2026-08-15",events:["🧠 Quiz","🎤 Karaoke","🎨 Art","🌊 Resin"],target:"Weekly",note:"Go all out. Students are relaxed."},
+    {id:"autumn",name:"Autumn",color:"purple",title:"Welcome Season",start:"2026-09-01",end:"2026-12-15",events:["Welcome events","Halloween","Christmas"],target:"2–3/month",note:"Welcome new students."}
+  ],
+  ui:{darkMode:false}
+};
+
+/* ── STATE MANAGEMENT ── */
+function deepMerge(target,source){
+  const out={...target};
+  for(const key in source){
+    if(source[key]&&typeof source[key]==='object'&&!Array.isArray(source[key])&&target[key]&&typeof target[key]==='object'&&!Array.isArray(target[key])){
+      out[key]=deepMerge(target[key],source[key]);
+    }else{out[key]=source[key]}
+  }
+  return out;
+}
+
+let S;
+function loadState(){
+  const saved = localStorage.getItem('ubs_v4_state');
+  let st = saved ? deepMerge(JSON.parse(JSON.stringify(DEFAULT_STATE)), JSON.parse(saved)) : JSON.parse(JSON.stringify(DEFAULT_STATE));
+  
+  if(!st.notes) st.notes = {};
+  if(!st.prepSchedules) st.prepSchedules = {};
+  if(!st.budget.manualSpend) st.budget.manualSpend = [];
+  if(!st.schedules) st.schedules = {};
+
+  S = st;
+  return S;
+}
+function saveState(){S.meta.lastModified=new Date().toISOString();localStorage.setItem('ubs_v4_state',JSON.stringify(S));const c=(parseInt(localStorage.getItem('ubs_save_count'))||0)+1;localStorage.setItem('ubs_save_count',c);showBackupPromptIfDue()}
+function showBackupPromptIfDue(){const c=parseInt(localStorage.getItem('ubs_save_count'))||0;const el=document.getElementById('backup-banner');if(!el)return;el.style.display=c>=20?'flex':'none'}
+function dismissBackupPrompt(){localStorage.setItem('ubs_save_count','0');const el=document.getElementById('backup-banner');if(el)el.style.display='none'}
+function cmpVersion(a,b){const pa=String(a).split('.').map(n=>parseInt(n)||0);const pb=String(b).split('.').map(n=>parseInt(n)||0);const L=Math.max(pa.length,pb.length);for(let i=0;i<L;i++){const x=pa[i]||0,y=pb[i]||0;if(x!==y)return x>y?1:-1}return 0}
+async function checkForUpdate(){
+  if(!UPDATE_CHECK_URL)return;
+  try{
+    const ctl=new AbortController();
+    const t=setTimeout(()=>ctl.abort(),6000);
+    const res=await fetch(UPDATE_CHECK_URL,{cache:'no-store',signal:ctl.signal});
+    clearTimeout(t);
+    if(!res.ok)return;
+    const info=await res.json();
+    if(!info||!info.version)return;
+    const current=DEFAULT_STATE.meta.version;
+    if(cmpVersion(info.version,current)<=0)return;
+    if(localStorage.getItem('ubs_update_dismissed_version')===info.version)return;
+    const el=document.getElementById('update-banner');if(!el)return;
+    document.getElementById('ub-version').textContent=info.version;
+    document.getElementById('ub-notes').textContent=info.notes?'("'+info.notes+'")':'';
+    const link=document.getElementById('ub-download-link');
+    if(info.downloadUrl){link.href=info.downloadUrl;link.style.display='';}else{link.style.display='none';}
+    el.dataset.version=info.version;
+    el.style.display='flex';
+  }catch{/* offline, bad URL, CORS — fail silently */}
+}
+function dismissUpdatePrompt(){const el=document.getElementById('update-banner');if(!el)return;if(el.dataset.version)localStorage.setItem('ubs_update_dismissed_version',el.dataset.version);el.style.display='none'}
+let _undoTimer=null,_undoSnap=null;
+function withUndo(label,action){
+  _undoSnap=JSON.parse(JSON.stringify(S));
+  action();
+  const toast=document.getElementById('undo-toast');
+  if(!toast)return;
+  document.getElementById('undo-toast-label').textContent=label;
+  const btn=document.getElementById('undo-toast-btn');
+  btn.onclick=()=>{
+    if(_undoTimer){clearTimeout(_undoTimer);_undoTimer=null}
+    if(_undoSnap){S=_undoSnap;saveState();refreshAll();_undoSnap=null}
+    toast.classList.remove('open');
+  };
+  toast.classList.add('open');
+  if(_undoTimer)clearTimeout(_undoTimer);
+  _undoTimer=setTimeout(()=>{toast.classList.remove('open');_undoSnap=null;_undoTimer=null},5000);
+}
+
+/* ── DASHBOARD WIDGETS ── */
+function renderDashboardWidgets(){
+  const upcomingWrap = document.getElementById("dw-upcoming");
+  const lbWrap = document.getElementById("dw-leaderboard");
+
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  
+  let upc = [];
+  Object.keys(S.schedules).forEach(id => {
+      const sch = S.schedules[id];
+      if(!sch || !sch.date) return;
+      const d = new Date(sch.date);
+      if(d >= today) {
+          const e = getEvent(id);
+          if(e) upc.push({id, name: e.name, date: sch.date, time: sch.time, host: sch.host, dObj: d});
+      }
+  });
+  
+  upc.sort((a,b) => a.dObj - b.dObj);
+  
+  if(upc.length) {
+      upcomingWrap.innerHTML = upc.map(u => {
+          const dt = new Date(u.date).toLocaleDateString('en-GB', {weekday:'short', day:'numeric', month:'short'});
+          return `
+          <div class="upcoming-item">
+              <div class="ui-date">${dt.split(' ')[1]}<br><span style="font-size:.55rem;text-transform:uppercase;font-weight:700">${dt.split(' ')[0]}</span></div>
+              <div class="ui-details">
+                  <div class="ui-name">${u.name}</div>
+                  <div class="ui-meta"><span>🕒 ${u.time || 'TBC'}</span><span>👤 ${u.host || 'Unassigned'}</span></div>
+              </div>
+          </div>`;
+      }).join('');
+  } else {
+      upcomingWrap.innerHTML = '<div style="font-size:.8rem;color:var(--muted);padding:1rem 0;text-align:center">No upcoming events scheduled.<br>Click an event to schedule it.</div>';
+  }
+
+  const counts = {};
+  S.eventLog.forEach(L => {
+      if(L.host) counts[L.host] = (counts[L.host] || 0) + 1;
+  });
+  
+  const sortedLB = Object.keys(counts).map(k => ({name: k, score: counts[k]})).sort((a,b) => b.score - a.score);
+  
+  if(sortedLB.length) {
+      lbWrap.innerHTML = sortedLB.map((staff, i) => `
+          <div class="lb-item">
+              <span class="lb-name">${i===0?'🥇':i===1?'🥈':i===2?'🥉':''} ${staff.name}</span>
+              <span class="lb-score">${staff.score}</span>
+          </div>
+      `).join('');
+  } else {
+      lbWrap.innerHTML = '<div style="font-size:.8rem;color:var(--muted);padding:1rem 0;text-align:center">No completed events logged yet.</div>';
+  }
+}
+
+function copyUpcoming(){
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  let upc = [];
+  Object.keys(S.schedules).forEach(id => {
+      const sch = S.schedules[id];
+      if(!sch || !sch.date) return;
+      const d = new Date(sch.date);
+      if(d >= today) {
+          const e = getEvent(id);
+          if(e) upc.push({name: e.name, date: sch.date, time: sch.time, host: sch.host, dObj: d});
+      }
+  });
+  upc.sort((a,b) => a.dObj - b.dObj);
+  
+  if(!upc.length) { alert("Nothing to copy!"); return; }
+  
+  let txt = "📅 *Upcoming Events Schedule*\n\n";
+  upc.forEach(u => {
+      const dStr = new Date(u.date).toLocaleDateString('en-GB', {weekday:'short', day:'numeric', month:'short'});
+      txt += `• ${u.name}\n  ${dStr} @ ${u.time || 'TBC'} | Host: ${u.host || 'TBC'}\n\n`;
+  });
+  
+  navigator.clipboard.writeText(txt).then(() => alert("Copied to clipboard!"));
+}
+
+/* ── MANAGEMENT DASHBOARD ── */
+function calculateROI(att, cost, kpis) {
+    const kpiCount = (kpis.rebook || 0) + (kpis.summer || 0) + (kpis.welfare || 0);
+    const cpa = att > 0 ? (cost / att) : cost;
+    
+    let score = 0;
+    // Reward attendance (up to 30)
+    if(att > 20) score += 30;
+    else if(att > 10) score += 20;
+    else if(att > 0) score += 10;
+    
+    // Reward cost efficiency (up to 30)
+    if(cpa <= 1.5) score += 30;
+    else if(cpa <= 4) score += 20;
+    else if(cpa <= 10) score += 10;
+    
+    // Reward KPIs heavily (up to 40)
+    if(kpiCount >= 5) score += 40;
+    else if(kpiCount >= 2) score += 25;
+    else if(kpiCount > 0) score += 10;
+    
+    let grade = 'D';
+    if(score >= 75) grade = 'A';
+    else if(score >= 50) grade = 'B';
+    else if(score >= 25) grade = 'C';
+    
+    return { score, grade };
+}
+
+function renderManagement() {
+    const currentMonth = new Date().toISOString().substring(0, 7);
+    const logs = S.eventLog.filter(L => L.date.startsWith(currentMonth));
+    
+    const totalBudget = S.budget.monthly;
+    let spendThisMonth = 0;
+    logs.forEach(L => spendThisMonth += (Number(L.cost) || 0));
+    const eventsDelivered = logs.length;
+    let totalKpis = 0;
+    logs.forEach(L => totalKpis += ((L.kpi?.rebook||0) + (L.kpi?.summer||0) + (L.kpi?.welfare||0)));
+    
+    let budgetRag = "rag-green", budgetStatus = "ON TRACK";
+    if(spendThisMonth > totalBudget) { budgetRag = "rag-red"; budgetStatus = "OVER BUDGET"; }
+    else if(spendThisMonth > (totalBudget * 0.8)) { budgetRag = "rag-amber"; budgetStatus = "WATCH"; }
+    
+    let delRag = "rag-red", delStatus = "OFF TRACK";
+    if(eventsDelivered >= 3) { delRag = "rag-green"; delStatus = "ON TRACK"; }
+    else if(eventsDelivered >= 1) { delRag = "rag-amber"; delStatus = "WATCH"; }
+    
+    document.getElementById("mgr-rag-cards").innerHTML = `
+        <div class="rag-card">
+            <div class="rag-lbl">Monthly Budget</div>
+            <div class="rag-val">£${spendThisMonth} <span style="font-size:.7rem;font-weight:400;color:var(--muted)">/ £${totalBudget}</span></div>
+            <div><span class="rag-status ${budgetRag}">${budgetStatus}</span></div>
+        </div>
+        <div class="rag-card">
+            <div class="rag-lbl">Events Delivered</div>
+            <div class="rag-val">${eventsDelivered}</div>
+            <div><span class="rag-status ${delRag}">${delStatus}</span></div>
+        </div>
+        <div class="rag-card">
+            <div class="rag-lbl">KPIs Captured</div>
+            <div class="rag-val">${totalKpis}</div>
+            <div><span class="rag-status ${totalKpis > 5 ? 'rag-green' : 'rag-amber'}">${totalKpis > 0 ? 'ACTIVE' : 'NEEDS FOCUS'}</span></div>
+        </div>
+    `;
+    
+    const remain = totalBudget - spendThisMonth;
+    const recsWrap = document.getElementById("mgr-recommendations");
+    let recsHtml = '';
+    
+    if(totalKpis < 3) {
+        recsHtml += `<div class="rec-item" onclick="goTo('operational')">📊 <strong>Low KPIs:</strong> Recommend running a 'Breakfast Drop-in' or 'Re-booking Info Session' to boost conversions.</div>`;
+    }
+    if(remain < 30) {
+        recsHtml += `<div class="rec-item" onclick="goTo('events')">💰 <strong>Low Budget:</strong> Recommend free events like 'Board Game Gauntlet' or 'Movie Night'.</div>`;
+    } else if (remain > 100) {
+        recsHtml += `<div class="rec-item" onclick="goTo('events')">🎨 <strong>Healthy Budget:</strong> High-impact creative events like 'Resin Art' or 'Tote Bag Workshop' are affordable right now.</div>`;
+    }
+    if(eventsDelivered === 0) {
+        recsHtml += `<div class="rec-item" onclick="goTo('events')">🚀 <strong>Start Strong:</strong> You haven't run an event this month. Schedule a quick 'Pizza Night' to build momentum.</div>`;
+    }
+    
+    if(!recsHtml) recsHtml = `<div class="rec-item">✅ You are tracking perfectly. Keep executing your scheduled roadmap.</div>`;
+    recsWrap.innerHTML = recsHtml;
+}
+
+function generateEOMReport() {
+    const currentMonthStr = new Date().toISOString().substring(0, 7);
+    const dLabel = new Date().toLocaleDateString('en-GB', {month:'long', year:'numeric'});
+    const logs = S.eventLog.filter(L => L.date.startsWith(currentMonthStr));
+    
+    const totalBudget = S.budget.monthly;
+    const spendThisMonth = logs.reduce((sum, L) => sum + (Number(L.cost) || 0), 0);
+    const totalAtt = logs.reduce((sum, L) => sum + (Number(L.attendance) || 0), 0);
+    const cpa = totalAtt > 0 ? (spendThisMonth / totalAtt).toFixed(2) : spendThisMonth;
+    
+    let rebook=0, summer=0, welfare=0;
+    logs.forEach(L => {
+        rebook += (L.kpi?.rebook || 0);
+        summer += (L.kpi?.summer || 0);
+        welfare += (L.kpi?.welfare || 0);
+    });
+    
+    let topEvt = null;
+    logs.forEach(L => {
+        if(!topEvt || (L.roi?.score > topEvt.roi?.score)) topEvt = L;
+    });
+
+    const report = `🏢 ${S.meta.buildingName.toUpperCase()} - MONTHLY REPORT
+📅 Month: ${dLabel}
+
+💷 FINANCIALS:
+• Monthly Budget: £${totalBudget}
+• Actual Spend: £${spendThisMonth}
+• Remaining: £${Math.max(0, totalBudget - spendThisMonth)}
+
+📊 KPIs & ENGAGEMENT:
+• Events Delivered: ${logs.length}
+• Total Attendance: ${totalAtt}
+• Avg Cost Per Attendee: £${cpa}
+• Re-booking Leads: ${rebook}
+• Summer Stay Leads: ${summer}
+• Welfare Checks: ${welfare}
+
+🏆 TOP PERFORMING EVENT:
+${topEvt ? `• ${topEvt.name} (ROI Grade: ${topEvt.roi?.grade || '-'}) 
+  ${topEvt.attendance} attendees | £${topEvt.cost} cost` : '• No events logged yet.'}
+
+📝 SUMMARY / NOTES:
+[Type any qualitative notes here...]`;
+
+    const out = document.getElementById("eom-report-output");
+    document.getElementById("eom-textarea").value = report;
+    out.style.display = "block";
+}
+
+/* ── SCHEDULING ── */
+function openSchedule(id){
+    closeModal();
+    const e = getEvent(id);
+    if(!e) return;
+    document.getElementById("sched-id").value = id;
+    const existing = S.schedules[id] || {};
+    document.getElementById("sched-date-input").value = existing.date || "";
+    document.getElementById("sched-time-input").value = existing.time || "18:00";
+    document.getElementById("sched-host-input").value = existing.host || "";
+    
+    document.getElementById("sched-chk-room").checked = false;
+    document.getElementById("sched-chk-risk").checked = false;
+    document.getElementById("sched-chk-budget").checked = false;
+    
+    document.getElementById("sched-auto-prep").checked = true;
+    document.getElementById("sched-overlay").classList.add("open");
+}
+function closeSchedule(){
+    document.getElementById("sched-overlay").classList.remove("open");
+}
+function saveSchedule(){
+    if(!document.getElementById("sched-chk-room").checked || 
+       !document.getElementById("sched-chk-risk").checked || 
+       !document.getElementById("sched-chk-budget").checked) {
+        alert("Compliance Check Required: Please ensure you have ticked all Readiness Checklist items before scheduling.");
+        return;
+    }
+
+    const id = document.getElementById("sched-id").value;
+    const d = document.getElementById("sched-date-input").value;
+    const t = document.getElementById("sched-time-input").value;
+    const h = document.getElementById("sched-host-input").value.trim();
+    const prep = document.getElementById("sched-auto-prep").checked;
+    
+    if(!d) { alert("Please provide a date."); return; }
+    
+    S.schedules[id] = { date: d, time: t, host: h };
+    S.statuses[id] = "scheduled";
+    saveState();
+    closeSchedule();
+    refreshAll();
+    
+    if(prep) {
+        document.getElementById("prep-event").value = id;
+        document.getElementById("prep-date").value = d;
+        genSchedule();
+        goTo('planner');
+    }
+}
+
+/* ── HELPERS ── */
+function catBg(c){return{competitive:"var(--amber-lt)",creative:"var(--coral-lt)",social:"var(--teal-lt)",cultural:"var(--purple-lt)",operational:"var(--ops-lt)"}[c]||"var(--page)"}
+function catLabel(c){return{competitive:"Competitive",creative:"Creative",social:"Social",cultural:"Cultural",operational:"Operational"}[c]||c}
+function fmtDate(d){return d.toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"short"})}
+function getBudgetTotal(){return S.budget.monthly*S.budget.months}
+function goTo(id){document.getElementById(id)?.scrollIntoView({behavior:"smooth",block:"start"})}
+function toggleEdit(id){document.getElementById(id).classList.toggle("open")}
+function copyText(id){const el=document.getElementById(id);const txt=el.value||el.textContent;navigator.clipboard.writeText(txt).then(()=>alert("Copied!"))}
+
+function getEvent(id){
+  const strId = String(id);
+  const base=BUILT_IN_EVENTS.find(e=>String(e.id)===strId);
+  const custom=S.events.custom.find(e=>String(e.id)===strId);
+  if(custom)return custom;
+  if(!base)return null;
+  const override=S.events.overrides[id]||S.events.overrides[strId]||{};
+  return{...base,...override};
+}
+
+function getActiveEvents(){
+  const hidden=new Set(S.events.hidden);
+  const builtIn=BUILT_IN_EVENTS.filter(e=>!hidden.has(e.id)).map(e=>getEvent(e.id));
+  const custom=S.events.custom.filter(e=>!hidden.has(e.id));
+  return[...builtIn,...custom];
+}
+
+function getAdjustedCost(evt){
+  if(!evt.materials||!evt.materials.length)return evt.cost;
+  let saved=0;
+  evt.materials.forEach((m,i)=>{
+    const isOwned=S.events.overrides[evt.id]?.ownedMats?.includes(i);
+    if(isOwned){const val=parseInt(String(m.c).replace(/[^0-9]/g,''))||0;saved+=val}
+  });
+  return Math.max(0,evt.cost-saved);
+}
+
+/* ── DARK MODE ── */
+function toggleDark(){
+  S.ui.darkMode=!S.ui.darkMode;saveState();applyDark();
+}
+function applyDark(){
+  document.documentElement.setAttribute("data-theme",S.ui.darkMode?"dark":"");
+  document.getElementById("dark-btn").textContent=S.ui.darkMode?"☀️":"🌙";
+}
+
+/* ── WELCOME ── */
+function showWelcome(){
+  document.getElementById("wm-rooms").innerHTML=DEFAULT_ROOMS.map(r=>`<div class="wm-chip${r.active?" active":""}" data-id="${r.id}" onclick="this.classList.toggle('active')">${r.icon} ${r.name}</div>`).join("");
+  document.getElementById("wm-equip").innerHTML=DEFAULT_EQUIPMENT.map(e=>`<div class="wm-chip" data-id="${e.id}" onclick="this.classList.toggle('active')">${e.name}</div>`).join("");
+  document.getElementById("welcome-overlay").classList.add("open");
+}
+function saveWelcome(){
+  S.meta.buildingName=document.getElementById("wm-building").value.trim()||"Unite Students";
+  S.meta.setupDone=true;
+  S.budget.monthly=parseInt(document.getElementById("wm-budget").value)||200;
+  S.budget.months=parseInt(document.getElementById("wm-months").value)||3;
+  const activeRooms=new Set([...document.querySelectorAll("#wm-rooms .wm-chip.active")].map(c=>c.dataset.id));
+  S.rooms=DEFAULT_ROOMS.map(r=>({...r,active:activeRooms.has(r.id)}));
+  const activeEquip=new Set([...document.querySelectorAll("#wm-equip .wm-chip.active")].map(c=>c.dataset.id));
+  S.equipment=DEFAULT_EQUIPMENT.map(e=>({...e,owned:activeEquip.has(e.id)}));
+  const gamesStr=document.getElementById("wm-games").value;
+  S.boardGames=gamesStr?gamesStr.split(",").map(g=>({name:g.trim(),owned:true})).filter(g=>g.name):[];
+  saveState();
+  document.getElementById("welcome-overlay").classList.remove("open");
+  applyProfile();refreshAll();
+}
+
+/* ── PROFILE & EQUIPMENT ── */
+function applyProfile(){
+  document.getElementById("hdr-building").textContent=S.meta.buildingName;
+  document.getElementById("hero-building").textContent=S.meta.buildingName;
+  document.title=S.meta.buildingName+" — Event Planning Hub";
+  document.getElementById("set-building").value=S.meta.buildingName;
+  document.getElementById("set-modified").textContent=S.meta.lastModified?new Date(S.meta.lastModified).toLocaleDateString("en-GB"):"—";
+  document.getElementById("be-monthly").value=S.budget.monthly;
+  document.getElementById("be-months").value=S.budget.months;
+  renderRooms();renderEquipment();populateVenueDropdown();
+}
+function updateBuilding(v){S.meta.buildingName=v.trim()||"Unite Students";saveState();applyProfile()}
+function renderRooms(){
+  const active=S.rooms.filter(r=>r.active);
+  document.getElementById("venue-cards").innerHTML=active.map(r=>`<div class="room-tag"><span class="r-icon">${r.icon}</span>${r.name}${r.id.startsWith("c_")?`<button class="r-del" onclick="deleteRoom('${r.id}')" title="Remove room">✕</button>`:''}</div>`).join("")||'<span style="font-size:.78rem;color:var(--muted)">No rooms — click Edit</span>';
+  document.getElementById("room-chips").innerHTML=S.rooms.map(r=>`<div class="room-chip${r.active?" active":""}" onclick="toggleRoom('${r.id}')">${r.icon} ${r.name}</div>`).join("");
+}
+function deleteRoom(id){if(!confirm("Remove this custom room?"))return;withUndo("Room removed.",()=>{S.rooms=S.rooms.filter(r=>r.id!==id);saveState();renderRooms();populateVenueDropdown()})}
+function toggleRoom(id){const r=S.rooms.find(x=>x.id===id);if(r){r.active=!r.active;saveState();renderRooms();populateVenueDropdown()}}
+function addCustomRoom(){const v=document.getElementById("custom-room").value.trim();if(!v)return;S.rooms.push({id:"c_"+Date.now(),name:v,icon:"📍",desc:"Custom",active:true});document.getElementById("custom-room").value="";saveState();renderRooms();populateVenueDropdown()}
+function populateVenueDropdown(){document.getElementById("mgr-venue").innerHTML=S.rooms.filter(r=>r.active).map(r=>`<option value="${r.name}">${r.name}</option>`).join("")+'<option value="Outdoors">Outdoors</option><option value="TBC">TBC</option>'}
+function renderEquipment(){document.getElementById("equip-chips").innerHTML=S.equipment.map(e=>`<div class="wm-chip${e.owned?" active":""}" onclick="toggleEquip('${e.id}')">${e.name}</div>`).join("")}
+function toggleEquip(id){const e=S.equipment.find(x=>x.id===id);if(e){e.owned=!e.owned;saveState();renderEquipment()}}
+function addCustomEquip(){
+  const val = document.getElementById("new-equip").value.trim();
+  if(val){
+    if(!S.equipment) S.equipment = [...DEFAULT_EQUIPMENT];
+    S.equipment.push({id: "c_eq_"+Date.now(), name: val, owned: true});
+    document.getElementById("new-equip").value = "";
+    saveState(); renderEquipment();
+  }
+}
+
+/* ── BUDGET ── */
+function saveBudget(){S.budget.monthly=parseInt(document.getElementById("be-monthly").value)||200;S.budget.months=parseInt(document.getElementById("be-months").value)||3;saveState();document.getElementById("budget-edit").classList.remove("open");refreshBudget()}
+function toggleBudgetEvt(id){
+  const strId = String(id);
+  const idx = S.budgetSelections.findIndex(x => String(x) === strId);
+  if(idx > -1) S.budgetSelections.splice(idx, 1);
+  else S.budgetSelections.push(id);
+  saveState(); renderBudgetList();
+}
+function refreshBudget(){
+  const BT=getBudgetTotal();
+  let spent=0,reuse=0,count=0;
+  const all=getActiveEvents();
+  S.budgetSelections.forEach(id=>{const e=all.find(x=>String(x.id)===String(id));if(e){spent+=getAdjustedCost(e);count++;reuse+=e.reusable||0}});
+  
+  let manualSpent=0;
+  (S.budget.manualSpend || []).forEach(m => manualSpent += m.cost);
+  spent += manualSpent;
+
+  const remain=BT-spent;const pct=Math.min(100,Math.round(spent/BT*100));
+  const bar=document.getElementById("budget-bar");bar.style.width=pct+"%";bar.className="budget-fill"+(spent>BT?" over":"");
+  document.getElementById("budget-pct").textContent=pct+"% used";
+  document.getElementById("spent-display").textContent=spent;
+  document.getElementById("remaining-display").textContent=Math.max(0,remain);
+  document.getElementById("budget-monthly").textContent=S.budget.monthly;
+  document.getElementById("budget-total").textContent=BT;
+  document.getElementById("bs-count").textContent=count;
+  document.getElementById("bs-spent").textContent="£"+spent;
+  const rv=document.getElementById("bs-remain");rv.textContent="£"+remain;rv.className="bs-val"+(remain<0?" red":"");
+  document.getElementById("bs-reuse").textContent="£"+reuse;
+  const avgCost=all.length?Math.round(all.reduce((s,e)=>s+getAdjustedCost(e),0)/all.length):0;
+  document.getElementById("bs-capacity").textContent="~"+(avgCost>0?Math.floor(Math.max(0,remain)/avgCost):0);
+  
+  const done=S.eventLog.length;const totalAtt=S.eventLog.reduce((s,e)=>s+e.attendance,0);
+  document.getElementById("stats-bar").innerHTML=[
+    {v:"£"+BT,l:"Total Budget"},{v:done,l:"Events Run"},{v:avgCost?"£"+avgCost:"—",l:"Avg Cost"},
+    {v:avgCost>0?"~"+Math.floor(Math.max(0,remain)/avgCost):"—",l:"Events Possible"},{v:done?Math.round(totalAtt/done):"—",l:"Avg Attendance"}
+  ].map(s=>`<div class="stat-card"><div class="stat-val">${s.v}</div><div class="stat-lbl">${s.l}</div></div>`).join("");
+}
+function renderBudgetList(){
+  const el=document.getElementById("budget-events");
+  el.innerHTML=getActiveEvents().filter(e=>e.type!=="operational").map(e=>{
+    const on=S.budgetSelections.some(x => String(x) === String(e.id));
+    return`<div class="bev${on?" on":""}" onclick="toggleBudgetEvt(${JSON.stringify(e.id)})"><span class="bev-name">${e.icon} ${e.name}</span><span class="bev-cost">£${getAdjustedCost(e)}</span></div>`
+  }).join("");
+  renderManualSpend();
+  renderMonthlyLedger();
+  refreshBudget();
+}
+function renderManualSpend(){
+  const list = document.getElementById("manual-spend-list");
+  if(!S.budget.manualSpend) S.budget.manualSpend = [];
+  list.innerHTML = S.budget.manualSpend.map((ms, i) =>
+      `<div style="display:flex; justify-content: space-between; align-items: center; background: var(--page); padding: .35rem .7rem; border: 1px solid var(--border); border-radius: 7px; font-size: .8rem;">
+          <div style="display:flex; align-items:center; flex-wrap:wrap">
+            <span style="font-weight: 500">${ms.name}</span>
+            ${ms.notes ? `<span style="font-size:.72rem;color:var(--muted);margin-left:.4rem">(${ms.notes})</span>` : ''}
+          </div>
+          <div style="display:flex; align-items: center; gap: .6rem; flex-shrink:0">
+              <span style="font-weight: 600; color:var(--teal)">£${ms.cost}</span>
+              <button class="inv-rm" onclick="S.budget.manualSpend.splice(${i}, 1); saveState(); refreshBudget(); renderManualSpend();">✕</button>
+          </div>
+      </div>`
+  ).join('');
+}
+function addManualSpend(){
+  const n = document.getElementById("ms-name").value.trim();
+  const c = parseInt(document.getElementById("ms-cost").value);
+  const nts = document.getElementById("ms-notes").value.trim();
+  if(n && !isNaN(c)) {
+      if(!S.budget.manualSpend) S.budget.manualSpend = [];
+      S.budget.manualSpend.push({name: n, cost: c, notes: nts});
+      document.getElementById("ms-name").value = "";
+      document.getElementById("ms-cost").value = "";
+      document.getElementById("ms-notes").value = "";
+      saveState(); renderManualSpend(); refreshBudget();
+  }
+}
+
+function renderMonthlyLedger() {
+  const sel = document.getElementById("ledger-month-sel");
+  const logs = S.eventLog || [];
+  
+  const months = [...new Set(logs.map(L => L.date.substring(0, 7)))].sort().reverse();
+  if(!months.length) {
+      sel.innerHTML = '<option>No data</option>';
+      document.getElementById("monthly-ledger-list").innerHTML = '<div class="empty-msg" style="padding:1rem;font-size:.75rem">No completed events yet. When you log an event as complete, it will appear here.</div>';
+      return;
+  }
+  
+  const cur = sel.value;
+  sel.innerHTML = months.map(m => {
+      const d = new Date(m + "-01T00:00:00");
+      const label = d.toLocaleDateString('en-GB', {month:'long', year:'numeric'});
+      return `<option value="${m}" ${cur===m?'selected':''}>${label}</option>`;
+  }).join("");
+  
+  const activeMonth = sel.value;
+  const activeLogs = logs.filter(L => L.date.startsWith(activeMonth));
+  const total = activeLogs.reduce((sum, L) => sum + (Number(L.cost) || 0), 0);
+  
+  document.getElementById("monthly-ledger-list").innerHTML = activeLogs.map(L => `
+      <div style="display:flex; justify-content:space-between; align-items:center; padding:.5rem 0; border-bottom:1px solid var(--border); font-size:.8rem">
+          <div>
+              <div style="font-weight:600;display:flex;align-items:center">${L.name} <span class="roi-badge roi-${L.roi?.grade||'-'}">${L.roi?.grade||'-'}</span></div>
+              <div style="font-size:.7rem;color:var(--muted)">${L.date} · ${L.attendance} attended · Host: ${L.host || 'Unknown'}</div>
+          </div>
+          <div style="font-weight:600; color:var(--teal)">£${L.cost || 0}</div>
+      </div>
+  `).join("") + `<div style="display:flex; justify-content:space-between; padding-top:.7rem; font-weight:600; font-size:.95rem"><span>Total Actual Spend:</span><span style="color:var(--coral)">£${total}</span></div>`;
+}
+
+/* ── EVENTS ── */
+let activeFilter="all",activeType="all",showFavs=false,evLibExpanded=false;
+function expandLibrary(){evLibExpanded=true;renderEvents()}
+function renderFilterBar(){
+  const cats=["all","social","creative","competitive","cultural","operational"];
+  const types=["all","oneoff","recurring","tournament"];
+  document.getElementById("filter-bar").innerHTML=
+    cats.map(c=>`<div class="filter-chip${activeFilter===c?" active":""}" onclick="activeFilter='${c}';evLibExpanded=true;renderEvents()">${c==="all"?"All":catLabel(c)}</div>`).join("")+
+    '<div class="filter-sep"></div>'+
+    types.map(t=>`<div class="filter-chip${activeType===t?" active":""}" onclick="activeType='${t}';evLibExpanded=true;renderEvents()">${t==="all"?"All types":t[0].toUpperCase()+t.slice(1)}</div>`).join("")+
+    `<div class="filter-sep"></div><div class="filter-chip${showFavs?" active":""}" onclick="showFavs=!showFavs;evLibExpanded=true;renderEvents()">⭐ Favourites</div>`;
+}
+function renderEvents(){
+  renderFilterBar();
+  let evts=getActiveEvents();
+  if(activeFilter!=="all")evts=evts.filter(e=>e.cat===activeFilter);
+  if(activeType!=="all")evts=evts.filter(e=>e.type===activeType);
+  if(showFavs)evts=evts.filter(e=>S.events.favourites.includes(e.id));
+  const totalCount=evts.length;
+  const isFiltered=activeFilter!=="all"||activeType!=="all"||showFavs;
+  // Progressive disclosure: show 6 events by default unless expanded or filtering
+  const showAll=evLibExpanded||isFiltered||totalCount<=6;
+  const visible=showAll?evts:evts.slice(0,6);
+  const g=document.getElementById("events-grid");
+  g.innerHTML=visible.map(e=>{
+    const st=S.statuses[e.id]||"none";const isFav=S.events.favourites.includes(e.id);
+    const isCustom=S.events.custom.find(c=>c.id===e.id);
+    const hasEquipIssue=e.requiresEquipment&&!S.equipment.find(eq=>eq.id===e.requiresEquipment&&eq.owned);
+    const typePill=e.type!=="oneoff"?`<span class="type-pill ${e.type}">${e.type}</span>`:"";
+    let badgeText = STATUS_LABELS[st];
+    if(st === "scheduled" && S.schedules[e.id]?.date) {
+        badgeText = "Scheduled (" + new Date(S.schedules[e.id].date).toLocaleDateString('en-GB',{month:'short',day:'numeric'}) + ")";
+    }
+    return`<div class="event-card ${e.cat}" onclick="openModal(${JSON.stringify(e.id)})">
+      <div class="ec-top"><div class="ec-icon">${e.icon}</div><div class="ec-top-right"><div class="ec-badges"><span class="ec-badge">${catLabel(e.cat)}</span>${typePill}${isCustom?'<span class="custom-tag">custom</span>':''}</div><div class="status-badge ${st}">${badgeText}</div></div></div>
+      <div class="ec-name"><button class="fav-btn${isFav?" active":""}" onclick="toggleFav(${JSON.stringify(e.id)},event)">${isFav?"⭐":"☆"}</button> ${e.name}${hasEquipIssue?' <span style="font-size:.65rem;color:var(--coral)">⚠ needs equipment</span>':''}</div>
+      <div class="ec-desc">${e.short}</div>
+      <div class="ec-meta"><span class="ec-meta-item">⏱ ${e.duration}</span><span class="ec-meta-item">👥 ${e.people}</span><span class="ec-meta-item" style="font-weight:600">£${getAdjustedCost(e)}</span></div>
+      <div class="ec-footer"><span class="ec-venue">📍 ${e.venue}</span><button class="btn-detail" onclick="openModal(${JSON.stringify(e.id)});event.stopPropagation()">Details →</button></div></div>`
+  }).join("");
+  const expandEl=document.getElementById("evlib-expand");
+  if(!showAll&&totalCount>6){expandEl.style.display="flex";expandEl.querySelector("button").textContent=`View all ${totalCount} events`}
+  else{expandEl.style.display="none"}
+  document.getElementById("events-lbl").textContent=(showAll?totalCount:visible.length+" of "+totalCount)+" Event"+(totalCount!==1?"s":"");
+  const hn=S.events.hidden.length;document.getElementById("btn-hidden").style.display=hn?"inline-flex":"none";document.getElementById("hidden-count").textContent=hn;
+}
+function toggleFav(id,ev){ev.stopPropagation();const idx=S.events.favourites.indexOf(id);if(idx>-1)S.events.favourites.splice(idx,1);else S.events.favourites.push(id);saveState();renderEvents()}
+
+/* ── MODAL ── */
+function openModal(id){
+  const e=getEvent(id);if(!e)return;
+  document.getElementById("m-icon").style.background=catBg(e.cat);document.getElementById("m-icon").textContent=e.icon;
+  document.getElementById("m-title").textContent=e.name;
+  document.getElementById("m-sub").textContent=[catLabel(e.cat),e.duration,e.people+" people","£"+getAdjustedCost(e),e.venue].join(" · ");
+  const ownedMats=S.events.overrides[id]?.ownedMats||[];
+  const mats=e.materials?e.materials.map((m,i)=>{
+    const owned=ownedMats.includes(i);
+    return`<li class="mat-item"><span class="mat-name">${m.n}</span><span class="mat-cost${owned?" owned":""}">${m.c}</span>${m.reuse?'<span class="mat-reuse">Reusable</span>':''}${m.url?`<a href="${m.url}" target="_blank" class="mat-link">Amazon ↗</a>`:''}<button class="mat-owned-toggle${owned?" on":""}" onclick="toggleOwnedMat(${JSON.stringify(id)},${i})">${owned?"✓ Owned":"Own it?"}</button></li>`
+  }).join(""):"";
+  const savedNotes=S.notes[id]||"";
+  const prizeHtml=`<div class="prize-editor"><label>Prize model</label><select onchange="updatePrize(${JSON.stringify(id)},'model',this.value)"><option value="none"${(e.prize?.model||"none")==="none"?" selected":""}>None</option><option value="recognition"${e.prize?.model==="recognition"?" selected":""}>Recognition</option><option value="voucher"${e.prize?.model==="voucher"?" selected":""}>Voucher</option><option value="pot"${e.prize?.model==="pot"?" selected":""}>Prize pot</option><option value="other"${e.prize?.model==="other"?" selected":""}>Other</option></select><label>Description</label><input value="${(e.prize?.desc||"").replace(/"/g,'&quot;')}" onchange="updatePrize(${JSON.stringify(id)},'desc',this.value)"><div class="prize-ideas">💡 Ideas: Display winner's work in lobby · Photo on noticeboard · Name on leaderboard · Social media shout-out · Champion title</div></div>`;
+  const opsSection=e.type==="operational"?`<div class="ms"><div class="ms-title">Goal & KPIs</div><p class="desc-text"><strong>Goal:</strong> ${e.goal||"—"}</p><p class="desc-text"><strong>KPI notes:</strong> ${e.kpiNotes||"—"}</p>${e.talkingPoints?'<div style="margin-top:.5rem"><strong style="font-size:.78rem">Conversation prompts:</strong><ul style="margin-top:.3rem;padding-left:1.2rem;font-size:.82rem;color:var(--muted)">'+e.talkingPoints.map(t=>'<li>'+t+'</li>').join('')+'</ul></div>':''}</div>`:"";
+  
+  const actionHtml = `
+  <div class="action-box">
+      <button class="btn-action sched" onclick="openSchedule(${JSON.stringify(id)})">📅 Schedule Event</button>
+      <button class="btn-action comp" onclick="openCompletion(${JSON.stringify(id)})">✅ Log as Complete</button>
+  </div>`;
+
+  document.getElementById("m-body").innerHTML=`
+    <div class="ms"><div class="ms-title">About</div><p class="desc-text">${e.full}</p></div>
+    <div class="ms"><div class="ms-title">Quick info</div><div class="info-row"><div class="info-pill"><strong>Duration</strong>${e.duration}</div><div class="info-pill"><strong>People</strong>${e.people}</div><div class="info-pill"><strong>Cost</strong>£${getAdjustedCost(e)}</div><div class="info-pill"><strong>Reusable</strong>£${e.reusable||0}</div><div class="info-pill"><strong>Venue</strong>${e.venue}</div></div></div>
+    ${opsSection}
+    ${mats?`<div class="ms"><div class="ms-title">Materials</div><ul class="mat-list">${mats}</ul><div class="cost-block"><div><div style="font-size:.7rem;opacity:.4;margin-bottom:.15rem">Adjusted cost</div><div class="cost-num">£${getAdjustedCost(e)}</div></div><div class="cost-note">£${e.reusable||0} reusable. Owned items deducted.</div></div></div>`:""}
+    <div class="ms"><div class="ms-title">Prize</div>${prizeHtml}</div>
+    ${e.allergy&&e.allergy!=="N/A"?`<div class="ms"><div class="ms-title">Allergen Notes</div><p class="desc-text">${e.allergy}</p></div>`:""}
+    ${e.tip?`<div class="ms"><div class="ms-title">Tips</div><div class="tip-box">${e.tip}</div></div>`:""}
+    <div class="notes-section"><div style="font-size:.82rem;font-weight:600;margin-bottom:.4rem">Notes</div><textarea class="notes-textarea" id="notes-${id}" placeholder="Log notes for future planning...">${savedNotes}</textarea><button class="btn-save" onclick="S.notes[${JSON.stringify(id)}]=document.getElementById('notes-'+${JSON.stringify(id)}).value;saveState();alert('Notes saved!')">Save</button></div>
+    ${actionHtml}`;
+  document.getElementById("modal-overlay").classList.add("open");document.body.style.overflow="hidden";
+}
+function closeModal(){document.getElementById("modal-overlay").classList.remove("open");document.body.style.overflow=""}
+function toggleOwnedMat(evtId,matIdx){
+  if(!S.events.overrides[evtId])S.events.overrides[evtId]={};
+  if(!S.events.overrides[evtId].ownedMats)S.events.overrides[evtId].ownedMats=[];
+  const arr=S.events.overrides[evtId].ownedMats;
+  const idx=arr.indexOf(matIdx);if(idx>-1)arr.splice(idx,1);else arr.push(matIdx);
+  saveState();openModal(evtId);
+}
+function updatePrize(evtId,field,val){
+  if(!S.events.overrides[evtId])S.events.overrides[evtId]={};
+  if(!S.events.overrides[evtId].prize)S.events.overrides[evtId].prize={...(BUILT_IN_EVENTS.find(e=>String(e.id)===String(evtId))?.prize||{model:"none",desc:""})};
+  S.events.overrides[evtId].prize[field]=val;saveState();
+}
+
+/* ── COMPLETION ── */
+let compRating=0;
+function openCompletion(id, overrideName = null){
+  closeModal(); 
+  let evName = overrideName;
+  if(!evName) {
+      const e = getEvent(id);
+      if(e) evName = e.name;
+  }
+  if(!evName) return;
+  
+  document.getElementById("comp-id").value=id;
+  document.getElementById("comp-name").value=evName;
+  
+  const sch = S.schedules[id];
+  document.getElementById("comp-date").value=sch?.date || new Date().toISOString().split("T")[0];
+  document.getElementById("comp-host").value=sch?.host || "";
+  
+  document.getElementById("comp-att").value="";
+  document.getElementById("comp-cost").value="";
+  document.getElementById("comp-notes").value="";
+  
+  document.getElementById("comp-kpi-rebook").value="";
+  document.getElementById("comp-kpi-summer").value="";
+  document.getElementById("comp-kpi-welfare").value="";
+  
+  compRating=0;
+  renderCompStars();
+  document.getElementById("comp-overlay").classList.add("open");
+}
+function renderCompStars(){document.getElementById("comp-stars").innerHTML=[1,2,3,4,5].map(i=>`<span class="star${i<=compRating?" active":""}" onclick="compRating=${i};renderCompStars()">★</span>`).join("")}
+function saveComp(){
+  const entryId = document.getElementById("comp-id").value;
+  const cost = parseInt(document.getElementById("comp-cost").value) || 0;
+  const att = parseInt(document.getElementById("comp-att").value) || 0;
+  
+  const kpis = {
+      rebook: parseInt(document.getElementById("comp-kpi-rebook").value) || 0,
+      summer: parseInt(document.getElementById("comp-kpi-summer").value) || 0,
+      welfare: parseInt(document.getElementById("comp-kpi-welfare").value) || 0
+  };
+  
+  const roi = calculateROI(att, cost, kpis);
+  
+  const entry={
+    id: entryId,
+    name: document.getElementById("comp-name").value,
+    date: document.getElementById("comp-date").value,
+    host: document.getElementById("comp-host").value.trim(),
+    attendance: att,
+    cost: cost,
+    rating: compRating,
+    notes: document.getElementById("comp-notes").value.trim(),
+    kpi: kpis,
+    roi: roi
+  };
+  S.eventLog.push(entry);
+  
+  S.statuses[entryId] = "done";
+  if(S.schedules[entryId]) delete S.schedules[entryId];
+  
+  S.budgetSelections = S.budgetSelections.filter(x => String(x) !== String(entryId));
+  
+  saveState(); closeComp(); refreshAll();
+}
+function closeComp(){document.getElementById("comp-overlay").classList.remove("open")}
+
+/* ── ROADMAP ── */
+function renderRoadmap(){
+  const cards=document.getElementById("season-cards");
+  const seasons=S.seasons;if(!seasons.length)return;
+  const pc=["pc1","pc2","pc3","pc4"];
+  cards.innerHTML=seasons.map((s,i)=>`<div class="phase-card ${pc[i]||"pc1"}"><div class="pc-badge">${s.name}</div><div class="pc-title">${s.title}</div><div class="pc-dates"><input type="date" value="${s.start}" onchange="S.seasons[${i}].start=this.value;saveState();renderRoadmap()"> → <input type="date" value="${s.end}" onchange="S.seasons[${i}].end=this.value;saveState();renderRoadmap()"></div><ul class="pc-events">${s.events.map(e=>`<li class="pc-ev">${e}</li>`).join("")}</ul><div class="pc-freq">🎯 ${s.target}</div><div class="pc-note">${s.note}</div></div>`).join("");
+}
+
+/* ── RECURRING ── */
+function renderRecurring(){
+  const wrap=document.getElementById("recurring-list");
+  const items=[
+    {key:"movieNight",name:"🎬 Movie Night",id:101},
+    {key:"studyNight",name:"📚 Study Night",id:102},
+    {key:"pool",name:"🎱 Pool",id:201},
+    {key:"tableTennis",name:"🏓 Table Tennis",id:202},
+    {key:"marioKart",name:"🎮 Mario Kart",id:203}
+  ];
+  wrap.innerHTML=items.map(item=>{
+    const cfg=S.recurring[item.key];
+    const needsConsole=item.key==="marioKart"&&!S.equipment.find(e=>e.id==="switch"&&e.owned);
+    return`<div class="rec-row">
+      <input type="checkbox" ${cfg.enabled?"checked":""} onchange="S.recurring.${item.key}.enabled=this.checked;saveState();renderRecurring()">
+      <div class="rec-row-name">${item.name}${needsConsole?'<span class="rec-equip-note">Check console + controllers</span>':''}</div>
+      ${cfg.enabled?`<div class="rec-row-detail"><select onchange="S.recurring.${item.key}.day=this.value;saveState();renderMiniCal()">${["Mon","Tue","Wed","Thu","Fri","Sat","Sun"].map((d,di)=>{const full=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"][di];return`<option value="${full}"${cfg.day===full?" selected":""}>${d}</option>`}).join("")}</select><input type="time" value="${cfg.time||"18:00"}" onchange="S.recurring.${item.key}.time=this.value;saveState()"><span>£${getEvent(item.id)?.cost||0}</span></div>`:`<span style="font-size:.72rem;color:var(--muted)">Off</span>`}
+    </div>`
+  }).join("");
+  renderMiniCal();
+  renderMoviePlanner();
+}
+function renderMiniCal(){
+  const cal=document.getElementById("mini-cal");const now=new Date();const y=now.getFullYear();const m=now.getMonth();
+  const firstDay=new Date(y,m,1).getDay();const daysInMonth=new Date(y,m+1,0).getDate();
+  const dayNames=["Su","Mo","Tu","We","Th","Fr","Sa"];
+  const enabledDays=new Set();
+  Object.values(S.recurring).forEach(r=>{if(r.enabled&&r.day){enabledDays.add(r.day)}});
+  let html=dayNames.map(d=>`<div class="mini-cal-hd">${d}</div>`).join("");
+  for(let i=0;i<(firstDay===0?6:firstDay-1);i++)html+=`<div class="mini-cal-day"></div>`;
+  for(let d=1;d<=daysInMonth;d++){
+    const date=new Date(y,m,d);const dayName=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"][date.getDay()];
+    const isToday=d===now.getDate();const hasEvent=enabledDays.has(dayName);
+    html+=`<div class="mini-cal-day${hasEvent?" has-event":""}${isToday?" today":""}">${d}</div>`;
+  }
+  cal.innerHTML=html;
+}
+
+/* ── MOVIE NIGHT PLANNER ── */
+function renderMoviePlanner(){
+  const wrap=document.getElementById("movie-planner-wrap");
+  if(!S.recurring.movieNight.enabled){wrap.innerHTML="";return}
+  const now=new Date();const lineups=S.recurring.movieNight.lineups||{};
+  // Generate 8 weeks of slots
+  const weeks=[];
+  for(let w=0;w<8;w++){
+    const d=new Date(now);d.setDate(d.getDate()+(w*7));
+    const key=d.toISOString().split("T")[0];
+    const existing=lineups[key]||{};
+    weeks.push({key,date:d,title:existing.title||"",genre:existing.genre||"",status:existing.status||"suggestion"});
+  }
+  wrap.innerHTML=`<div class="movie-planner">
+    <div class="movie-planner-title">🎬 Movie Night Lineup — Next 8 Weeks</div>
+    <div class="movie-row"><span class="movie-row-hd">Week</span><span class="movie-row-hd">Film</span><span class="movie-row-hd">Genre</span><span class="movie-row-hd">Status</span></div>
+    ${weeks.map(w=>{
+      const dateLabel=w.date.toLocaleDateString("en-GB",{day:"numeric",month:"short"});
+      return`<div class="movie-row">
+        <span style="font-size:.72rem;font-weight:600;color:var(--muted)">${dateLabel}</span>
+        <input value="${w.title.replace(/"/g,'&quot;')}" placeholder="Film title..." onchange="saveMovieSlot('${w.key}','title',this.value)">
+        <select onchange="saveMovieSlot('${w.key}','genre',this.value)">
+          <option value=""${!w.genre?' selected':''}>Genre</option>
+          ${["Comedy","Drama","Action","Horror","Sci-Fi","Animation","Documentary","International"].map(g=>`<option${w.genre===g?' selected':''}>${g}</option>`).join("")}
+        </select>
+        <select onchange="saveMovieSlot('${w.key}','status',this.value)">
+          <option value="suggestion"${w.status==="suggestion"?' selected':''}>💡</option>
+          <option value="confirmed"${w.status==="confirmed"?' selected':''}>✅</option>
+          <option value="watched"${w.status==="watched"?' selected':''}>👁</option>
+        </select>
+      </div>`
+    }).join("")}
+    <div style="font-size:.68rem;color:var(--muted);margin-top:.4rem;display:flex;justify-content:space-between;align-items:center">
+      <span>💡 = suggestion · ✅ = confirmed · 👁 = watched</span>
+      <button class="btn-sm" onclick="exportMoviePDF()" style="font-size:.68rem">📄 Export schedule</button>
+    </div>
+  </div>`;
+}
+function saveMovieSlot(key,field,val){
+  if(!S.recurring.movieNight.lineups)S.recurring.movieNight.lineups={};
+  if(!S.recurring.movieNight.lineups[key])S.recurring.movieNight.lineups[key]={};
+  S.recurring.movieNight.lineups[key][field]=val;
+  saveState();
+}
+function exportMoviePDF(){
+  const lineups=S.recurring.movieNight.lineups||{};
+  const filled=Object.entries(lineups).filter(([k,v])=>v.title).sort(([a],[b])=>a.localeCompare(b));
+  if(filled.length<2){alert("Add at least 2 films to export.");return}
+  const rows=filled.map(([k,v])=>{
+    const d=new Date(k);const dl=d.toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"short"});
+    const st={suggestion:"💡 Suggestion",confirmed:"✅ Confirmed",watched:"👁 Watched"}[v.status]||"";
+    return`<tr><td style="padding:6px 10px;border-bottom:1px solid #ddd;font-size:13px">${dl}</td><td style="padding:6px 10px;border-bottom:1px solid #ddd;font-size:13px;font-weight:600">${v.title}</td><td style="padding:6px 10px;border-bottom:1px solid #ddd;font-size:13px;color:#666">${v.genre||""}</td><td style="padding:6px 10px;border-bottom:1px solid #ddd;font-size:13px">${st}</td></tr>`
+  }).join("");
+  const w=window.open("","_blank");
+  w.document.write(`<html><head><title>Movie Night Schedule — ${S.meta.buildingName}</title><style>body{font-family:Arial,sans-serif;padding:40px;color:#1a1a2e}h1{font-size:20px;margin-bottom:4px}p{color:#888;font-size:13px;margin-bottom:16px}table{width:100%;border-collapse:collapse}th{text-align:left;padding:6px 10px;border-bottom:2px solid #1a1a2e;font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#888}@media print{body{padding:20px}}</style></head><body><h1>🎬 Movie Night Schedule</h1><p>${S.meta.buildingName} · ${S.recurring.movieNight.day}s at ${S.recurring.movieNight.time}</p><table><thead><tr><th>Date</th><th>Film</th><th>Genre</th><th>Status</th></tr></thead><tbody>${rows}</tbody></table><script>setTimeout(()=>window.print(),300)<\/script></body></html>`);
+  w.document.close();
+}
+
+/* ── TOURNAMENTS ── */
+let tempTournPlayers = [];
+
+function renderTournPlayers() {
+    const list = document.getElementById("tm-players-list");
+    list.innerHTML = tempTournPlayers.map((p, i) => `
+        <div style="display:flex; gap:.4rem; margin-bottom:.35rem">
+            <input class="mgr-input" value="${p}" onchange="tempTournPlayers[${i}]=this.value" placeholder="Player name" style="height:32px">
+            <button class="btn-rm" onclick="tempTournPlayers.splice(${i},1); renderTournPlayers()">✕</button>
+        </div>
+    `).join("");
+}
+
+function addTournPlayer() {
+    tempTournPlayers.push("");
+    renderTournPlayers();
+}
+
+function openTournModal(id = null){
+  if(id) {
+      const t = S.tournaments.active.find(x => x.id === id);
+      document.getElementById("tm-title").textContent = "Edit Tournament";
+      document.getElementById("tm-id").value = id;
+      document.getElementById("tm-name").value = t.name;
+      document.getElementById("tm-game").value = t.game;
+      document.getElementById("tm-format").value = t.format;
+      tempTournPlayers = [...t.players];
+  } else {
+      document.getElementById("tm-title").textContent = "Create Tournament";
+      document.getElementById("tm-id").value = "";
+      document.getElementById("tm-name").value = "";
+      document.getElementById("tm-game").value = "";
+      document.getElementById("tm-format").value = "knockout";
+      tempTournPlayers = ["", ""];
+  }
+  renderTournPlayers();
+  document.getElementById("tourn-overlay").classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+
+function closeTournModal(){ 
+  document.getElementById("tourn-overlay").classList.remove("open"); 
+  document.body.style.overflow = "";
+}
+
+function saveTournament(){
+  const id = document.getElementById("tm-id").value;
+  const name = document.getElementById("tm-name").value.trim();
+  const game = document.getElementById("tm-game").value.trim() || "other";
+  const format = document.getElementById("tm-format").value;
+  const players = tempTournPlayers.map(p => p.trim()).filter(p => p);
+
+  if(!name || players.length < 2) { alert("Please provide a name and at least 2 players."); return; }
+
+  let t = id ? S.tournaments.active.find(x => x.id === id) : null;
+  let rebuild = false;
+
+  if(t) {
+      if(t.format !== format || JSON.stringify(t.players) !== JSON.stringify(players)) {
+          if(!confirm("Changing the player list or format will reset current tournament bracket progress. Continue?")) return;
+          rebuild = true;
+      }
+      t.name = name; t.game = game; t.format = format; t.players = players;
+  } else {
+      t = { id: "t_" + Date.now(), name, game, format, players, matches: [], status: "active", leaderboard: [] };
+      S.tournaments.active.push(t);
+      rebuild = true;
+  }
+
+  if(rebuild) {
+      t.matches = [];
+      t.leaderboard = players.map(p => ({name: p, wins: 0, played: 0}));
+      if(format === "knockout") {
+          const shuffled = [...players].sort(() => Math.random() - .5);
+          for(let i=0; i<shuffled.length; i+=2) {
+              t.matches.push({p1: shuffled[i], p2: shuffled[i+1] || "BYE", winner: null, round: 1});
+          }
+      } else {
+          for(let i=0; i<players.length; i++) {
+              for(let j=i+1; j<players.length; j++) {
+                  t.matches.push({p1: players[i], p2: players[j], winner: null, round: 1});
+              }
+          }
+      }
+  }
+
+  saveState(); renderTournaments(); closeTournModal();
+}
+
+function setWinner(tId,mIdx,winner){
+  const t=S.tournaments.active.find(x=>x.id===tId);if(!t)return;
+  t.matches[mIdx].winner=winner;
+  
+  t.leaderboard=t.players.map(p=>({name:p,wins:t.matches.filter(m=>m.winner===p).length,played:t.matches.filter(m=>(m.p1===p||m.p2===p)&&m.winner).length}));
+  t.leaderboard.sort((a,b)=>b.wins-a.wins);
+  
+  const allDone=t.matches.every(m=>m.winner);
+  if(allDone&&t.format==="knockout"&&t.matches.filter(m=>m.round===Math.max(...t.matches.map(x=>x.round))).length>1){
+    const lastRound=Math.max(...t.matches.map(x=>x.round));
+    const winners=t.matches.filter(m=>m.round===lastRound).map(m=>m.winner);
+    // AUDIT FIX: Ensure trailing odd numbers advance appropriately in bracket loop
+    for(let i=0;i<winners.length;i+=2)t.matches.push({p1:winners[i],p2:winners[i+1]||"BYE",winner:null,round:lastRound+1});
+  }
+  if(allDone){
+    const remaining=t.matches.filter(m=>!m.winner);
+    if(remaining.length===0){
+      t.status="complete";
+      S.tournaments.history.push({name:t.name,game:t.game,date:new Date().toISOString().split("T")[0],winner:t.leaderboard[0]?.name,runnerUp:t.leaderboard[1]?.name});
+      openCompletion(t.id, t.name);
+    }
+  }
+  saveState();renderTournaments();
+}
+
+function deleteChampion(index) {
+    if(!confirm("Remove this entry from the Champion's Wall?")) return;
+    withUndo("Champion entry removed.",()=>{
+        S.tournaments.history.splice(index, 1);
+        saveState(); renderTournaments();
+    });
+}
+
+function renderTournaments(){
+  const wrap=document.getElementById("tournaments-list");
+  const active=S.tournaments.active.filter(t=>t.status==="active");
+  wrap.innerHTML=active.length?active.map(t=>{
+    const curRound=Math.max(...t.matches.map(m=>m.round));
+    const roundMatches=t.matches.filter(m=>m.round===curRound);
+    return`<div class="tourn-card"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem"><div style="font-weight:600;font-size:.9rem">${t.name} <span style="font-size:.7rem;color:var(--muted)">${t.format} · ${t.game}</span></div><div style="display:flex;gap:.5rem;align-items:center;"><button class="btn-sm" onclick="openTournModal('${t.id}')">✏ Edit</button><span style="font-size:.72rem;color:var(--amber);font-weight:600">Round ${curRound}</span></div></div>
+    ${roundMatches.map((m,i)=>{const mi=t.matches.indexOf(m);return`<div class="bracket-match"><span class="player">${m.p1}</span><span class="vs">vs</span><span class="player">${m.p2}</span>${m.winner?`<span style="font-size:.7rem;color:var(--teal);font-weight:600">🏆 ${m.winner}</span>`:`<button onclick="setWinner('${t.id}',${mi},'${m.p1}')">${m.p1}</button><button onclick="setWinner('${t.id}',${mi},'${m.p2}')">${m.p2}</button>`}</div>`}).join("")}
+    <div style="margin-top:.6rem"><div style="font-size:.76rem;font-weight:600;color:var(--muted);margin-bottom:.3rem">Leaderboard</div><table class="leaderboard-table"><thead><tr><th>#</th><th>Player</th><th>W</th><th>P</th></tr></thead><tbody>${t.leaderboard.map((p,i)=>`<tr><td>${i+1}</td><td>${p.name}</td><td>${p.wins}</td><td>${p.played}</td></tr>`).join("")}</tbody></table></div></div>`
+  }).join(""):`<div class="empty-msg">No active tournaments. Click "+ New Tournament" to start one.</div>`;
+  // Champion wall
+  const cw=document.getElementById("champion-wall");
+  if(S.tournaments.history.length){
+    cw.innerHTML=`<div class="champion-wall"><div style="font-weight:600;font-size:.9rem;margin-bottom:.5rem">🏆 Champion's Wall</div>${S.tournaments.history.map((h, i)=>`<div class="champion-entry"><span class="champion-trophy">🥇</span><div style="flex:1"><div style="font-weight:600;font-size:.85rem">${h.winner}</div><div style="font-size:.72rem;opacity:.5">${h.name} · ${h.date}</div></div><button class="cw-del" onclick="deleteChampion(${i})">✕</button></div>`).join("")}</div>`;
+  }else{cw.innerHTML=""}
+}
+
+/* ── PREP PLANNER ── */
+function populatePrepDropdown(){
+  const sel=document.getElementById("prep-event");const cur=sel.value;
+  sel.innerHTML='<option value="">— choose —</option>';
+  getActiveEvents().forEach(e=>{const o=document.createElement("option");o.value=e.id;o.textContent=e.icon+" "+e.name;if(String(e.id)===String(cur))o.selected=true;sel.appendChild(o)});
+}
+function genSchedule(){
+  const evId=document.getElementById("prep-event").value;const dt=document.getElementById("prep-date").value;
+  if(!evId||!dt){alert("Select event and date.");return}
+  const ev=getEvent(evId);
+  const eventDate=new Date(dt+"T12:00:00");const today=new Date();today.setHours(0,0,0,0);
+  const key=""+evId+"_"+dt;let checks=S.prepSchedules[key]||[];
+  document.getElementById("sched-title").textContent=ev.icon+" "+ev.name+" — Prep Schedule";
+  document.getElementById("sched-sub").textContent="Event: "+fmtDate(eventDate)+" · "+ev.venue+" · £"+getAdjustedCost(ev);
+  document.getElementById("sched-steps").innerHTML=PREP_STEPS.map((step,i)=>{
+    const sd=new Date(eventDate);sd.setDate(sd.getDate()-step.days);sd.setHours(0,0,0,0);
+    const isPast=sd<today;const isToday=sd.getTime()===today.getTime();const isEvent=step.days===0;const checked=checks[i]||false;
+    let cls="sched-step";if(checked)cls+=" done";if(isEvent)cls+=" is-event";else if(isPast&&!checked)cls+=" is-past";
+    const tagCls={plan:"tag-plan",approval:"tag-approval",order:"tag-order",comms:"tag-comms",event:"tag-event",followup:"tag-followup"}[step.tag]||"tag-plan";
+    return`<div class="${cls}"><input type="checkbox" class="sched-check" ${checked?"checked":""} onchange="toggleSched('${key}',${i},this.checked,this)"><div class="sched-date${isEvent?" event-day":""}">${fmtDate(sd)}${isToday?" ← today":""}</div><div class="sched-content"><div class="sched-label">${step.label}</div><div class="sched-desc">${step.desc}</div></div><div class="sched-tag ${tagCls}">${step.tag}</div></div>`
+  }).join("");
+  document.getElementById("sched-container").classList.add("vis");
+}
+function toggleSched(key,idx,checked,el){
+  if(!S.prepSchedules[key]) S.prepSchedules[key] = [];
+  S.prepSchedules[key][idx]=checked;
+  saveState();
+  el.closest(".sched-step").classList.toggle("done",checked);
+}
+function clearSchedule() {
+  document.getElementById("sched-container").classList.remove("vis");
+  document.getElementById("prep-event").value = "";
+  document.getElementById("prep-date").value = "";
+}
+
+/* ── EMAILS ── */
+function populateEmailDropdown(){
+  const sel=document.getElementById("email-event-sel");const cur=sel.value;
+  sel.innerHTML='<option value="">— choose an event —</option>';
+  getActiveEvents().forEach(e=>{const o=document.createElement("option");o.value=e.id;o.textContent=e.icon+" "+e.name;if(String(e.id)===String(cur))o.selected=true;sel.appendChild(o)});
+}
+function renderEmailForEvent(){
+  const selId=document.getElementById("email-event-sel").value;
+  const all=[...BUILT_IN_TEMPLATES,...S.events.customTemplates];
+  const active=getActiveEvents();
+  let templates;
+  if(selId){
+    templates=all.filter(t=>String(t.id)===String(selId));
+  } else {
+    templates=all.slice(0,3); // Show 3 previews by default
+  }
+  document.getElementById("tpl-grid").innerHTML=templates.map((t,i)=>{
+    const ev=active.find(e=>String(e.id)===String(t.id));if(!ev)return"";
+    return`<div class="tpl-card"><div class="tpl-hd" onclick="document.getElementById('tplb-e${i}').classList.toggle('open');document.getElementById('ttgl-e${i}').textContent=document.getElementById('tplb-e${i}').classList.contains('open')?'Hide ↑':'Show ↓'"><div class="tpl-hd-left"><div class="tpl-icon" style="background:${catBg(ev.cat)}">${ev.icon}</div><div><div class="tpl-evt-name">${ev.name}</div><div class="tpl-subj">${t.subj}</div></div></div><div class="tpl-actions"><span class="tpl-toggle" id="ttgl-e${i}">Show ↓</span><button class="btn-copy" id="btn-copy-tpl-${t.id}" onclick="copyTplText(event, '${t.id}')">Copy</button></div></div><div class="tpl-body" id="tplb-e${i}">${t.body}</div></div>`
+  }).join("")||'<div class="empty-msg">No template found for this event.</div>';
+}
+function renderEmails(){populateEmailDropdown();renderEmailForEvent()}
+
+function copyTplText(ev, id) {
+    ev.stopPropagation();
+    const all = [...BUILT_IN_TEMPLATES, ...S.events.customTemplates];
+    const t = all.find(x => String(x.id) === String(id));
+    if(!t) return;
+    const text = 'Subject: ' + t.subj + '\n\n' + t.body;
+    navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById('btn-copy-tpl-' + id);
+        if(btn) {
+            btn.textContent = 'Copied ✓'; btn.classList.add('copied');
+            setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 1500);
+        }
+    });
+}
+
+/* ── POSTERS ── */
+function populatePosterDropdown(){
+  const sel=document.getElementById("poster-sel");const cur=sel.value;
+  sel.innerHTML='<option value="">— choose —</option>';
+  getActiveEvents().filter(e=>e.posterCopy).forEach(e=>{const o=document.createElement("option");o.value=e.id;o.textContent=e.icon+" "+e.name;if(String(e.id)===String(cur))o.selected=true;sel.appendChild(o)});
+}
+function genPoster(){
+  const selId=document.getElementById("poster-sel").value;
+  if(!selId){document.getElementById("poster-output").classList.remove("vis");return}
+  const ev=getEvent(selId);
+  const pc=ev.posterCopy;const pt=POSTER_TEMPLATES[ev.posterCat]||POSTER_TEMPLATES.competitive;
+  document.getElementById("poster-preview").innerHTML=`<div class="poster ${pt.bg}" style="min-height:280px"><div class="p-blob" style="width:110px;height:110px;background:rgba(255,255,255,.08);top:-25px;right:-25px"></div><div><div class="p-eyebrow">Unite Students · Free Entry</div><div class="p-badge">${pt.badge}</div><div class="p-title" style="font-size:1.4rem">${pc.headline}</div><div class="p-line"></div><div class="p-detail">${pc.body.split("\n").slice(0,2).join("<br>")}</div></div><div><div class="p-cta">${pc.cta}</div><div class="p-footer"><span>[DATE] · [TIME]</span><div class="p-qr">QR</div></div></div></div>`;
+  document.getElementById("poster-copy").value=`━ HEADLINE ━\n${pc.headline}\n\n━ SUB ━\n${pc.sub}\n\n━ BODY ━\n${pc.body}\n\n━ DETAILS ━\n📅 [DATE] · 🕐 [TIME]\n📍 ${ev.venue}\n\n━ OFFER ━\n✓ ${pc.free}${pc.prize?"\n🏆 "+pc.prize:""}\n\n━ CTA ━\n${pc.cta}`;
+  const catColors={competitive:"dark navy with amber accents",creative:"vibrant coral with white",social:"deep forest green with teal",cultural:"forest green with gold",operational:"navy blue with white"};
+  document.getElementById("canva-prompt").textContent=`Create a modern A3 event poster for student accommodation.\n\nEvent: ${ev.name}\nColours: ${catColors[ev.posterCat]||"dark navy"}\nHeadline: "${pc.headline}"\nSub: "${pc.sub}"\nBody: ${pc.body}\nVenue: ${ev.venue}\n${pc.free}\n${pc.prize||""}\nCTA: "${pc.cta}"\n\nStyle: Clean, bold, contemporary. Large headline, generous whitespace. Sans-serif. QR space bottom-right.`;
+  document.getElementById("poster-output").classList.add("vis");
+}
+
+/* ── INVENTORY ── */
+function renderInventory(){
+  const wrap=document.getElementById("inv-wrap");
+  if(!S.inventory.length){wrap.innerHTML='<div class="empty-msg">No items yet. Add below.</div>';return}
+  wrap.innerHTML=`<table class="inv-table"><thead><tr><th>Item</th><th>Qty</th><th>Category</th><th>Notes</th><th></th></tr></thead><tbody>${S.inventory.map((item,i)=>`<tr><td>${item.name}</td><td>${item.qty}</td><td style="font-size:.74rem;color:var(--muted)">${item.category}</td><td style="color:var(--muted)">${item.notes||"—"}</td><td><button class="inv-rm" onclick="S.inventory.splice(${i},1);saveState();renderInventory()">✕</button></td></tr>`).join("")}</tbody></table>`;
+}
+function addInvItem(){
+  const name=document.getElementById("inv-name").value.trim();if(!name)return;
+  S.inventory.push({name,qty:parseInt(document.getElementById("inv-qty").value)||0,category:document.getElementById("inv-cat").value,notes:document.getElementById("inv-notes").value.trim()});
+  document.getElementById("inv-name").value="";document.getElementById("inv-qty").value="";document.getElementById("inv-notes").value="";
+  saveState();renderInventory();
+}
+
+/* ── EVENT LOG ── */
+function renderLog(){
+  const wrap=document.getElementById("log-wrap");
+  if(!S.eventLog.length){wrap.innerHTML='<div class="empty-msg">No events logged yet. Mark an event "Done" to log details.</div>';return}
+  wrap.innerHTML=`<div class="evt-log">${S.eventLog.slice().reverse().map(e=>{
+      const kpis = [];
+      if(e.kpi?.rebook) kpis.push(`📈 ${e.kpi.rebook} Re-bookings`);
+      if(e.kpi?.summer) kpis.push(`☀️ ${e.kpi.summer} Summer Stays`);
+      if(e.kpi?.welfare) kpis.push(`❤️ ${e.kpi.welfare} Welfare Checks`);
+      const kpiText = kpis.length ? `<div style="font-size:.7rem;color:var(--ink);font-weight:600;margin-top:.3rem">${kpis.join(' · ')}</div>` : '';
+      
+      return `
+      <div class="evt-log-entry">
+          <div class="evt-log-date">
+              ${e.date} · ${e.name} <span class="roi-badge roi-${e.roi?.grade||'-'}">ROI: ${e.roi?.grade||'-'}</span>
+          </div>
+          <div style="font-size:.72rem;color:var(--muted)">
+              Host: ${e.host || 'Unknown'} · Attended: ${e.attendance} · Cost: £${e.cost} · Rating: ${"★".repeat(e.rating)}${"☆".repeat(5-e.rating)}
+          </div>
+          ${kpiText}
+          <div class="evt-log-text">${e.notes||"No notes provided."}</div>
+      </div>`
+  }).join("")}</div>`;
+}
+
+/* ── OPERATIONAL ── */
+function renderOps(){
+  const ops=getActiveEvents().filter(e=>e.type==="operational");
+  document.getElementById("ops-grid").innerHTML=ops.map(e=>`<div class="event-card operational" onclick="openModal(${JSON.stringify(e.id)})"><div class="ec-top"><div class="ec-icon">${e.icon}</div><div class="ec-top-right"><div class="ec-badges"><span class="ec-badge">Operational</span></div></div></div><div class="ec-name">${e.name}</div><div class="ec-desc">${e.short}</div><div style="font-size:.76rem;color:var(--ops);margin-top:.4rem;font-weight:500">Goal: ${e.goal||"—"}</div><div class="ec-footer"><span class="ec-venue">📍 ${e.venue}</span><button class="btn-detail" onclick="openModal(${JSON.stringify(e.id)});event.stopPropagation()">Details →</button></div></div>`).join("");
+}
+
+/* ── SUGGESTIONS ── */
+function saveSuggestion(){const txt=document.getElementById("suggestion-text").value.trim();if(!txt)return;S.suggestions.push({text:txt,date:new Date().toISOString().split("T")[0]});saveState();document.getElementById("suggestion-text").value="";renderSuggestions()}
+function renderSuggestions(){document.getElementById("suggestions-list").innerHTML=S.suggestions.length?S.suggestions.slice().reverse().map(s=>`<div style="font-size:.78rem;color:var(--muted);padding:.3rem 0;border-bottom:1px solid var(--border)">"${s.text}" <span style="font-size:.68rem">(${s.date})</span></div>`).join(""):""}
+
+/* ── SETTINGS ── */
+function exportData(){const blob=new Blob([JSON.stringify(S,null,2)],{type:"application/json"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=`${S.meta.buildingName.replace(/\s+/g,"_")}_${new Date().toISOString().split("T")[0]}.json`;a.click();localStorage.setItem('ubs_save_count','0');const bn=document.getElementById('backup-banner');if(bn)bn.style.display='none'}
+function validateImportData(data){
+  if(!data||typeof data!=='object'||Array.isArray(data))return{ok:false,msg:"Not a valid planner file (expected a JSON object)."};
+  const expected={meta:'object',budget:'object',events:'object',rooms:'array',equipment:'array',inventory:'array',eventLog:'array',seasons:'array',tournaments:'object',recurring:'object',ui:'object'};
+  const present=Object.keys(expected).filter(k=>k in data);
+  if(present.length<3)return{ok:false,msg:"This doesn't look like a Unite Hub export — it's missing the expected sections (meta, budget, events, rooms, etc)."};
+  for(const k of present){
+    const v=data[k],shape=expected[k];
+    if(shape==='array'&&!Array.isArray(v))return{ok:false,msg:`Section "${k}" is the wrong shape (expected a list). File may be corrupted.`};
+    if(shape==='object'&&(v===null||typeof v!=='object'||Array.isArray(v)))return{ok:false,msg:`Section "${k}" is the wrong shape (expected an object). File may be corrupted.`};
+  }
+  const v=data.meta&&data.meta.version;
+  if(v&&v!==DEFAULT_STATE.meta.version)return{ok:true,warn:`This file is from version ${v}. The current version is ${DEFAULT_STATE.meta.version}.\n\nImporting should still work, but some newer fields may be missing or some older fields ignored. Import anyway?`};
+  return{ok:true};
+}
+function importData(ev){
+  const file=ev.target.files[0];if(!file)return;
+  const reader=new FileReader();
+  reader.onload=e=>{
+    let data;
+    try{data=JSON.parse(e.target.result)}
+    catch{alert("This file isn't valid JSON. It may be corrupted or not an exported planner file.\n\nYour existing data has not been changed.");ev.target.value='';return}
+    const check=validateImportData(data);
+    if(!check.ok){alert("Can't import this file:\n\n"+check.msg+"\n\nYour existing data has not been changed.");ev.target.value='';return}
+    if(check.warn&&!confirm(check.warn)){ev.target.value='';return}
+    const prevS=S;
+    try{
+      S=deepMerge(JSON.parse(JSON.stringify(DEFAULT_STATE)),data);
+      saveState();applyProfile();refreshAll();
+      alert("Data imported successfully!");
+    }catch(err){
+      S=prevS;
+      alert("Import failed while applying the data.\n\nYour existing data has not been changed.\n\nDetails: "+(err&&err.message?err.message:err));
+    }
+    ev.target.value='';
+  };
+  reader.readAsText(file);
+}
+function resetAll(){if(!confirm("This will erase ALL your building's data and reset to the template. Are you sure?"))return;if(!confirm("Really sure? This cannot be undone."))return;localStorage.removeItem("ubs_v4_state");S=JSON.parse(JSON.stringify(DEFAULT_STATE));saveState();location.reload()}
+
+/* ── MANAGER MODAL ── */
+function openMgr(tab, presetCat = null){
+  switchTab(tab==="restore"?"restore":"create");
+  if(tab==="create")resetMgrForm(presetCat);
+  document.getElementById("mgr-overlay").classList.add("open");document.body.style.overflow="hidden";
+}
+function closeMgr(){document.getElementById("mgr-overlay").classList.remove("open");document.body.style.overflow=""}
+function switchTab(tab){document.querySelectorAll(".mgr-tab").forEach(t=>t.classList.remove("active"));document.querySelectorAll(".mgr-pane").forEach(p=>p.classList.remove("active"));document.getElementById("tab-"+tab).classList.add("active");document.getElementById("pane-"+tab).classList.add("active");if(tab==="restore")renderRestore()}
+function resetMgrForm(presetCat = null){
+  document.getElementById("mgr-edit-id").value="";document.getElementById("mgr-title").textContent="Create New Event";document.getElementById("mgr-del-btn").style.display="none";
+  ["mgr-name","mgr-dur","mgr-people","mgr-cost","mgr-reuse","mgr-short","mgr-full","mgr-prize","mgr-allergy","mgr-tips","mgr-email-subj","mgr-email-body"].forEach(id=>document.getElementById(id).value="");
+  document.getElementById("mgr-cat").value = presetCat || "competitive";
+  document.getElementById("mgr-type").value = presetCat === "operational" ? "operational" : "oneoff";
+  document.getElementById("mgr-prize-model").value="none";
+  document.getElementById("mgr-email-preview").textContent="Fill in details above...";
+  renderIconPicker("🎯");renderMatRows([]);
+}
+function openEditEvent(id,ev){
+  if(ev)ev.stopPropagation();const e=getEvent(id);if(!e)return;
+  openMgr("create");document.getElementById("mgr-edit-id").value=id;document.getElementById("mgr-title").textContent="Edit Event";document.getElementById("mgr-del-btn").style.display="inline-flex";
+  document.getElementById("mgr-name").value=e.name;document.getElementById("mgr-cat").value=e.cat;document.getElementById("mgr-type").value=e.type||"oneoff";
+  document.getElementById("mgr-dur").value=e.duration||"";document.getElementById("mgr-people").value=e.people||"";
+  document.getElementById("mgr-cost").value=e.cost||"";document.getElementById("mgr-reuse").value=e.reusable||"";
+  document.getElementById("mgr-short").value=e.short||"";document.getElementById("mgr-full").value=e.full||"";
+  document.getElementById("mgr-prize").value=e.prize?.desc||"";document.getElementById("mgr-prize-model").value=e.prize?.model||"none";
+  document.getElementById("mgr-allergy").value=e.allergy||"";document.getElementById("mgr-tips").value=e.tip||"";
+  renderIconPicker(e.icon||"🎯");renderMatRows(e.materials||[]);
+  const tpl=[...BUILT_IN_TEMPLATES,...S.events.customTemplates].find(t=>String(t.id)===String(id));
+  if(tpl){document.getElementById("mgr-email-subj").value=tpl.subj||"";document.getElementById("mgr-email-body").value=tpl.body||""}
+  mgrAutoEmail();
+}
+function renderIconPicker(sel){document.getElementById("icon-picker").innerHTML=ICONS.map(ic=>`<span class="icon-opt${ic===sel?" selected":""}" onclick="document.querySelectorAll('.icon-opt').forEach(o=>o.classList.remove('selected'));this.classList.add('selected')" data-icon="${ic}">${ic}</span>`).join("")}
+function getSelectedIcon(){const s=document.querySelector(".icon-opt.selected");return s?s.dataset.icon:"🎯"}
+function renderMatRows(mats){const wrap=document.getElementById("mgr-mats");wrap.innerHTML="";(mats.length?mats:[{n:"",c:"",url:"",reuse:false}]).forEach(m=>addMatRow(m))}
+function addMatRow(data){
+  const wrap=document.getElementById("mgr-mats");const row=document.createElement("div");row.className="mat-row";
+  row.innerHTML=`<input placeholder="Name" value="${data?.n?.replace(/"/g,'&quot;')||''}" class="mr-name"><input placeholder="~£0" value="${data?.c||''}" class="mr-cost"><input placeholder="Amazon URL" value="${data?.url||''}" class="mr-url"><label style="display:flex;align-items:center;gap:.2rem;font-size:.74rem;color:var(--muted);cursor:pointer;white-space:nowrap"><input type="checkbox" class="mr-reuse" ${data?.reuse?"checked":""}> Reuse</label><button class="btn-rm" onclick="this.parentElement.remove()">✕</button>`;
+  wrap.appendChild(row);
+}
+function getMaterials(){return[...document.querySelectorAll("#mgr-mats .mat-row")].map(r=>{const n=r.querySelector(".mr-name").value.trim();if(!n)return null;return{n,c:r.querySelector(".mr-cost").value.trim()||"TBC",url:r.querySelector(".mr-url").value.trim()||null,reuse:r.querySelector(".mr-reuse").checked}}).filter(Boolean)}
+function mgrAutoEmail(){
+  const name=document.getElementById("mgr-name").value.trim()||"[Event]";
+  const short=document.getElementById("mgr-short").value.trim()||"[description]";
+  const prize=document.getElementById("mgr-prize").value.trim();
+  const venue=document.getElementById("mgr-venue").value;
+  document.getElementById("mgr-email-preview").textContent=`Hi everyone,\n\nWe're running ${name} — ${short}\n\n📅 Date: [DATE]\n🕖 Time: [TIME]\n📍 ${venue}\n\nFree entry. Just show up.${prize?"\n\n"+prize:""}\n\nSign up at [RSVP LINK] or reception.\n\nSee you there,\n[YOUR NAME]\nEvents Team`;
+  if(!document.getElementById("mgr-email-subj").value)document.getElementById("mgr-email-subj").value=name+" — Unite Students";
+}
+function useGen(){document.getElementById("mgr-email-body").value=document.getElementById("mgr-email-preview").textContent}
+function saveEvt(){
+  const name=document.getElementById("mgr-name").value.trim();if(!name){alert("Enter event name.");return}
+  const editId=document.getElementById("mgr-edit-id").value;const isEdit=editId!=="";
+  const id=isEdit?(isNaN(editId)?editId:Number(editId)):"custom_"+Date.now();
+  const prizeModel=document.getElementById("mgr-prize-model").value;
+  const evt={id,name,icon:getSelectedIcon(),cat:document.getElementById("mgr-cat").value,type:document.getElementById("mgr-type").value,venue:document.getElementById("mgr-venue").value,short:document.getElementById("mgr-short").value.trim()||name,full:document.getElementById("mgr-full").value.trim()||name,duration:document.getElementById("mgr-dur").value.trim()||"TBC",people:document.getElementById("mgr-people").value.trim()||"TBC",cost:parseInt(document.getElementById("mgr-cost").value)||0,reusable:parseInt(document.getElementById("mgr-reuse").value)||0,prize:{model:prizeModel,desc:document.getElementById("mgr-prize").value.trim()},allergy:document.getElementById("mgr-allergy").value.trim()||"N/A",tip:document.getElementById("mgr-tips").value.trim()||"",materials:getMaterials(),posterCat:document.getElementById("mgr-cat").value,posterCopy:{headline:name.toUpperCase(),sub:document.getElementById("mgr-short").value.trim().substring(0,60)||name,body:document.getElementById("mgr-full").value.trim().substring(0,120)||name,free:"Free entry",prize:document.getElementById("mgr-prize").value.trim()||"",cta:"Sign up at reception"}};
+  const tpl={id,icon:evt.icon,cat:evt.cat,subj:document.getElementById("mgr-email-subj").value.trim()||name,body:document.getElementById("mgr-email-body").value.trim()||document.getElementById("mgr-email-preview").textContent};
+  if(isEdit){
+    const isBuiltIn=BUILT_IN_EVENTS.find(e=>String(e.id)===String(id));
+    if(isBuiltIn){S.events.overrides[id]={...evt,id:undefined};delete S.events.overrides[id].id}
+    else{S.events.custom=S.events.custom.map(e=>String(e.id)===String(id)?evt:e);S.events.customTemplates=S.events.customTemplates.map(t=>String(t.id)===String(id)?tpl:t)}
+  }else{S.events.custom.push(evt);S.events.customTemplates.push(tpl)}
+  saveState();refreshAll();closeMgr();
+}
+
+// AUDIT FIX: Cleanup states properly when an event is deleted
+function deleteEvt(){
+    const id=document.getElementById("mgr-edit-id").value;
+    if(!id||!confirm("Hide this event?"))return;
+    const numId=isNaN(id)?id:Number(id);
+    withUndo("Event hidden.",()=>{
+        S.events.hidden.push(numId);
+        S.events.custom=S.events.custom.filter(e=>String(e.id)!==String(id));
+        delete S.schedules[id];
+        delete S.statuses[id];
+        S.budgetSelections = S.budgetSelections.filter(x => String(x) !== String(id));
+        saveState();refreshAll();closeMgr();
+    });
+}
+
+function renderRestore(){
+  const wrap=document.getElementById("restore-wrap");
+  const hidden=S.events.hidden.map(id=>getEvent(id)||(BUILT_IN_EVENTS.find(e=>String(e.id)===String(id)))).filter(Boolean);
+  wrap.innerHTML=hidden.length?'<div class="restore-list">'+hidden.map(e=>`<div class="restore-item"><div style="display:flex;align-items:center;gap:.5rem;font-size:.85rem"><span>${e.icon}</span>${e.name}</div><button class="btn-save" onclick="S.events.hidden=S.events.hidden.filter(x=>String(x)!==String(${JSON.stringify(e.id)}));saveState();refreshAll();renderRestore()">Restore</button></div>`).join("")+'</div>':'<div class="empty-msg">No hidden events.</div>';
+}
+
+/* ── REFRESH ALL ── */
+function refreshAll(){
+  renderEvents();renderBudgetList();renderEmails();populatePrepDropdown();populatePosterDropdown();renderRoadmap();renderRecurring();renderTournaments();renderInventory();renderLog();renderOps();renderSuggestions();renderDashboardWidgets();renderManagement();applyProfile();
+}
+
+/* ── DATA BANNER ── */
+function showBannerIfNeeded(){
+  if(!localStorage.getItem('ubs_banner_dismissed')){
+    document.getElementById('data-banner').style.display='flex';
+  }
+}
+function dismissBanner(){
+  document.getElementById('data-banner').style.display='none';
+  localStorage.setItem('ubs_banner_dismissed','1');
+}
+
+/* ── INIT ── */
+function init(){
+  S=loadState();applyDark();
+  if(!S.meta.setupDone)showWelcome();
+  else{applyProfile();showBannerIfNeeded()}
+  refreshAll();
+  showBackupPromptIfDue();
+  checkForUpdate();
+  // Browser check
+  const ua=navigator.userAgent;
+  if(!/Chrome|Firefox|Edg/.test(ua)&&/Safari/.test(ua)){
+    console.warn('Safari on local files may have localStorage issues. Chrome or Edge recommended.');
+  }
+}
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeModal();closeMgr();closeComp();closeSchedule();closeTournModal()}});
+init();
+</script>
+</body>
+</html>
